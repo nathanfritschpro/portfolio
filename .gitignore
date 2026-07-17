@@ -1,0 +1,41 @@
+# ── macOS ──
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+
+# ── Editeurs / IDE ──
+.claude/
+.vscode/
+.idea/
+*.swp
+*~
+
+# ── Node / npm (au cas ou) ──
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+
+# ── Environnements virtuels Python ──
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# ── Logs ──
+*.log
+/tmp/
+
+# ── Fichiers de dev local ──
+# Les symlinks qui pointent vers /Users/nathan/Desktop pour le dev en local.
+# Ils ne fonctionnent pas sur Vercel : on ne les envoie pas au repo.
+# Quand les vrais dossiers "photos/" et "videos/" seront compresses et
+# ajoutes ici, il faudra RETIRER les 2 lignes ci-dessous pour qu'ils soient
+# pousses sur GitHub / deployes sur Vercel.
+/photos
+/videos-src
+/videos
+
+# ── Fichiers systeme ──
+Thumbs.db
+Desktop.ini

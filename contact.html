@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Nathan Fritsch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F8F7F4;--text:#111111;--muted:#888880;--a:#344D59;--ah:#2A3D48;--white:#FFFFFF;--border:#E2DDD7;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:none;}
+
+#prog{position:fixed;top:0;left:0;height:2px;background:var(--a);z-index:9998;width:0%;transition:width .05s linear;pointer-events:none;}
+
+#cur{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;}
+#cur-dot{width:7px;height:7px;background:var(--a);border-radius:50%;position:absolute;transform:translate(-50%,-50%);}
+#cur-ring{width:36px;height:36px;border:1.5px solid rgba(52,77,89,.4);border-radius:50%;position:absolute;transform:translate(-50%,-50%);transition:width .4s,height .4s,background .4s;}
+body.ch #cur-ring{width:58px;height:58px;background:rgba(52,77,89,.06);border-color:var(--a);}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1rem 4rem;background:rgba(248,247,244,.6);backdrop-filter:blur(32px) saturate(2.2);-webkit-backdrop-filter:blur(32px) saturate(2.2);border-bottom:1px solid rgba(255,255,255,.65);box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 6px 35px rgba(52,77,89,.07);display:flex;align-items:center;justify-content:space-between;}
+.nav-left{display:flex;align-items:center;gap:1.1rem;}
+.nav-ig{display:inline-flex;align-items:center;color:var(--a);transition:color .3s,transform .3s;}
+.nav-ig svg{width:21px;height:21px;}
+.nav-ig:hover{color:var(--ah);transform:translateY(-1px);}
+.nav-logo{font-family:'Fraunces',serif;font-weight:500;font-size:1.35rem;letter-spacing:.02em;color:var(--text);text-decoration:none;}
+.nav-logo span{color:var(--a);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+/* dropdown Portfolio → Photos / Vidéos */
+.nav-drop{position:relative;}
+.nav-drop::after{content:'';position:absolute;left:-16px;right:-16px;top:100%;height:16px;}
+.nav-sub{position:absolute;top:calc(100% + 12px);left:50%;transform:translate(-50%,8px);min-width:150px;background:rgba(248,247,244,.98);border:1px solid var(--border);box-shadow:0 18px 45px rgba(17,17,17,.16);padding:.45rem 0;opacity:0;visibility:hidden;transition:opacity .3s,transform .3s,visibility .3s;z-index:300;}
+.nav-drop:hover .nav-sub{opacity:1;visibility:visible;transform:translate(-50%,0);}
+.nav-sub a{display:block;padding:.62rem 1.3rem;font-family:'Inter',sans-serif;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s,background .25s;}
+.nav-sub a:hover{color:var(--a);background:rgba(52,77,89,.06);}
+.nav-sub a::after{display:none;}
+.nav-links a{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--a);transition:width .35s;}
+.nav-links a:hover{color:var(--text);}
+.nav-links a.on{color:var(--a);}
+.nav-links a.on::after,.nav-links a:hover::after{width:100%;}
+.nav-btn{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;background:var(--a);color:var(--white);padding:.6rem 1.6rem;text-decoration:none;font-weight:500;transition:background .3s,transform .25s;}
+.nav-btn:hover{background:var(--ah);transform:translateY(-1px);}
+
+/* HERO */
+.c-hero{min-height:52vh;display:flex;flex-direction:column;justify-content:flex-end;padding:9rem 4rem 5rem;position:relative;overflow:hidden;}
+.c-hero-bg{position:absolute;inset:0;background-image:url('photos/triatlon lacnau/samedi L/IMG_6295.jpg');background-size:cover;background-position:center;filter:brightness(.22);}
+.c-hero-over{position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,.88) 0%,transparent 60%);}
+.c-hero-inner{position:relative;z-index:1;}
+.c-hero-tag{font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;color:rgba(236,241,243,.7);display:block;margin-bottom:1.2rem;}
+.c-hero h1{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(3.2rem,7.5vw,7rem);font-weight:430;line-height:1.0;letter-spacing:-.01em;color:#F8F7F4;}
+.c-hero h1 em{font-style:italic;color:var(--a);}
+.c-hero-sub{font-size:.95rem;color:rgba(248,247,244,.45);margin-top:1.5rem;font-weight:300;line-height:1.7;max-width:450px;}
+
+/* MAIN LAYOUT */
+.c-main{display:grid;grid-template-columns:1fr 1.6fr;}
+
+/* INFO SIDE */
+.c-info{background:var(--white);padding:6rem 4rem;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:2.5rem;}
+.info-block h4{font-size:.58rem;letter-spacing:.38em;text-transform:uppercase;color:var(--a);margin-bottom:.9rem;}
+.info-block p,.info-block a{font-size:.92rem;color:var(--muted);line-height:1.7;font-weight:300;text-decoration:none;display:block;}
+.info-block a:hover{color:var(--text);}
+.c-div{width:40px;height:1px;background:var(--border);}
+.avail{border:1px solid var(--border);padding:1.4rem;background:var(--bg);}
+.avail-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.6rem;}
+.avail-dot{width:8px;height:8px;background:#22C55E;border-radius:50%;animation:pulse 2s ease infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{box-shadow:0 0 0 6px rgba(34,197,94,0)}}
+.avail-lbl{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text);font-weight:500;}
+.avail p{font-size:.8rem;color:var(--muted);line-height:1.6;font-weight:300;}
+.soc-row{display:flex;gap:.6rem;margin-top:.3rem;}
+.soc{width:42px;height:42px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:.68rem;font-weight:600;letter-spacing:.04em;transition:all .3s;}
+.soc:hover{border-color:var(--a);color:var(--a);}
+
+/* FORM SIDE */
+.c-form-side{padding:6rem 5rem;background:var(--bg);}
+.form-intro h2{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(1.9rem,3.4vw,2.8rem);font-weight:450;letter-spacing:-.01em;margin-bottom:.5rem;}
+.form-intro h2 em{font-style:italic;color:var(--a);}
+.form-intro p{font-size:.85rem;color:var(--muted);margin-bottom:3rem;line-height:1.7;font-weight:300;}
+
+form{display:flex;flex-direction:column;gap:1.6rem;}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;}
+.fg{position:relative;}
+.fg label{position:absolute;top:.95rem;left:1.1rem;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(136,136,128,.55);pointer-events:none;transition:top .25s,font-size .25s,color .25s;font-weight:400;}
+.fg input,.fg textarea,.fg select{width:100%;padding:.95rem 1.1rem;background:var(--white);border:1px solid var(--border);color:var(--text);font-family:'Inter',sans-serif;font-size:.9rem;font-weight:300;outline:none;transition:border-color .3s,box-shadow .3s;appearance:none;-webkit-appearance:none;}
+.fg input::placeholder,.fg textarea::placeholder{color:transparent;}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--a);box-shadow:0 0 0 3px rgba(52,77,89,.07);}
+.fg input:focus~label,.fg input:not(:placeholder-shown)~label,
+.fg textarea:focus~label,.fg textarea:not(:placeholder-shown)~label,
+.fg select:focus~label,.fg select:valid~label{top:-.55rem;font-size:.58rem;color:var(--a);background:var(--bg);padding:0 .3rem;left:.8rem;}
+.fg textarea{min-height:130px;resize:vertical;}
+.fg select{cursor:none;}
+.fg select option{background:var(--white);color:var(--text);}
+
+.budget-title{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.75rem;}
+.budget-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;}
+.br{position:relative;}
+.br input{position:absolute;opacity:0;pointer-events:none;}
+.br label{display:block;padding:.65rem .5rem;text-align:center;border:1px solid var(--border);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:none;background:var(--white);transition:all .3s;position:static;top:auto;left:auto;}
+.br input:checked+label{border-color:var(--a);color:var(--a);background:rgba(52,77,89,.05);}
+.br label:hover{border-color:rgba(52,77,89,.4);color:var(--text);}
+
+.btn-send{background:var(--a);color:var(--white);border:none;padding:1.1rem 2.8rem;font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;cursor:none;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:1rem;align-self:flex-start;}
+.btn-send::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.18);transform:translateX(-110%) skewX(-15deg);transition:transform .5s;}
+.btn-send:hover::before{transform:translateX(130%) skewX(-15deg);}
+.btn-send:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(52,77,89,.25);}
+.btn-arrow{font-size:1rem;transition:transform .3s;}
+.btn-send:hover .btn-arrow{transform:translateX(5px);}
+
+.success{display:none;text-align:center;padding:5rem 2rem;}
+.success.on{display:block;}
+.success-icon{font-size:2.5rem;color:var(--a);margin-bottom:1.5rem;display:block;}
+.success h3{font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:450;font-size:1.8rem;margin-bottom:1rem;}
+.success h3 em{font-style:italic;color:var(--a);}
+.success p{color:var(--muted);line-height:1.8;font-weight:300;}
+
+footer{background:var(--text);color:rgba(248,247,244,.4);padding:3rem 4rem;display:flex;justify-content:space-between;align-items:center;}
+footer p{font-size:.7rem;}
+footer a{color:var(--a);text-decoration:none;}
+
+[data-r]{opacity:0;transition:opacity .85s ease,transform .85s ease;}
+[data-r="up"]{transform:translateY(50px);}
+[data-r].vis{opacity:1;transform:none;}
+[data-d="1"]{transition-delay:.1s;}[data-d="2"]{transition-delay:.2s;}[data-d="3"]{transition-delay:.3s;}
+
+@media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links{display:none;}.c-hero{padding:7rem 1.5rem 4rem;}.c-main{grid-template-columns:1fr;}.c-info{padding:3rem 1.5rem;}.c-form-side{padding:3rem 1.5rem;}.f-row{grid-template-columns:1fr;}.budget-grid{grid-template-columns:1fr 1fr;}footer{padding:2rem 1.5rem;}}
+
+/* PAGE FADE TRANSITION */
+#pageFade{position:fixed;inset:0;z-index:9990;background:var(--bg);pointer-events:none;opacity:0;transition:opacity .55s ease;}
+#pageFade.show{opacity:1;}
+</style>
+</head>
+<body>
+
+<div id="pageFade" class="show"></div>
+<div id="prog"></div>
+<div id="cur"><div id="cur-dot"></div><div id="cur-ring"></div></div>
+
+<nav>
+  <div class="nav-left">
+    <a href="index.html" class="nav-logo">N<span>.</span>FRITSCH</a>
+    <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li class="nav-drop">
+      <a class="nav-drop-toggle">Portfolio</a>
+      <div class="nav-sub">
+        <a href="portfolio.html?type=photo">Photos</a>
+        <a href="portfolio.html?type=video">Vidéos</a>
+      </div>
+    </li>
+    <li><a href="contact.html" class="on">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-btn mag-btn">Me contacter</a>
+</nav>
+
+<div class="c-hero">
+  <div class="c-hero-bg"></div>
+  <div class="c-hero-over"></div>
+  <div class="c-hero-inner">
+    <span class="c-hero-tag">Parlons de votre projet</span>
+    <h1>Travaillons<br><em>ensemble.</em></h1>
+    <p class="c-hero-sub">Un événement, une compétition, un bien à valoriser ? Je suis là pour en faire quelque chose d'exceptionnel.</p>
+  </div>
+</div>
+
+<div class="c-main">
+  <div class="c-info">
+    <div class="info-block" data-r="up">
+      <h4>Email</h4>
+      <a href="mailto:nathan.fritsch1606@gmail.com">nathan.fritsch1606@gmail.com</a>
+    </div>
+    <div class="c-div"></div>
+    <div class="info-block" data-r="up" data-d="1">
+      <h4>Basé à</h4>
+      <p>Bordeaux, France<br>Disponible partout en France<br>et à l'étranger</p>
+    </div>
+    <div class="c-div"></div>
+    <div class="info-block" data-r="up" data-d="2">
+      <h4>Spécialités</h4>
+      <p>Événementiel · Sport<br>Immobilier · Drone</p>
+    </div>
+    <div class="c-div"></div>
+    <div class="avail" data-r="up" data-d="2">
+      <div class="avail-row">
+        <div class="avail-dot"></div>
+        <span class="avail-lbl">Disponible pour nouveaux projets</span>
+      </div>
+      <p>Réponse garantie sous 24h.<br>Devis gratuit et sans engagement.</p>
+    </div>
+    <div class="info-block" data-r="up" data-d="3">
+      <h4>Suivez mon travail</h4>
+      <div class="soc-row">
+        <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="soc">IG</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="c-form-side">
+    <div class="form-intro" data-r="up">
+      <h2>Décrivez votre <em>projet</em></h2>
+      <p>Remplissez ce formulaire et je vous recontacte sous 24h.</p>
+    </div>
+    <form id="cForm" data-r="up" data-d="1"
+          action="https://formspree.io/f/VOTRE_ID_FORMSPREE"
+          method="POST">
+      <div class="f-row">
+        <div class="fg"><input type="text" name="prenom" placeholder="Prénom" required><label>Prénom</label></div>
+        <div class="fg"><input type="text" name="nom" placeholder="Nom" required><label>Nom</label></div>
+      </div>
+      <div class="fg"><input type="email" name="email" placeholder="Email" required><label>Email</label></div>
+      <div class="fg">
+        <select name="service" required>
+          <option value="" disabled selected></option>
+          <option>Événementiel</option>
+          <option>Sport</option>
+          <option>Immobilier</option>
+          <option>Drone & Aérien</option>
+          <option>Autre projet</option>
+        </select>
+        <label>Type de projet</label>
+      </div>
+      <div>
+        <span class="budget-title">Budget estimé</span>
+        <div class="budget-grid">
+          <div class="br"><input type="radio" name="budget" id="b1" value="< 500 €"><label for="b1">< 500 €</label></div>
+          <div class="br"><input type="radio" name="budget" id="b2" value="500–1k €"><label for="b2">500–1k €</label></div>
+          <div class="br"><input type="radio" name="budget" id="b3" value="1k–2.5k €"><label for="b3">1k–2.5k €</label></div>
+          <div class="br"><input type="radio" name="budget" id="b4" value="2.5k–5k €"><label for="b4">2.5k–5k €</label></div>
+          <div class="br"><input type="radio" name="budget" id="b5" value="> 5k €"><label for="b5">> 5k €</label></div>
+          <div class="br"><input type="radio" name="budget" id="b6" value="À définir"><label for="b6">À définir</label></div>
+        </div>
+      </div>
+      <div class="fg"><textarea name="message" placeholder="Message" required></textarea><label>Décrivez votre projet</label></div>
+      <button type="submit" class="btn-send mag-btn">Envoyer ma demande <span class="btn-arrow">→</span></button>
+    </form>
+    <div class="success" id="suc">
+      <span class="success-icon">✦</span>
+      <h3>Message <em>envoyé !</em></h3>
+      <p>Merci ! Je vous réponds sous 24h avec une réponse personnalisée.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Nathan Fritsch — Photographe & Vidéaste</p>
+  <p><a href="index.html">Accueil</a> · <a href="portfolio.html?type=photo">Photos</a> · <a href="portfolio.html?type=video">Vidéos</a></p>
+</footer>
+
+<script>
+const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function t(){dot.style.left=mx+'px';dot.style.top=my+'px';rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(t);})();
+document.querySelectorAll('a,button,input,textarea,select,.br label').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('ch'));el.addEventListener('mouseleave',()=>document.body.classList.remove('ch'));});
+
+window.addEventListener('scroll',()=>{document.getElementById('prog').style.width=scrollY/(document.body.scrollHeight-innerHeight)*100+'%';});
+
+const obs=new IntersectionObserver(e=>{e.forEach(x=>x.target.classList.toggle('vis',x.isIntersecting));},{threshold:.1});
+document.querySelectorAll('[data-r]').forEach(el=>obs.observe(el));
+
+document.getElementById('cForm').addEventListener('submit',async function(e){
+  e.preventDefault();
+  const data=new FormData(this);
+  try{
+    const r=await fetch(this.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
+    if(r.ok){this.style.display='none';document.getElementById('suc').classList.add('on');}
+    else{alert('Erreur lors de l\'envoi. Contactez-moi par email directement.');}
+  }catch{alert('Problème de connexion. Contactez-moi par email directement.');}
+});
+
+// ── MAGNETIC BUTTONS ──
+document.querySelectorAll('.mag-btn').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();const x=(e.clientX-r.left-r.width/2)*.22;const y=(e.clientY-r.top-r.height/2)*.22;btn.style.transition='none';btn.style.transform=`translate(${x}px,${y}px)`;});
+  btn.addEventListener('mouseleave',()=>{btn.style.transition='transform .5s cubic-bezier(.25,.46,.45,.94)';btn.style.transform='';});
+});
+
+// ── NAV DROPDOWN — clicking "Portfolio" itself never navigates ──
+document.querySelectorAll('.nav-drop-toggle').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+
+// ── PAGE FADE TRANSITION ──
+(function(){
+  const fade=document.getElementById('pageFade');
+  if(!fade) return;
+  const reveal=()=>fade.classList.remove('show');
+  requestAnimationFrame(()=>requestAnimationFrame(reveal));
+  window.addEventListener('pageshow',reveal);
+  document.querySelectorAll('a[href*=".html"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const href=a.getAttribute('href');
+      if(!href||a.target==='_blank'||e.metaKey||e.ctrlKey||e.shiftKey) return;
+      e.preventDefault();
+      fade.classList.add('show');
+      setTimeout(()=>{location.href=href;},520);
+    });
+  });
+})();
+</script>
+</body>
+</html>

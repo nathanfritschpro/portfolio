@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nathan Fritsch — Photographe & Vidéaste</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F8F7F4;
+  --text:#111111;
+  --muted:#888880;
+  --a:#344D59;
+  --ah:#2A3D48;
+  --al:#ECF1F3;
+  --white:#FFFFFF;
+  --border:#E2DDD7;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:none;}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:2px;background:var(--a);z-index:9998;width:0%;transition:width .05s linear;pointer-events:none;}
+
+/* CURSOR */
+#cur{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;}
+#cur-dot{width:7px;height:7px;background:var(--a);border-radius:50%;position:absolute;transform:translate(-50%,-50%);}
+#cur-ring{width:36px;height:36px;border:1.5px solid rgba(52,77,89,.4);border-radius:50%;position:absolute;transform:translate(-50%,-50%);transition:width .4s,height .4s,background .4s,border-color .4s;}
+body.ch #cur-ring{width:58px;height:58px;background:rgba(52,77,89,.06);border-color:var(--a);}
+body.cv #cur-ring{width:72px;height:72px;background:rgba(52,77,89,.1);border-color:var(--a);}
+body.cv #cur-dot{opacity:0;}
+#cur-label{position:absolute;transform:translate(-50%,-50%);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--a);opacity:0;transition:opacity .3s;white-space:nowrap;text-align:center;}
+body.cv #cur-label{opacity:1;}
+
+/* ═══════════════════════════════════════
+   LOADER — STARFIELD INTRO (title stays into hero) */
+/* mirror #hero layout exactly so the title sits at the identical spot/size */
+#loader{position:fixed;inset:0;z-index:9997;display:flex;align-items:center;justify-content:center;padding:0 4rem 14vh;overflow:hidden;background:#000;transition:opacity .7s cubic-bezier(.6,0,.3,1),visibility .7s;will-change:opacity;}
+#loader.out{opacity:0;visibility:hidden;}
+#warp-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
+
+/* same wrapper as .h-content so the title lands in the same place */
+.l-content{position:relative;z-index:2;max-width:900px;text-align:center;}
+/* invisible spacers replicate hero tag/meta heights to lock the title's Y */
+.l-content .l-spacer-tag{font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;margin-bottom:1.4rem;display:block;visibility:hidden;}
+.l-content .l-spacer-meta{display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap;visibility:hidden;margin-top:0;}
+.l-content .l-spacer-meta span{font-size:.75rem;}
+.l-content .l-spacer-meta .h-meta-sep{width:35px;height:1px;}
+.l-content .l-spacer-meta .l-fakebtn{padding:.85rem 2rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;}
+
+/* the loader title — identical class .h-title; lines visible; hard stamp-in */
+.l-title{margin-bottom:2rem;opacity:0;}
+.l-title .ln span{transform:translateY(0)!important;}
+.l-title.hit{animation:lStamp .6s cubic-bezier(.22,1,.3,1) forwards;}
+@keyframes lStamp{
+  0%{opacity:0;transform:scale(1.28);filter:blur(7px);}
+  60%{opacity:1;transform:scale(.992);filter:blur(0);}
+  100%{opacity:1;transform:scale(1);filter:blur(0);}
+}
+/* subtle impact flash on stamp hit */
+.l-flash{position:absolute;inset:0;z-index:4;background:rgba(255,255,255,0);pointer-events:none;}
+.l-flash.hit{animation:lFlash .5s ease forwards;}
+@keyframes lFlash{0%{background:rgba(255,255,255,0);}14%{background:rgba(255,255,255,.05);}100%{background:rgba(255,255,255,0);}}
+
+/* opening name — appears first over the starfield, then fades out */
+.l-intro{position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:1.5rem;transition:opacity .8s ease,transform .9s cubic-bezier(.6,0,.3,1);}
+.l-intro.gone{opacity:0;transform:translate(-50%,-58%) scale(1.04);}
+.l-isub{font-size:.62rem;letter-spacing:.42em;text-transform:uppercase;color:rgba(248,247,244,.4);white-space:nowrap;opacity:0;animation:fIn .8s ease 1s forwards;}
+.l-iname{font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:430;font-size:min(7.5vw,4.6rem);letter-spacing:.04em;white-space:nowrap;color:#ECE8E1;opacity:0;animation:lName 1.4s cubic-bezier(.25,.46,.45,.94) .3s forwards;}
+@keyframes lName{0%{opacity:0;letter-spacing:.22em}100%{opacity:1;letter-spacing:.04em}}
+.l-ibar{width:0;height:1px;background:var(--a);animation:lBar 1.1s ease 1.1s forwards;}
+@keyframes lBar{to{width:180px}}
+
+@keyframes fIn{to{opacity:1}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.6rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:padding .4s,background .5s,backdrop-filter .5s,border-color .4s,box-shadow .4s;border-bottom:1px solid transparent;}
+nav.sticky{
+  padding:1rem 4rem;
+  background:rgba(248,247,244,.6);
+  backdrop-filter:blur(32px) saturate(2.2);
+  -webkit-backdrop-filter:blur(32px) saturate(2.2);
+  border-bottom:1px solid rgba(255,255,255,.65);
+  box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 6px 35px rgba(52,77,89,.07);
+}
+.nav-left{display:flex;align-items:center;gap:1.1rem;}
+.nav-ig{display:inline-flex;align-items:center;color:#fff;transition:color .4s,transform .3s;filter:drop-shadow(0 1px 10px rgba(0,0,0,.4));}
+.nav-ig svg{width:21px;height:21px;}
+.nav-ig:hover{color:#A9C7D4;transform:translateY(-1px);}
+nav.sticky .nav-ig{color:var(--a);filter:none;}
+nav.sticky .nav-ig:hover{color:var(--ah);}
+.nav-logo{font-family:'Fraunces',serif;font-weight:500;font-size:1.35rem;letter-spacing:.02em;color:var(--white);text-decoration:none;transition:color .4s;text-shadow:0 1px 12px rgba(0,0,0,.35);}
+.nav-logo span{color:#A9C7D4;transition:color .4s;}
+nav.sticky .nav-logo{color:var(--text);text-shadow:none;}
+nav.sticky .nav-logo span{color:var(--a);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+/* dropdown Portfolio → Photos / Vidéos */
+.nav-drop{position:relative;}
+.nav-drop::after{content:'';position:absolute;left:-16px;right:-16px;top:100%;height:16px;}
+.nav-sub{position:absolute;top:calc(100% + 12px);left:50%;transform:translate(-50%,8px);min-width:150px;background:rgba(248,247,244,.98);border:1px solid var(--border);box-shadow:0 18px 45px rgba(17,17,17,.16);padding:.45rem 0;opacity:0;visibility:hidden;transition:opacity .3s,transform .3s,visibility .3s;z-index:300;}
+.nav-drop:hover .nav-sub{opacity:1;visibility:visible;transform:translate(-50%,0);}
+.nav-sub a{display:block;padding:.62rem 1.3rem;font-family:'Inter',sans-serif;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;text-shadow:none;transition:color .25s,background .25s;}
+.nav-sub a:hover{color:var(--a);background:rgba(52,77,89,.06);}
+.nav-sub a::after{display:none;}
+/* over the hero image: bright, bolder so they stand apart from the hero tagline */
+.nav-links a{font-family:'Inter',sans-serif;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.92);text-decoration:none;font-weight:500;transition:color .35s;position:relative;text-shadow:0 2px 14px rgba(0,0,0,.55);}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:#fff;transition:width .35s,background .35s;}
+.nav-links a:hover{color:#fff;}
+.nav-links a:hover::after,.nav-links a.on::after{width:100%;}
+.nav-links a.on{color:#fff;}
+/* once the cream bar appears: dark & emphasised */
+nav.sticky .nav-links a{color:var(--text);text-shadow:none;}
+nav.sticky .nav-links a::after{background:var(--a);height:1.5px;}
+nav.sticky .nav-links a:hover{color:var(--a);}
+nav.sticky .nav-links a.on{color:var(--a);}
+.nav-btn{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;background:var(--a);color:var(--white);padding:.6rem 1.6rem;text-decoration:none;font-weight:500;transition:background .3s,transform .25s;display:inline-block;}
+.nav-btn:hover{background:var(--ah);transform:translateY(-1px);}
+
+/* HERO */
+#hero{height:86vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:0 4rem;}
+.h-bg{position:absolute;inset:0;background-image:url('photos/triatlon%20lacnau/dimanche%20M/IMG_1419.jpg');background-size:cover;background-position:center 35%;filter:brightness(.1) contrast(1.08);will-change:transform,filter;transition:filter .9s ease;}
+body.entered .h-bg{filter:brightness(.52) contrast(1.08);}
+.h-over{position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,.7) 0%,rgba(17,17,17,.2) 50%,rgba(17,17,17,.3) 100%);}
+.h-grain{position:absolute;inset:0;opacity:.035;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;}
+.h-content{position:relative;z-index:2;max-width:900px;text-align:center;will-change:transform;}
+.h-content::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:130%;height:150%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 55% 50% at 50% 50%,rgba(10,16,20,.55) 0%,rgba(10,16,20,.28) 45%,transparent 72%);opacity:0;transition:opacity 1.2s ease;}
+body.entered .h-content::before{opacity:1;}
+.h-tag{font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;color:rgba(236,241,243,.75);margin-bottom:1.4rem;display:block;opacity:0;}
+body.entered .h-tag{animation:sUp .8s ease .5s forwards;}
+.h-title{font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:430;font-size:clamp(3.9rem,9.8vw,10rem);line-height:.98;color:var(--white);margin-bottom:2rem;letter-spacing:-.015em;text-shadow:0 2px 12px rgba(0,0,0,.45),0 14px 60px rgba(0,0,0,.4);}
+.h-title .ln{display:block;overflow:hidden;}
+.h-title .ln span{display:block;transform:translateY(105%);}
+/* title is already "stamped" — present instantly as the stone dissolves */
+body.entered .h-title .ln span{transform:translateY(0);}
+/* accent word — shimmering teal gradient fill */
+.h-title em{font-family:'Fraunces',serif;font-style:italic;font-weight:430;font-size:.94em;vertical-align:baseline;
+  background:linear-gradient(100deg,#7FA8B8 0%,#E6F1F6 42%,#9CC3D2 60%,#7FA8B8 100%);
+  background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  animation:emShimmer 7s linear infinite;
+  text-shadow:none;}
+@keyframes emShimmer{to{background-position:220% 0;}}
+@keyframes lineUp{to{transform:translateY(0)}}
+@keyframes sUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.h-meta{display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap;opacity:0;}
+body.entered .h-meta{animation:sUp .8s ease .95s forwards;}
+.h-meta-sep{width:35px;height:1px;background:rgba(248,247,244,.45);}
+.h-meta span{font-size:.75rem;letter-spacing:.1em;color:rgba(248,247,244,.5);font-weight:300;}
+.h-cta{background:var(--a);color:var(--white);padding:.85rem 2rem;text-decoration:none;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;display:inline-block;}
+.h-cta::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.18);transform:translateX(-110%) skewX(-15deg);transition:transform .55s;}
+.h-cta:hover::before{transform:translateX(130%) skewX(-15deg);}
+.h-cta:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(52,77,89,.35);}
+.h-scroll{position:absolute;right:4rem;bottom:3.5rem;z-index:2;display:flex;flex-direction:column;align-items:center;gap:.7rem;opacity:0;}
+body.entered .h-scroll{animation:fIn .8s ease 1.4s forwards;}
+.h-scroll span{font-size:.55rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(248,247,244,.28);writing-mode:vertical-rl;}
+.h-scroll-line{width:1px;height:55px;background:linear-gradient(to bottom,var(--a),transparent);animation:scPulse 2.5s ease infinite;}
+@keyframes scPulse{0%,100%{transform:scaleY(1);opacity:.45}50%{transform:scaleY(.6);opacity:1}}
+
+/* ABOUT */
+#about{background:var(--white);padding:7rem 7rem;}
+.about-wrap{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:7rem;
+  align-items:center;
+  max-width:1300px;
+  margin:0 auto;
+}
+.about-img{position:relative;}
+.about-img-frame{
+  position:relative;
+  border-radius:3px;
+  overflow:hidden;
+  box-shadow:0 24px 70px rgba(17,17,17,.13),0 6px 20px rgba(17,17,17,.07);
+}
+.about-img-frame img{width:100%;height:auto;display:block;object-position:center top;}
+.about-img-badge{
+  position:absolute;bottom:1.4rem;left:1.4rem;
+  background:var(--a);color:var(--white);
+  padding:.5rem .95rem;font-size:.52rem;
+  letter-spacing:.2em;text-transform:uppercase;font-weight:600;
+}
+.about-text{display:flex;flex-direction:column;justify-content:center;gap:0;}
+.about-name{
+  font-family:'Fraunces',serif;
+  font-optical-sizing:auto;font-weight:500;
+  font-size:clamp(2.4rem,3.9vw,3.5rem);
+  letter-spacing:-.01em;
+  color:var(--text);
+  margin-bottom:1rem;
+}
+.about-role{
+  font-size:.62rem;letter-spacing:.28em;
+  text-transform:uppercase;font-weight:700;
+  color:var(--a);margin-bottom:2.2rem;
+}
+.about-div{width:44px;height:2px;background:var(--a);margin-bottom:2.2rem;}
+.about-quote{font-family:'Fraunces',serif;font-optical-sizing:auto;font-style:italic;font-weight:430;font-size:clamp(1.4rem,2vw,1.9rem);line-height:1.35;color:var(--text);margin-bottom:2rem;border-left:2px solid var(--a);padding-left:1.3rem;}
+.about-quote em{font-style:italic;color:var(--a);}
+.about-body p{font-size:.97rem;line-height:1.9;color:#555550;font-weight:300;margin-bottom:1.2rem;text-align:justify;}
+.about-body strong{color:var(--a);font-weight:600;}
+.about-sig{font-family:'Fraunces',serif;font-size:1.4rem;font-style:italic;font-weight:400;color:var(--muted);margin-top:1.8rem;}
+.about-cta{margin-top:2.6rem;padding-top:2.2rem;border-top:1px solid var(--border);}
+.about-cta-h{font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:500;font-size:1.35rem;color:var(--text);margin-bottom:.5rem;}
+.about-cta-note{font-size:.92rem;line-height:1.7;color:var(--muted);font-weight:300;margin-bottom:1.4rem;max-width:440px;}
+.about-cta-note strong{color:var(--a);font-weight:600;}
+.about-cta-btns{display:flex;flex-wrap:wrap;gap:.9rem;}
+.about-cta-call{display:inline-flex;align-items:center;gap:.7rem;background:var(--a);color:var(--white);padding:.95rem 1.7rem;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;text-decoration:none;transition:background .3s,transform .3s,box-shadow .3s;}
+.about-cta-call span{transition:transform .3s;}
+.about-cta-call:hover{background:var(--ah);transform:translateY(-2px);box-shadow:0 12px 30px rgba(52,77,89,.25);}
+.about-cta-call:hover span{transform:translateX(4px);}
+.about-cta-ig{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--border);color:var(--text);padding:.95rem 1.5rem;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;text-decoration:none;transition:border-color .3s,color .3s;}
+.about-cta-ig svg{width:18px;height:18px;}
+.about-cta-ig:hover{border-color:var(--a);color:var(--a);}
+
+/* SERVICES */
+#services{padding:10rem 4rem;background:var(--bg);}
+.sec-tag{font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;color:var(--a);display:block;margin-bottom:1rem;}
+.sec-title{font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:430;font-size:clamp(2.8rem,5.5vw,5.2rem);line-height:1.02;margin-bottom:6rem;max-width:760px;letter-spacing:-.01em;}
+.sec-title em{font-family:'Fraunces',serif;font-style:italic;color:var(--a);font-size:.85em;}
+.svc-list{display:flex;flex-direction:column;gap:0;}
+.svc{display:grid;grid-template-columns:1fr 1fr;min-height:65vh;overflow:hidden;border-top:1px solid var(--border);transition:background .3s;}
+.svc:last-child{border-bottom:1px solid var(--border);}
+.svc.rev{direction:rtl;}
+.svc.rev>*{direction:ltr;}
+.svc-img{position:relative;overflow:hidden;perspective:1200px;}
+.svc-img img{width:100%;height:100%;object-fit:cover;transform:scale(1.05);will-change:transform;transition:transform .35s cubic-bezier(.22,.61,.36,1);}
+.svc-num{position:absolute;top:1.5rem;left:1.5rem;font-family:'Fraunces',serif;font-size:5rem;color:rgba(255,255,255,.16);line-height:1;}
+.svc-body{background:var(--white);padding:5rem 5rem;display:flex;flex-direction:column;justify-content:center;gap:2rem;}
+.svc-tag-text{font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:var(--a);}
+.svc-name{font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:450;font-size:clamp(2rem,3.6vw,3.3rem);line-height:1.02;letter-spacing:-.01em;}
+.svc-desc{font-size:.95rem;line-height:1.85;color:var(--muted);font-weight:300;max-width:420px;}
+.svc-desc strong{color:var(--a);font-weight:600;}
+.svc-chips{display:flex;flex-wrap:wrap;gap:.5rem;}
+.svc-chip{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--border);color:var(--muted);padding:.35rem .9rem;transition:all .35s;}
+.svc:hover .svc-chip{border-color:var(--a);color:var(--a);}
+/* SCROLL-EXPANSION HERO */
+#se-hero{position:relative;height:155vh;background:var(--bg);}
+.se-stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.se-bg{position:absolute;inset:0;z-index:0;background-image:url('photos/ski/ski%2002%3A26/IMG_4629.jpg');background-size:cover;background-position:center;filter:brightness(.4) blur(4px);transform:scale(1.08);will-change:opacity;}
+.se-frame{position:relative;z-index:1;width:46vw;height:64vh;border-radius:20px;overflow:hidden;box-shadow:0 40px 90px rgba(17,17,17,.35);will-change:width,height,border-radius;}
+.se-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.se-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,20,24,.78) 0%,rgba(12,20,24,.22) 45%,rgba(12,20,24,.45) 100%);}
+.se-head{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:2rem;}
+.se-tag{font-size:.68rem;font-weight:600;letter-spacing:.42em;text-transform:uppercase;color:#C7DCE4;margin-bottom:1.4rem;text-shadow:0 2px 16px rgba(0,0,0,.9),0 0 26px rgba(0,0,0,.6);}
+.se-title{font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:500;font-size:64px;line-height:1;letter-spacing:-.015em;color:#fff;white-space:nowrap;text-shadow:0 4px 40px rgba(0,0,0,.5),0 2px 10px rgba(0,0,0,.4);will-change:font-size;margin-bottom:.2em;}
+.se-dash{display:inline-block;margin:0 .1em;font-style:italic;
+  background:linear-gradient(100deg,#7FA8B8 0%,#EAF4F8 45%,#9CC3D2 62%,#7FA8B8 100%);
+  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  filter:drop-shadow(0 0 26px rgba(169,199,212,.55));animation:emShimmer 6s linear infinite;}
+.se-sub{margin-top:1.6rem;font-size:clamp(.72rem,1.4vw,.98rem);letter-spacing:.3em;text-transform:uppercase;color:#fff;opacity:0;
+  padding:.55rem 1.4rem;border:1px solid rgba(255,255,255,.28);border-radius:40px;background:rgba(255,255,255,.06);backdrop-filter:blur(4px);}
+@media(max-width:768px){#se-hero{height:145vh;}.se-frame{width:84vw;height:52vh;}}
+.svc-links{display:flex;gap:1.8rem;align-items:center;flex-wrap:wrap;}
+.svc-link{display:inline-flex;align-items:center;gap:.8rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--a);text-decoration:none;font-weight:600;transition:gap .3s;}
+.svc-link::after{content:'→';font-size:1rem;}
+.svc-link:hover{gap:1.4rem;}
+.svc-link-sub{color:var(--muted);font-weight:500;}
+.svc-link-sub::after{display:none;}
+.svc-link-sub:hover{color:var(--a);}
+
+/* CTA */
+#cta{padding:11rem 4rem;text-align:center;background:var(--bg);position:relative;overflow:hidden;}
+#cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(52,77,89,.06) 0%,transparent 65%);pointer-events:none;}
+.cta-bg{
+  position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);
+  font-family:'Fraunces',serif;font-weight:500;
+  font-size:clamp(4rem,11.5vw,12rem);
+  color:rgba(52,77,89,.12);
+  pointer-events:none;line-height:.95;text-align:center;
+  letter-spacing:.01em;
+  filter:blur(1px);
+  user-select:none;
+  z-index:0;
+}
+.cta-lbl{font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;color:var(--a);display:block;margin-bottom:1.5rem;}
+.cta-title{font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:430;font-size:clamp(3.4rem,8vw,7.5rem);line-height:1.0;margin-bottom:2.5rem;position:relative;z-index:1;letter-spacing:-.01em;}
+.cta-title em{font-family:'Fraunces',serif;font-style:italic;color:var(--a);font-size:.85em;}
+.cta-sub{font-size:1rem;color:var(--muted);max-width:480px;margin:0 auto 3.5rem;line-height:1.85;font-weight:300;}
+.cta-btn{display:inline-flex;align-items:center;gap:1.2rem;background:var(--a);color:var(--white);padding:1.2rem 3rem;text-decoration:none;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;position:relative;overflow:hidden;transition:transform .3s,box-shadow .4s;z-index:1;}
+.cta-btn::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.2);transform:translateX(-110%) skewX(-15deg);transition:transform .55s;}
+.cta-btn:hover::before{transform:translateX(130%) skewX(-15deg);}
+.cta-btn:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 20px 55px rgba(52,77,89,.3);}
+.cta-arrow{font-size:1.1rem;transition:transform .3s;}
+.cta-btn:hover .cta-arrow{transform:translateX(6px);}
+
+/* FOOTER */
+footer{background:var(--text);color:rgba(248,247,244,.4);padding:4rem;display:flex;flex-direction:column;gap:2.5rem;}
+.ft-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:2.5rem;border-bottom:1px solid rgba(248,247,244,.08);}
+.ft-logo{font-family:'Fraunces',serif;font-weight:500;font-size:1.5rem;letter-spacing:.02em;color:var(--bg);text-decoration:none;}
+.ft-logo span{color:var(--a);}
+.ft-nav{display:flex;gap:2.5rem;list-style:none;}
+.ft-nav a{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(248,247,244,.35);text-decoration:none;transition:color .3s;}
+.ft-nav a:hover{color:var(--bg);}
+.ft-soc{display:flex;gap:.75rem;}
+.fsoc{display:inline-flex;flex-direction:column;align-items:center;gap:.45rem;color:rgba(248,247,244,.5);text-decoration:none;transition:color .3s,transform .3s;}
+.fsoc svg{width:26px;height:26px;}
+.fsoc span{font-size:.66rem;letter-spacing:.06em;}
+.fsoc:hover{color:var(--bg);transform:translateY(-2px);}
+.ft-bot{display:flex;justify-content:space-between;font-size:.7rem;}
+.ft-bot a{color:var(--a);text-decoration:none;}
+
+/* REVEAL - bidirectional */
+[data-r]{opacity:0;transition:opacity .85s ease,transform .85s ease;}
+[data-r="up"]{transform:translateY(55px);}
+[data-r="left"]{transform:translateX(-55px);}
+[data-r="right"]{transform:translateX(55px);}
+[data-r="scale"]{transform:scale(.95);}
+[data-r].vis{opacity:1;transform:none;}
+[data-d="1"]{transition-delay:.1s;}
+[data-d="2"]{transition-delay:.2s;}
+[data-d="3"]{transition-delay:.3s;}
+[data-d="4"]{transition-delay:.4s;}
+
+@media(max-width:1024px){nav,nav.sticky{padding:1.2rem 2rem;}.nav-links{display:none;}#hero{padding:0 2rem 4rem;}.about-wrap{grid-template-columns:1fr;}.about-img{height:65vw;}.about-text{padding:4rem 2.5rem;}#services,#cta{padding:6rem 2rem;}.svc{grid-template-columns:1fr;min-height:auto;}.svc.rev{direction:ltr;}.svc-img{height:55vw;}.svc-body{padding:3rem 2.5rem;}footer{padding:3rem 2rem;}.ft-top{flex-wrap:wrap;gap:2rem;}}
+
+/* PAGE FADE TRANSITION */
+#pageFade{position:fixed;inset:0;z-index:9990;background:var(--bg);pointer-events:none;opacity:0;transition:opacity .55s ease;}
+#pageFade.show{opacity:1;}
+/* LAZY CLIP-REVEAL for images */
+.clip-rev{clip-path:inset(0 0 100% 0);transition:clip-path 1.15s cubic-bezier(.66,0,.16,1);}
+.clip-rev.shown{clip-path:inset(0 0 0 0);}
+
+/* ═════════════════════════════════════════════════════════════
+   MOBILE — everything below is scoped to small screens only,
+   so the desktop rendering is not touched.
+   ═════════════════════════════════════════════════════════════ */
+
+/* burger button is desktop-hidden by default */
+.nav-burger{display:none;}
+.nav-mobile{display:none;}
+
+@media(max-width:1024px){
+  /* ---- CURSOR : hide the custom ring/dot on touch/small screens ---- */
+  body{cursor:auto;}
+  #cur{display:none;}
+
+  /* ---- NAV : burger replaces the desktop menu ---- */
+  #nav .nav-btn{display:none;}                     /* "Démarrer un projet" -> only in the mobile panel */
+  .nav-burger{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:none;border:0;padding:6px;cursor:pointer;z-index:210;}
+  .nav-burger span{display:block;width:24px;height:1.5px;background:#fff;transition:transform .35s ease,opacity .25s ease,background .3s;}
+  nav.sticky .nav-burger span{background:var(--text);}
+  body.nav-open .nav-burger span{background:var(--text);}
+  body.nav-open .nav-burger span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  body.nav-open .nav-burger span:nth-child(2){opacity:0;}
+  body.nav-open .nav-burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+  /* Mobile panel (slide from the right) */
+  .nav-mobile{display:flex;flex-direction:column;gap:1.6rem;position:fixed;top:0;right:0;bottom:0;width:min(88vw,340px);z-index:205;background:rgba(248,247,244,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-left:1px solid var(--border);padding:6rem 2.2rem 2.2rem;transform:translateX(100%);transition:transform .45s cubic-bezier(.6,0,.3,1);overflow-y:auto;}
+  body.nav-open .nav-mobile{transform:translateX(0);}
+  .nav-mobile>a,.nav-mobile-group>a{display:block;font-family:'Inter',sans-serif;font-size:.82rem;letter-spacing:.24em;text-transform:uppercase;color:var(--text);text-decoration:none;padding:.4rem 0;transition:color .25s;}
+  .nav-mobile>a.on{color:var(--a);}
+  .nav-mobile>a:hover{color:var(--a);}
+  .nav-mobile-group{display:flex;flex-direction:column;gap:.8rem;padding-top:.4rem;border-top:1px solid var(--border);}
+  .nav-mobile-label{font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);}
+  .nav-mobile-group>a{padding:.15rem 0;padding-left:.9rem;font-size:.72rem;}
+  .nav-mobile-cta{margin-top:auto;background:var(--a);color:#fff!important;text-align:center;padding:1rem 1.4rem!important;letter-spacing:.2em!important;font-size:.7rem!important;}
+  .nav-mobile-ig{display:flex!important;align-items:center;gap:.7rem;color:var(--a)!important;padding-top:1rem!important;border-top:1px solid var(--border);}
+  .nav-mobile-ig svg{width:20px;height:20px;flex-shrink:0;}
+  .nav-mobile-ig span{font-size:.7rem;letter-spacing:.06em;color:var(--muted);text-transform:none;}
+  /* dim page behind the panel */
+  body.nav-open::before{content:'';position:fixed;inset:0;z-index:199;background:rgba(0,0,0,.45);animation:navFade .35s ease;}
+  @keyframes navFade{from{opacity:0}to{opacity:1}}
+
+  /* ---- HERO ---- */
+  #hero{height:100svh;padding:0 1.4rem;}
+  .h-tag{font-size:.52rem;letter-spacing:.36em;margin-bottom:1.2rem;}
+  .h-title{font-size:clamp(2.6rem,15vw,4.5rem)!important;line-height:.95;letter-spacing:-.01em;}
+  .h-meta{gap:1rem;flex-direction:column;}
+  .h-meta-sep{display:none;}
+  .h-meta span{font-size:.7rem;letter-spacing:.16em;color:rgba(248,247,244,.65);}
+  .h-cta{padding:.95rem 1.8rem;font-size:.7rem;letter-spacing:.18em;margin-top:.6rem;}
+  .h-scroll{right:1rem;bottom:1.5rem;}
+  .h-scroll span{font-size:.5rem;letter-spacing:.32em;}
+
+  /* Loader intro : keep the stamp aligned with the (mobile) hero title */
+  #loader{padding:0 1.4rem;}
+  .l-iname{font-size:min(9.5vw,2.4rem);letter-spacing:.28em;}
+
+  /* ---- ABOUT ---- */
+  #about{padding:5rem 0;}
+  .about-img{height:auto;padding:2rem 1.4rem 0;}
+  .about-img-frame{max-width:76vw;margin:0 auto;box-shadow:0 20px 50px rgba(17,17,17,.15);}
+  .about-text{padding:3rem 1.4rem 1rem!important;}
+  .about-name{font-size:clamp(2rem,7vw,2.4rem)!important;}
+  .about-role{font-size:.55rem!important;letter-spacing:.22em!important;}
+  .about-quote{font-size:1.25rem!important;padding-left:1rem!important;}
+  .about-body p{font-size:.92rem;line-height:1.8;text-align:left;}
+  .about-cta-btns{flex-direction:column;align-items:stretch;}
+  .about-cta-call,.about-cta-ig{justify-content:center;font-size:.65rem;padding:.9rem 1rem;}
+
+  /* ---- SCROLL EXPANSION (Photo — Vidéo) ---- */
+  #se-hero{height:135vh;}
+  .se-stage{padding:0 1rem;}
+  .se-frame{width:88vw;height:52vh;border-radius:14px;}
+  .se-tag{font-size:.6rem;letter-spacing:.3em;margin-bottom:.8rem;}
+  .se-sub{font-size:.6rem;letter-spacing:.22em;padding:.5rem 1.1rem;}
+
+  /* ---- SERVICES ---- */
+  #services{padding:5rem 1.4rem!important;}
+  .sec-tag{font-size:.55rem;letter-spacing:.32em;}
+  .sec-title{font-size:clamp(2rem,7vw,3rem)!important;margin-bottom:3rem!important;}
+  .svc-img{height:64vw!important;}
+  .svc-num{font-size:3.2rem;top:1rem;left:1rem;}
+  .svc-body{padding:2.4rem 1.4rem!important;gap:1.2rem!important;}
+  .svc-name{font-size:clamp(1.7rem,6vw,2.2rem)!important;}
+  .svc-desc{font-size:.9rem;line-height:1.75;}
+  .svc-links{flex-direction:column;align-items:flex-start;gap:.9rem;}
+  .svc-link{font-size:.62rem;letter-spacing:.16em;}
+
+  /* ---- CTA "Travaillons ensemble" ---- */
+  #cta{padding:6rem 1.4rem!important;}
+  .cta-bg{font-size:clamp(3rem,15vw,6rem)!important;letter-spacing:.02em;}
+  .cta-lbl{font-size:.55rem;letter-spacing:.32em;}
+  .cta-title{font-size:clamp(2.3rem,9vw,4rem)!important;line-height:1;}
+  .cta-sub{font-size:.9rem;margin-bottom:2.4rem;}
+  .cta-btn{padding:1rem 1.8rem;font-size:.66rem;letter-spacing:.18em;gap:.8rem;}
+
+  /* ---- FOOTER ---- */
+  footer{padding:2.4rem 1.4rem!important;gap:1.6rem!important;}
+  .ft-top{flex-direction:column;align-items:flex-start;gap:1.4rem!important;padding-bottom:1.6rem!important;}
+  .ft-logo{font-size:1.4rem;}
+  .ft-nav{flex-wrap:wrap;gap:1.2rem 1.6rem;}
+  .ft-nav a{font-size:.62rem;letter-spacing:.18em;}
+  .ft-soc{margin-top:.4rem;}
+  .fsoc svg{width:22px;height:22px;}
+  .fsoc span{font-size:.6rem;}
+  .ft-bot{flex-direction:column;gap:.5rem;font-size:.62rem;text-align:left;}
+}
+
+/* ---- Very small phones ---- */
+@media(max-width:420px){
+  .h-title{font-size:clamp(2.2rem,13vw,3.4rem)!important;}
+  .h-tag{font-size:.48rem;}
+  .about-img-frame{max-width:86vw;}
+  .se-frame{width:92vw;height:48vh;}
+  .cta-title{font-size:clamp(2rem,10vw,3.2rem)!important;}
+}
+</style>
+</head>
+<body>
+
+<div id="pageFade" class="show"></div>
+<div id="prog"></div>
+
+<div id="cur">
+  <div id="cur-dot"></div>
+  <div id="cur-ring"></div>
+  <div id="cur-label">VOIR +</div>
+</div>
+
+<div id="loader">
+  <canvas id="warp-canvas"></canvas>
+  <div class="l-intro" id="lIntro">
+    <div class="l-isub">Photographe · Vidéaste</div>
+    <div class="l-iname">NATHAN FRITSCH</div>
+    <div class="l-ibar"></div>
+  </div>
+  <div class="l-content">
+    <span class="l-spacer-tag">Photographe &amp; Vidéaste · Pilote de drone · Bordeaux · France &amp; International</span>
+    <h1 class="h-title l-title" id="lTitle">
+      <span class="ln"><span>L'instant</span></span>
+      <span class="ln"><span>L'<em>émotion</em></span></span>
+      <span class="ln"><span>L'image</span></span>
+    </h1>
+    <div class="l-spacer-meta">
+      <span>Événementiel</span>
+      <div class="h-meta-sep"></div>
+      <span>Sport</span>
+      <div class="h-meta-sep"></div>
+      <span>Immobilier</span>
+      <div class="h-meta-sep"></div>
+      <span class="l-fakebtn">Voir mes réalisations</span>
+    </div>
+  </div>
+  <div class="l-flash" id="lFlash"></div>
+</div>
+
+<nav id="nav">
+  <div class="nav-left">
+    <a href="index.html" class="nav-logo">N<span>.</span>FRITSCH</a>
+    <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="on">Accueil</a></li>
+    <li class="nav-drop">
+      <a class="nav-drop-toggle">Portfolio</a>
+      <div class="nav-sub">
+        <a href="portfolio.html?type=photo">Photos</a>
+        <a href="portfolio.html?type=video">Vidéos</a>
+      </div>
+    </li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-btn mag-btn">Démarrer un projet</a>
+  <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE MENU (visible only < 1024px) -->
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html" class="on">Accueil</a>
+  <div class="nav-mobile-group">
+    <span class="nav-mobile-label">Portfolio</span>
+    <a href="portfolio.html?type=photo">Photos</a>
+    <a href="portfolio.html?type=video">Vidéos</a>
+  </div>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-mobile-cta">Démarrer un projet</a>
+  <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="nav-mobile-ig">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+    <span>@nathanfrt_visuals</span>
+  </a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="h-bg" id="hBg"></div>
+  <div class="h-over"></div>
+  <div class="h-grain"></div>
+  <div class="h-content">
+    <span class="h-tag">Photographe & Vidéaste · Pilote de drone · Bordeaux · France & International</span>
+    <h1 class="h-title">
+      <span class="ln"><span>L'instant</span></span>
+      <span class="ln"><span>L'<em>émotion</em></span></span>
+      <span class="ln"><span>L'image</span></span>
+    </h1>
+    <div class="h-meta">
+      <span>Événementiel</span>
+      <div class="h-meta-sep"></div>
+      <span>Sport</span>
+      <div class="h-meta-sep"></div>
+      <span>Immobilier</span>
+      <div class="h-meta-sep"></div>
+      <a href="portfolio.html?type=photo" class="h-cta mag-btn">Voir mes réalisations</a>
+    </div>
+  </div>
+  <div class="h-scroll">
+    <span>Défiler</span>
+    <div class="h-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-wrap">
+    <div class="about-img">
+      <div class="about-img-frame">
+        <img src="photos/about-8148.jpg" alt="Nathan Fritsch">
+        <div class="about-img-badge">Nathan Fritsch</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="sec-tag" data-r="up">À propos</span>
+      <h2 class="about-name" data-r="up" data-d="1">Nathan Fritsch</h2>
+      <p class="about-role" data-r="up" data-d="1">Photographe, Vidéaste &amp; Pilote de drone · Bordeaux</p>
+      <div class="about-div" data-r="up" data-d="1"></div>
+      <p class="about-quote" data-r="up" data-d="2">Figez l'instant,<br>capturez l'<em>émotion</em>.</p>
+      <div class="about-body" data-r="up" data-d="2">
+        <p>Jeune photographe et vidéaste basé à Bordeaux — disponible partout en France et à l'étranger pour accompagner mes clients.</p>
+        <p>Tout a commencé il y a trois ans, avec le premier appareil de mon père — et depuis, l'image ne m'a plus lâché. Je me consacre surtout au sport et à l'événementiel, sans oublier l'immobilier : des univers où je cherche à saisir <strong>l'intensité d'un geste et l'émotion d'un instant</strong>.</p>
+        <p>Ce qui me guide, c'est le regard — cette façon de voir et de raconter qui rend chaque image unique. J'avance avec une idée simple : <strong>toujours faire de son mieux, même quand personne ne regarde</strong>.</p>
+      </div>
+      <div class="about-sig" data-r="up" data-d="3">— Nathan Fritsch</div>
+
+      <div class="about-cta" data-r="up" data-d="3">
+        <p class="about-cta-h">Un projet en tête ?</p>
+        <p class="about-cta-note">Réservez un <strong>appel téléphonique gratuit</strong> pour parler de votre projet — <strong>devis offert</strong>, sans engagement.</p>
+        <div class="about-cta-btns">
+          <a href="contact.html" class="about-cta-call">Réserver un appel gratuit <span>→</span></a>
+          <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="about-cta-ig">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+            S'abonner sur Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCROLL-EXPANSION HERO (services intro) -->
+<section id="se-hero">
+  <div class="se-stage">
+    <div class="se-bg" id="seBg"></div>
+    <div class="se-frame" id="seFrame">
+      <img class="se-media" src="photos/triatlon lacnau/dimanche M/IMG_9641-2.jpg" alt="Photo - Vidéo">
+      <div class="se-shade"></div>
+      <div class="se-head">
+        <span class="se-tag">Ce que je fais</span>
+        <h2 class="se-title" id="seTitle">Photo <span class="se-dash">—</span> Vidéo</h2>
+        <span class="se-sub">Sport · Événementiel · Immobilier · Drone</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="svc-list">
+    <div class="svc">
+      <div class="svc-img" data-parallax=".08">
+        <img src="photos/le mahi mahi/IMG_6196.jpg" alt="Événementiel" loading="lazy">
+        <span class="svc-num">01</span>
+      </div>
+      <div class="svc-body">
+        <span class="svc-tag-text" data-r="up">Photo · Vidéo · Drone</span>
+        <h3 class="svc-name" data-r="up" data-d="1">Événementiel</h3>
+        <p class="svc-desc" data-r="up" data-d="2">Séminaires, compétitions, concerts, mariages, anniversaires, soirées d'entreprise, inaugurations… <strong>quel que soit votre événement</strong>, je le documente avec précision et émotion.</p>
+        <div class="svc-links" data-r="up" data-d="3">
+          <a href="portfolio.html?type=photo&cat=evenement" class="svc-link">Voir mes réalisations d'événement</a>
+          <a href="contact.html" class="svc-link svc-link-sub">Me contacter</a>
+        </div>
+      </div>
+    </div>
+    <div class="svc rev">
+      <div class="svc-img" data-parallax=".08">
+        <img src="photos/triatlon lacnau/samedi L/IMG_6496.jpg" alt="Sport" loading="lazy">
+        <span class="svc-num">02</span>
+      </div>
+      <div class="svc-body">
+        <span class="svc-tag-text" data-r="up">Photo & Vidéo · Drone</span>
+        <h3 class="svc-name" data-r="up" data-d="1">Sport</h3>
+        <p class="svc-desc" data-r="up" data-d="2">Surf, ski, triathlon, golf, football, tennis, running… <strong>quel que soit votre sport</strong>, je capture l'adrénaline et l'intensité de chaque mouvement — au sol comme depuis les airs.</p>
+        <div class="svc-links" data-r="up" data-d="3">
+          <a href="portfolio.html?type=photo&cat=sport" class="svc-link">Voir mes réalisations sportives</a>
+          <a href="contact.html" class="svc-link svc-link-sub">Me contacter</a>
+        </div>
+      </div>
+    </div>
+    <div class="svc">
+      <div class="svc-img" data-parallax=".08">
+        <img src="photos/immo/IMG_4800-HDR.jpg" alt="Immobilier" loading="lazy">
+        <span class="svc-num">03</span>
+      </div>
+      <div class="svc-body">
+        <span class="svc-tag-text" data-r="up">Photo · Vidéo · Drone · HDR</span>
+        <h3 class="svc-name" data-r="up" data-d="1">Immobilier</h3>
+        <p class="svc-desc" data-r="up" data-d="2">Photos HDR et vidéos de présentation pour mettre en valeur vos biens et accélérer vos ventes.</p>
+        <div class="svc-links" data-r="up" data-d="3">
+          <a href="portfolio.html?type=photo&cat=immobilier" class="svc-link">Voir mes réalisations immobilières</a>
+          <a href="contact.html" class="svc-link svc-link-sub">Me contacter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-bg">CRÉONS<br>ENSEMBLE</div>
+  <span class="cta-lbl" data-r="up">Un projet en tête ?</span>
+  <h2 class="cta-title" data-r="up" data-d="1">Travaillons<br><em>ensemble.</em></h2>
+  <p class="cta-sub" data-r="up" data-d="2">Vous avez un événement, une compétition, un bien à valoriser ? Parlons-en.</p>
+  <a href="contact.html" class="cta-btn mag-btn" data-r="up" data-d="3">
+    Démarrer un projet <span class="cta-arrow">→</span>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <a href="index.html" class="ft-logo">N<span>.</span>FRITSCH</a>
+    <ul class="ft-nav">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="portfolio.html?type=photo">Photos</a></li>
+      <li><a href="portfolio.html?type=video">Vidéos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="ft-soc">
+      <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="fsoc">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+        <span>@nathanfrt_visuals</span>
+      </a>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <p>© 2026 Nathan Fritsch — Photographe & Vidéaste</p>
+    <p>Basé à <a href="#">Bordeaux</a> — et dans toute la France &amp; à l'étranger</p>
+  </div>
+</footer>
+
+<script>
+// ── CURSOR ──
+const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function t(){dot.style.left=mx+'px';dot.style.top=my+'px';rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(t);})();
+document.querySelectorAll('a,button,.nav-btn').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('ch'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('ch'));
+});
+document.querySelectorAll('.svc-img,.about-img').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{document.body.classList.add('cv');document.body.classList.remove('ch');});
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('cv'));
+});
+
+// ── ALWAYS START AT TOP so the intro/stamp blends with the hero ──
+if('scrollRestoration' in history) history.scrollRestoration='manual';
+window.scrollTo(0,0);
+
+// ── LOADER — STARFIELD INTRO (title carries into hero) ──
+(function(){
+  const loader=document.getElementById('loader');
+  const lTitle=document.getElementById('lTitle');
+  const lIntro=document.getElementById('lIntro');
+  const lFlash=document.getElementById('lFlash');
+  const canvas=document.getElementById('warp-canvas');
+  const ctx=canvas.getContext('2d');
+  const N=620;
+  const stars=[];
+  let raf,t=0,rot=0,exiting=false,exitRamp=0;
+
+  function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+
+  function mkStar(born){
+    const ang=Math.random()*Math.PI*2;
+    const dist=Math.random()*0.55+0.02;
+    const roll=Math.random();
+    const size = roll<0.72 ? Math.random()*0.5+0.15
+               : roll<0.93 ? Math.random()*0.8+0.5
+               :             Math.random()*1.2+1.0;
+    const op   = roll<0.72 ? Math.random()*0.35+0.12
+               : roll<0.93 ? Math.random()*0.45+0.35
+               :             Math.random()*0.3+0.65;
+    return{x:Math.cos(ang)*dist,y:Math.sin(ang)*dist,
+      z:born?Math.random()*0.95+0.04:Math.random()*0.3+0.7,
+      baseSize:size,baseOpacity:op};
+  }
+  for(let i=0;i<N;i++) stars.push(mkStar(true));
+
+  function draw(){
+    const W=canvas.width,H=canvas.height,cx=W/2,cy=H/2;
+    t++;
+    // gentle constant advance; tiny rotation; mild speed-up on exit
+    if(exiting) exitRamp=Math.min(1,exitRamp+0.01);
+    const speed=0.0016+exitRamp*0.006;
+    rot+=0.0007+exitRamp*0.0009;
+    const cosR=Math.cos(rot),sinR=Math.sin(rot);
+
+    ctx.clearRect(0,0,W,H);
+    for(const s of stars){
+      s.z-=speed;
+      const rxp=s.x*cosR-s.y*sinR, ryp=s.x*sinR+s.y*cosR;
+      const sx=(rxp/s.z)*cx+cx, sy=(ryp/s.z)*cy+cy;
+      if(s.z<=0.02||sx<-40||sx>W+40||sy<-40||sy>H+40){Object.assign(s,mkStar(false));continue;}
+      const prox=Math.min(1,1-s.z);
+      const tw=0.85+0.15*Math.sin(t*0.04+s.x*40+s.y*40);
+      const r=s.baseSize*(0.6+prox*0.7);
+      ctx.beginPath();
+      ctx.arc(sx,sy,Math.max(0.2,r),0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,255,255,${s.baseOpacity*(0.4+prox*0.45)*tw})`;
+      ctx.fill();
+    }
+    raf=requestAnimationFrame(draw);
+  }
+  draw();
+
+  function run(){
+    window.scrollTo(0,0); // browser may restore scroll after load — force top
+    // 1) name appears over starfield (~0.3→3s), then fades away
+    setTimeout(()=>{ lIntro.classList.add('gone'); },3000);
+    // 2) THE STAMP — slams in hard with flash + shake (later than before)
+    setTimeout(()=>{
+      lTitle.classList.add('hit');
+      lFlash.classList.add('hit');
+      exiting=true; // starfield eases into its dive on impact
+    },3700);
+    // 3) on impact the ambiance flips: background swaps to the site right away.
+    //    Hero title is identical & in the same spot → only the background changes.
+    setTimeout(()=>{
+      document.body.classList.add('entered');
+      loader.classList.add('out');
+    },3950);
+    setTimeout(()=>{ cancelAnimationFrame(raf); },4900);
+  }
+
+  if(document.readyState==='complete') run();
+  else window.addEventListener('load',run);
+})();
+
+// ── keep the intro stamp title perfectly aligned with the hero title ──
+(function(){
+  const loader=document.getElementById('loader');
+  const lc=document.querySelector('.l-content');
+  const hc=document.querySelector('#hero .h-content');
+  if(!loader||!lc||!hc) return;
+  function align(){
+    loader.style.paddingBottom='';                 // reset to the CSS value first
+    const l=lc.getBoundingClientRect(), h=hc.getBoundingClientRect();
+    const dy=(l.top+l.height/2)-(h.top+h.height/2); // loader centre − hero centre
+    if(Math.abs(dy)<0.5) return;
+    const cur=parseFloat(getComputedStyle(loader).paddingBottom)||0;
+    loader.style.paddingBottom=(cur+2*dy).toFixed(1)+'px'; // +paddingBottom shifts the content up
+  }
+  align();
+  addEventListener('resize',align);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(align);
+})();
+
+// ── NAV + PROGRESS ──
+window.addEventListener('scroll',()=>{
+  const s=scrollY;
+  document.getElementById('nav').classList.toggle('sticky',s>60);
+  const pct=s/(document.body.scrollHeight-innerHeight)*100;
+  document.getElementById('prog').style.width=pct+'%';
+});
+
+// ── PARALLAX ──
+window.addEventListener('scroll',()=>{
+  document.getElementById('hBg').style.transform=`translateY(${scrollY*.28}px)`;
+  document.querySelectorAll('[data-parallax]').forEach(el=>{
+    const spd=parseFloat(el.dataset.parallax);
+    const rect=el.getBoundingClientRect();
+    const offset=(rect.top+rect.height/2-innerHeight/2)*spd;
+    el.style.transform=`translateY(${offset}px)`;
+  });
+});
+
+// ── REVEAL — bidirectional ──
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{e.target.classList.toggle('vis',e.isIntersecting);});
+},{threshold:.13,rootMargin:'0px 0px -4% 0px'});
+document.querySelectorAll('[data-r]').forEach(el=>obs.observe(el));
+
+// ── MAGNETIC BUTTONS ──
+document.querySelectorAll('.mag-btn').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{
+    const r=btn.getBoundingClientRect();
+    const x=(e.clientX-r.left-r.width/2)*.22;
+    const y=(e.clientY-r.top-r.height/2)*.22;
+    btn.style.transition='none';
+    btn.style.transform=`translate(${x}px,${y}px)`;
+  });
+  btn.addEventListener('mouseleave',()=>{
+    btn.style.transition='transform .5s cubic-bezier(.25,.46,.45,.94)';
+    btn.style.transform='';
+  });
+});
+
+// ── SCROLL-EXPANSION HERO — media grows to fullscreen as you scroll the section ──
+(function(){
+  const se=document.getElementById('se-hero');
+  const frame=document.getElementById('seFrame');
+  if(!se||!frame) return;
+  const sub=se.querySelector('.se-sub');
+  const tag=se.querySelector('.se-tag');
+  const title=se.querySelector('.se-title');
+  const bg=document.getElementById('seBg');
+  const isMobile=()=>matchMedia('(max-width:768px)').matches;
+  function update(){
+    const runway=se.offsetHeight-innerHeight;
+    const scrolled=Math.min(runway,Math.max(0,-se.getBoundingClientRect().top));
+    const p=runway>0?scrolled/runway:0;
+    const e=Math.min(1,p);        // linear → steady growth, fullscreen exactly at the end (no dead scroll)
+    const minW=isMobile()?84:46, minH=isMobile()?52:64;
+    frame.style.width=(minW+(100-minW)*e).toFixed(2)+'vw';
+    frame.style.height=(minH+(100-minH)*e).toFixed(2)+'vh';
+    frame.style.borderRadius=(20*(1-e)).toFixed(1)+'px';
+    frame.style.boxShadow=`0 ${(40*(1-e)).toFixed(0)}px ${(90*(1-e)).toFixed(0)}px rgba(17,17,17,${(0.28*(1-e)).toFixed(3)})`;
+    // title on ONE line, sized via real font-size (stays crisp) to ~56% of the frame width
+    const frameW=frame.getBoundingClientRect().width;
+    const curFS=parseFloat(getComputedStyle(title).fontSize)||64;
+    const perPx=(title.offsetWidth||1)/curFS;      // rendered px per 1px of font-size (constant for this text)
+    let fs=(frameW*0.56)/perPx;
+    fs=Math.max(18,Math.min(200,fs));
+    title.style.fontSize=fs.toFixed(1)+'px';
+    // subtle focus: a touch of blur only at the very start, fully sharp quickly
+    title.style.filter=`blur(${(1.6*(1-Math.min(1,e/0.22))).toFixed(2)}px)`;
+    // background image: visible at the start, fades out as the card takes over
+    if(bg) bg.style.opacity=(1-0.85*e).toFixed(2);
+    // subtitle fades in as it approaches fullscreen
+    const subP=Math.max(0,Math.min(1,(e-0.5)/0.5));
+    sub.style.opacity=subP.toFixed(2);
+    sub.style.transform=`translateY(${(14*(1-subP)).toFixed(1)}px)`;
+    // eyebrow stays fully visible and grows a bit so it reads well once expanded
+    if(tag){ tag.style.opacity='1'; tag.style.fontSize=(0.68+0.5*e).toFixed(3)+'rem'; }
+  }
+  addEventListener('scroll',update,{passive:true});
+  addEventListener('resize',update);
+  update();
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(update);
+})();
+
+// ── NAV DROPDOWN — clicking "Portfolio" itself never navigates ──
+document.querySelectorAll('.nav-drop-toggle').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+
+// ── MOBILE MENU (burger) ──
+(function(){
+  const b=document.getElementById('navBurger');
+  const panel=document.getElementById('navMobile');
+  if(!b||!panel) return;
+  function toggle(open){
+    const on = open===undefined ? !document.body.classList.contains('nav-open') : open;
+    document.body.classList.toggle('nav-open',on);
+    b.setAttribute('aria-expanded',on?'true':'false');
+  }
+  b.addEventListener('click',()=>toggle());
+  // close when a real link is tapped
+  panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggle(false)));
+  // close on Escape
+  addEventListener('keydown',e=>{ if(e.key==='Escape') toggle(false); });
+  // close if the viewport goes back to desktop
+  const mq=matchMedia('(min-width:1025px)');
+  mq.addEventListener?.('change',e=>{ if(e.matches) toggle(false); });
+})();
+
+// ── PAGE FADE TRANSITION ──
+(function(){
+  const fade=document.getElementById('pageFade');
+  if(!fade) return;
+  const reveal=()=>fade.classList.remove('show');
+  requestAnimationFrame(()=>requestAnimationFrame(reveal));
+  window.addEventListener('pageshow',reveal);
+  document.querySelectorAll('a[href*=".html"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const href=a.getAttribute('href');
+      if(!href||a.target==='_blank'||e.metaKey||e.ctrlKey||e.shiftKey) return;
+      e.preventDefault();
+      fade.classList.add('show');
+      setTimeout(()=>{location.href=href;},520);
+    });
+  });
+})();
+
+// ── LAZY CLIP-REVEAL ──
+(function(){
+  document.querySelectorAll('.svc-img img,.about-img-frame img').forEach(img=>img.classList.add('clip-rev'));
+  const co=new IntersectionObserver(es=>{es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('shown');co.unobserve(x.target);}});},{threshold:.18,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.clip-rev').forEach(el=>co.observe(el));
+  // safety: reveal on scroll/load too (covers any engine where the observer is quiet)
+  function safety(){document.querySelectorAll('.clip-rev:not(.shown)').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight*0.92&&r.bottom>0)el.classList.add('shown');});}
+  addEventListener('scroll',safety,{passive:true});
+  addEventListener('load',()=>setTimeout(safety,200));
+})();
+
+// ── SERVICE IMAGE — smooth, subtle 3D tilt (CSS-eased; on the inner img so the
+//    container keeps its scroll-parallax — no more transform conflict / jank) ──
+document.querySelectorAll('.svc-img').forEach(box=>{
+  const img=box.querySelector('img');
+  if(!img) return;
+  box.addEventListener('mousemove',e=>{
+    const r=box.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-0.5;
+    const y=(e.clientY-r.top)/r.height-0.5;
+    img.style.transform=`scale(1.07) rotateX(${(-y*3).toFixed(2)}deg) rotateY(${(x*3).toFixed(2)}deg)`;
+  });
+  box.addEventListener('mouseleave',()=>{ img.style.transform='scale(1.05)'; });
+});
+</script>
+</body>
+</html>
