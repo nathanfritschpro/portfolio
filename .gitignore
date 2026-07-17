@@ -32,9 +32,6 @@ __pycache__/
 # Quand les vrais dossiers "photos/" et "videos/" seront compresses et
 # ajoutes ici, il faudra RETIRER les 2 lignes ci-dessous pour qu'ils soient
 # pousses sur GitHub / deployes sur Vercel.
-/photos
-/videos-src
-/videos
 
 # ── Fichiers systeme ──
 Thumbs.db
