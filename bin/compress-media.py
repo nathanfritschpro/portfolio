@@ -67,9 +67,11 @@ VIDEO_AUDIO_KBPS = 128
 PHOTO_EXTS = {".jpg", ".jpeg", ".png"}
 VIDEO_EXTS = {".mov", ".mp4", ".m4v", ".webm"}
 
-# Regex pour attraper les chemins dans le HTML
+# Regex pour attraper les chemins dans le HTML : on capture ce qu'il y a
+# entre guillemets (simples ou doubles) qui commence par photos/, videos/,
+# videos-src/. Cela gere les chemins avec espaces ("le mahi mahi").
 REF_RE = re.compile(
-    r'(?<![\w/])(?:photos|videos-src|videos)/[^\s"\')>]+',
+    r'''["'“”‘’]((?:photos|videos-src|videos)/[^"'“”‘’\n\r]+)["'“”‘’]''',
     re.IGNORECASE,
 )
 
@@ -109,6 +111,11 @@ def collect_refs() -> tuple[set[str], set[str]]:
     photos: set[str] = set()
     videos: set[str] = set()
 
+    # Videos referencees sous le prefix photos/ (ex: photos/videos-site/hero.mov).
+    # On les traite comme des videos mais depuis PHOTOS_SRC.
+    global _PHOTO_VIDEOS
+    _PHOTO_VIDEOS = set()
+
     for html in HTML_FILES:
         p = SITE_DIR / html
         if not p.exists():
@@ -120,11 +127,15 @@ def collect_refs() -> tuple[set[str], set[str]]:
             # On veut le nom apres le prefix
             if rel.startswith("photos/") and is_photo(rel):
                 photos.add(rel[len("photos/"):])
+            elif rel.startswith("photos/") and is_video(rel):
+                _PHOTO_VIDEOS.add(rel[len("photos/"):])
             elif rel.startswith("videos-src/") and is_video(rel):
                 videos.add(rel[len("videos-src/"):])
             elif rel.startswith("videos/") and is_video(rel):
                 videos.add(rel[len("videos/"):])
     return photos, videos
+
+_PHOTO_VIDEOS: set[str] = set()
 
 # ------- COMPRESSION PHOTOS ---------------------------------------------------
 
@@ -159,6 +170,15 @@ def compress_video(src: Path, dst: Path, dry: bool, force: bool) -> str:
     # On force la sortie en .mp4 (universellement lu, streamable)
     if dst.suffix.lower() not in {".mp4"}:
         dst = dst.with_suffix(".mp4")
+
+    # Le HTML peut reference .mp4 mais la source est en .mov / .MOV / .m4v :
+    # on cherche les extensions courantes si la source directe manque.
+    if not src.exists():
+        for ext in [".mov", ".MOV", ".m4v", ".webm"]:
+            candidate = src.with_suffix(ext)
+            if candidate.exists():
+                src = candidate
+                break
 
     if not src.exists():
         return "missing"
@@ -270,6 +290,12 @@ def main() -> int:
     if not args.only_photos:
         d = process("videos", videos, VIDEOS_SRC, VIDEOS_DST, compress_video, args.dry_run, args.force)
         totals = [a+b for a, b in zip(totals, d)]
+        # Videos referencees sous le prefix photos/ (background hero, etc.).
+        # Source ET destination sous "photos/" pour preserver les URLs du HTML.
+        if _PHOTO_VIDEOS:
+            d = process("videos (in photos/)", _PHOTO_VIDEOS, PHOTOS_SRC, PHOTOS_DST,
+                        compress_video, args.dry_run, args.force)
+            totals = [a+b for a, b in zip(totals, d)]
 
     dt = time.time() - t0
     done, skipped, missing, total = totals
