@@ -70,8 +70,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1rem 4rem;background
 .avail-lbl{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text);font-weight:500;}
 .avail p{font-size:.8rem;color:var(--muted);line-height:1.6;font-weight:300;}
 .soc-row{display:flex;gap:.6rem;margin-top:.3rem;}
-.soc{width:42px;height:42px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:.68rem;font-weight:600;letter-spacing:.04em;transition:all .3s;}
-.soc:hover{border-color:var(--a);color:var(--a);}
+.soc{width:44px;height:44px;border:1px solid var(--border);border-radius:12px;display:inline-flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;transition:all .3s;}
+.soc svg{width:22px;height:22px;}
+.soc:hover{border-color:var(--a);color:var(--a);transform:translateY(-1px);}
 
 /* FORM SIDE */
 .c-form-side{padding:6rem 5rem;background:var(--bg);}
@@ -115,6 +116,7 @@ form{display:flex;flex-direction:column;gap:1.6rem;}
 .fg select option{background:var(--white);color:var(--text);}
 
 .budget-title{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.75rem;}
+.budget-opt{font-size:.55rem;letter-spacing:.14em;text-transform:none;font-style:italic;color:var(--muted);opacity:.75;margin-left:.35rem;}
 .budget-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;}
 .br{position:relative;}
 .br input{position:absolute;opacity:0;pointer-events:none;}
@@ -241,33 +243,36 @@ footer a{color:var(--a);text-decoration:none;}
 
 <div class="c-main">
   <div class="c-info">
-    <div class="info-block" data-r="up">
+    <div class="avail" data-r="up">
+      <div class="avail-row">
+        <div class="avail-dot"></div>
+        <span class="avail-lbl">Disponible pour nouveaux projets</span>
+      </div>
+      <p><strong>Réponse garantie sous 24h.</strong><br>Devis gratuit et sans engagement.</p>
+    </div>
+    <div class="c-div"></div>
+    <div class="info-block" data-r="up" data-d="1">
       <h4>Email</h4>
       <a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a>
     </div>
     <div class="c-div"></div>
-    <div class="info-block" data-r="up" data-d="1">
+    <div class="info-block" data-r="up" data-d="2">
       <h4>Basé à</h4>
       <p>Bordeaux, France<br>Disponible partout en France<br>et à l'étranger</p>
     </div>
     <div class="c-div"></div>
     <div class="info-block" data-r="up" data-d="2">
-      <h4>Spécialités</h4>
-      <p>Événementiel · Sport<br>Immobilier · Drone</p>
-    </div>
-    <div class="c-div"></div>
-    <div class="avail" data-r="up" data-d="2">
-      <div class="avail-row">
-        <div class="avail-dot"></div>
-        <span class="avail-lbl">Disponible pour nouveaux projets</span>
-      </div>
-      <p>Réponse garantie sous 24h.<br>Devis gratuit et sans engagement.</p>
-    </div>
-    <div class="info-block" data-r="up" data-d="3">
       <h4>Suivez mon travail</h4>
       <div class="soc-row">
-        <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="soc">IG</a>
+        <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="soc" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+        </a>
       </div>
+    </div>
+    <div class="c-div"></div>
+    <div class="info-block" data-r="up" data-d="3">
+      <h4>Spécialités</h4>
+      <p>Événementiel · Sport<br>Immobilier · Drone</p>
     </div>
   </div>
 
@@ -312,7 +317,7 @@ footer a{color:var(--a);text-decoration:none;}
                 <label>Type de projet</label>
               </div>
               <div>
-                <span class="budget-title">Budget estimé</span>
+                <span class="budget-title">Budget estimé <span class="budget-opt">(optionnel)</span></span>
                 <div class="budget-grid">
                   <div class="br"><input type="radio" name="budget" id="b1" value="< 500 €"><label for="b1">< 500 €</label></div>
                   <div class="br"><input type="radio" name="budget" id="b2" value="500–1k €"><label for="b2">500–1k €</label></div>
@@ -342,7 +347,7 @@ footer a{color:var(--a);text-decoration:none;}
           </span>
           <span class="c-choice-body">
             <span class="c-choice-title">Réserver un appel gratuit</span>
-            <span class="c-choice-sub">30 minutes en visio ou téléphone — devis offert, sans engagement.</span>
+            <span class="c-choice-sub">30 minutes au téléphone pour parler de votre projet — devis offert, sans engagement.</span>
           </span>
           <span class="c-choice-arrow" aria-hidden="true">↓</span>
         </button>
