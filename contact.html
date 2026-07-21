@@ -127,6 +127,12 @@ footer a{color:var(--a);text-decoration:none;}
 .nav-burger{display:none;}
 .nav-mobile{display:none;}
 
+/* Hide the custom cursor on touch devices (mobile + tablet up to iPad) */
+@media(max-width:1024px),(pointer:coarse){
+  body,.fg select,.br label,.btn-send,button,a{cursor:auto!important;}
+  #cur{display:none!important;}
+}
+
 @media(max-width:900px){
   nav{padding:1rem 1.2rem;}.nav-links{display:none;}
   nav>.nav-btn{display:none;}
