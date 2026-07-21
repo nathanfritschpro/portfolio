@@ -300,13 +300,49 @@ footer a{color:var(--a);text-decoration:none;}
 [data-r].vis{opacity:1;transform:none;}
 [data-d="1"]{transition-delay:.1s;}[data-d="2"]{transition-delay:.2s;}
 
+.nav-burger{display:none;}
+.nav-mobile{display:none;}
+
 @media(max-width:900px){
-  nav{padding:1rem 1.5rem;}.nav-links{display:none;}
-  .ph,.filters{padding-left:1.5rem;padding-right:1.5rem;}
+  nav{padding:1rem 1.2rem;}.nav-links{display:none;}
+  /* Hide desktop CTA on mobile — replaced by the burger + panel */
+  nav>.nav-btn{display:none;}
+  .nav-burger{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:none;border:0;padding:6px;cursor:pointer;z-index:210;}
+  .nav-burger span{display:block;width:24px;height:1.5px;background:var(--text);transition:transform .35s ease,opacity .25s ease,background .3s;}
+  body.nav-open .nav-burger span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  body.nav-open .nav-burger span:nth-child(2){opacity:0;}
+  body.nav-open .nav-burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+  .nav-mobile{display:flex;flex-direction:column;gap:1.4rem;position:fixed;top:0;right:0;bottom:0;width:min(88vw,340px);z-index:205;background:rgba(248,247,244,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-left:1px solid var(--border);padding:6rem 2rem 2rem;transform:translateX(100%);transition:transform .45s cubic-bezier(.6,0,.3,1);overflow-y:auto;}
+  body.nav-open .nav-mobile{transform:translateX(0);}
+  .nav-mobile>a,.nav-mobile-group>a{display:block;font-family:'Inter',sans-serif;font-size:.82rem;letter-spacing:.24em;text-transform:uppercase;color:var(--text);text-decoration:none;padding:.4rem 0;transition:color .25s;}
+  .nav-mobile>a.on,.nav-mobile-group>a.on{color:var(--a);}
+  .nav-mobile-group{display:flex;flex-direction:column;gap:.7rem;padding-top:.6rem;border-top:1px solid var(--border);}
+  .nav-mobile-label{font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);}
+  .nav-mobile-group>a{padding:.1rem 0 .1rem .9rem;font-size:.72rem;}
+  .nav-mobile-cta{margin-top:auto;background:var(--a);color:#fff!important;text-align:center;padding:1rem 1.4rem!important;letter-spacing:.2em!important;font-size:.7rem!important;}
+  .nav-mobile-ig{display:flex!important;align-items:center;gap:.7rem;color:var(--a)!important;padding-top:1rem!important;border-top:1px solid var(--border);}
+  .nav-mobile-ig svg{width:20px;height:20px;flex-shrink:0;}
+  .nav-mobile-ig span{font-size:.7rem;letter-spacing:.06em;color:var(--muted);text-transform:none;}
+  body.nav-open::before{content:'';position:fixed;inset:0;z-index:199;background:rgba(0,0,0,.45);animation:navFade .35s ease;}
+  @keyframes navFade{from{opacity:0}to{opacity:1}}
+
+  .ph,.filters{padding-left:1.2rem;padding-right:1.2rem;}
+  /* "Mes réalisations" label: force high contrast */
+  .ph-tag{color:#fff!important;text-shadow:0 1px 12px rgba(0,0,0,.55);}
+  /* Compact filter pill row */
+  .filter-group{gap:.15rem;padding:.28rem;flex-wrap:nowrap;}
+  .f-btn{font-size:.56rem;letter-spacing:.11em;padding:.55rem .8rem;}
   .proj-grid{grid-template-columns:1fr;}
+  /* Modal: tighter header on mobile so photos appear sooner */
   .modal-body{grid-template-columns:1fr;height:auto;overflow:visible;}
-  .modal-info{overflow:visible;border-right:none;border-bottom:1px solid var(--border);}
-  .modal-gallery{overflow-y:auto;}.gallery-inner{columns:2;}
+  .modal-info{overflow:visible;border-right:none;border-bottom:1px solid var(--border);padding:1.4rem 1.4rem 1.6rem!important;}
+  .modal-cat{display:none;}
+  .modal-title{margin-top:.2rem!important;font-size:clamp(1.6rem,7vw,2.1rem)!important;line-height:1.05;}
+  .modal-subtitle{font-size:.85rem!important;margin-top:.4rem!important;margin-bottom:.9rem!important;}
+  .modal-sep{margin:.9rem 0!important;}
+  .modal-desc{font-size:.92rem;line-height:1.55;}
+  .modal-gallery{overflow-y:auto;padding:.6rem!important;}
+  .gallery-inner{columns:2;column-gap:.4rem;}
   #modal{overflow-y:auto;}
 }
 
@@ -347,7 +383,24 @@ footer a{color:var(--a);text-decoration:none;}
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <a href="contact.html" class="nav-btn mag-btn">Démarrer un projet</a>
+  <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html">Accueil</a>
+  <div class="nav-mobile-group">
+    <span class="nav-mobile-label">Portfolio</span>
+    <a href="portfolio.html?type=photo" class="on">Photos</a>
+    <a href="portfolio.html?type=video">Vidéos</a>
+  </div>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-mobile-cta">Démarrer un projet</a>
+  <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="nav-mobile-ig">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+    <span>@nathanfrt_visuals</span>
+  </a>
+</div>
 
 <div class="ph">
   <div class="ph-bg"></div>
@@ -1216,6 +1269,29 @@ renderGrid(PROJECTS);
     const i=PROJECTS.findIndex(p=>p.id===openId);
     if(i>=0){ setTimeout(()=>openModal(i),120); }
   }
+})();
+
+/* ── MOBILE MENU (burger + backdrop close) ── */
+(function(){
+  const b=document.getElementById('navBurger');
+  const panel=document.getElementById('navMobile');
+  if(!b||!panel) return;
+  function toggle(open){
+    const on = open===undefined ? !document.body.classList.contains('nav-open') : open;
+    document.body.classList.toggle('nav-open',on);
+    b.setAttribute('aria-expanded',on?'true':'false');
+  }
+  b.addEventListener('click',e=>{e.stopPropagation();toggle();});
+  panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggle(false)));
+  /* close by tapping the darkened backdrop (anywhere outside panel + burger) */
+  document.addEventListener('click',e=>{
+    if(!document.body.classList.contains('nav-open')) return;
+    if(panel.contains(e.target)||b.contains(e.target)) return;
+    toggle(false);
+  });
+  addEventListener('keydown',e=>{ if(e.key==='Escape') toggle(false); });
+  const mq=matchMedia('(min-width:901px)');
+  mq.addEventListener?.('change',e=>{ if(e.matches) toggle(false); });
 })();
 </script>
 </body>
