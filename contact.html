@@ -79,6 +79,27 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1rem 4rem;background
 .form-intro h2 em{font-style:italic;color:var(--a);}
 .form-intro p{font-size:.85rem;color:var(--muted);margin-bottom:3rem;line-height:1.7;font-weight:300;}
 
+/* Choice cards + expanding panels */
+.c-choices{display:flex;flex-direction:column;gap:1.2rem;}
+.c-choice-wrap{border:1px solid var(--border);background:var(--white);border-radius:14px;overflow:hidden;transition:border-color .3s,box-shadow .35s;}
+.c-choice-wrap:hover{border-color:rgba(52,77,89,.35);}
+.c-choice-wrap.open{border-color:var(--a);box-shadow:0 18px 55px rgba(52,77,89,.14);}
+.c-choice{display:flex;align-items:center;gap:1.3rem;width:100%;padding:1.7rem 1.9rem;background:none;border:0;cursor:pointer;text-align:left;font-family:inherit;color:inherit;transition:background .3s;}
+.c-choice:hover{background:rgba(52,77,89,.03);}
+.c-choice-ico{flex-shrink:0;width:52px;height:52px;border-radius:50%;background:rgba(52,77,89,.08);color:var(--a);display:flex;align-items:center;justify-content:center;transition:background .3s,color .3s,transform .35s;}
+.c-choice-ico svg{width:24px;height:24px;}
+.c-choice-wrap.open .c-choice-ico{background:var(--a);color:var(--white);transform:scale(1.05);}
+.c-choice-body{flex:1;display:flex;flex-direction:column;gap:.35rem;}
+.c-choice-title{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:1.35rem;font-weight:500;color:var(--text);letter-spacing:-.005em;line-height:1.15;}
+.c-choice-sub{font-family:'Inter',sans-serif;font-size:.82rem;line-height:1.55;color:var(--muted);font-weight:300;}
+.c-choice-arrow{flex-shrink:0;font-size:1.2rem;color:var(--a);transition:transform .4s cubic-bezier(.4,0,.2,1);}
+.c-choice-wrap.open .c-choice-arrow{transform:rotate(180deg);}
+.c-panel{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1);}
+.c-choice-wrap.open .c-panel{max-height:2800px;}
+.c-panel-inner{padding:.4rem 1.9rem 2rem;border-top:1px solid var(--border);}
+.c-panel-cal{padding:.4rem .6rem 1rem;}
+.c-panel-cal .calendly-inline-widget{width:100%;}
+
 form{display:flex;flex-direction:column;gap:1.6rem;}
 .f-row{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;}
 .fg{position:relative;}
@@ -252,46 +273,85 @@ footer a{color:var(--a);text-decoration:none;}
 
   <div class="c-form-side">
     <div class="form-intro" data-r="up">
-      <h2>Décrivez votre <em>projet</em></h2>
-      <p>Remplissez ce formulaire et je vous recontacte sous 24h.</p>
+      <h2>Comment souhaitez-vous <em>me contacter</em> ?</h2>
+      <p>Choisissez la méthode qui vous convient — je réponds toujours sous 24h.</p>
     </div>
-    <form id="cForm" data-r="up" data-d="1"
-          action="https://formspree.io/f/VOTRE_ID_FORMSPREE"
-          method="POST">
-      <div class="f-row">
-        <div class="fg"><input type="text" name="prenom" placeholder="Prénom" required><label>Prénom</label></div>
-        <div class="fg"><input type="text" name="nom" placeholder="Nom" required><label>Nom</label></div>
-      </div>
-      <div class="fg"><input type="email" name="email" placeholder="Email" required><label>Email</label></div>
-      <div class="fg">
-        <select name="service" required>
-          <option value="" disabled selected></option>
-          <option>Événementiel</option>
-          <option>Sport</option>
-          <option>Immobilier</option>
-          <option>Drone & Aérien</option>
-          <option>Autre projet</option>
-        </select>
-        <label>Type de projet</label>
-      </div>
-      <div>
-        <span class="budget-title">Budget estimé</span>
-        <div class="budget-grid">
-          <div class="br"><input type="radio" name="budget" id="b1" value="< 500 €"><label for="b1">< 500 €</label></div>
-          <div class="br"><input type="radio" name="budget" id="b2" value="500–1k €"><label for="b2">500–1k €</label></div>
-          <div class="br"><input type="radio" name="budget" id="b3" value="1k–2.5k €"><label for="b3">1k–2.5k €</label></div>
-          <div class="br"><input type="radio" name="budget" id="b4" value="2.5k–5k €"><label for="b4">2.5k–5k €</label></div>
-          <div class="br"><input type="radio" name="budget" id="b5" value="> 5k €"><label for="b5">> 5k €</label></div>
-          <div class="br"><input type="radio" name="budget" id="b6" value="À définir"><label for="b6">À définir</label></div>
+
+    <div class="c-choices" data-r="up" data-d="1">
+      <!-- Choice 1 : formulaire écrit -->
+      <div class="c-choice-wrap">
+        <button type="button" class="c-choice" data-target="msg" aria-expanded="false" aria-controls="cPanelMsg">
+          <span class="c-choice-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          </span>
+          <span class="c-choice-body">
+            <span class="c-choice-title">Envoyer un message</span>
+            <span class="c-choice-sub">Décrivez votre projet en détail par écrit. Idéal pour tout partager en une fois.</span>
+          </span>
+          <span class="c-choice-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="c-panel" id="cPanelMsg" role="region" aria-hidden="true">
+          <div class="c-panel-inner">
+            <form id="cForm"
+                  action="https://formspree.io/f/VOTRE_ID_FORMSPREE"
+                  method="POST">
+              <div class="f-row">
+                <div class="fg"><input type="text" name="prenom" placeholder="Prénom" required><label>Prénom</label></div>
+                <div class="fg"><input type="text" name="nom" placeholder="Nom" required><label>Nom</label></div>
+              </div>
+              <div class="fg"><input type="email" name="email" placeholder="Email" required><label>Email</label></div>
+              <div class="fg">
+                <select name="service" required>
+                  <option value="" disabled selected></option>
+                  <option>Événementiel</option>
+                  <option>Sport</option>
+                  <option>Immobilier</option>
+                  <option>Drone & Aérien</option>
+                  <option>Autre projet</option>
+                </select>
+                <label>Type de projet</label>
+              </div>
+              <div>
+                <span class="budget-title">Budget estimé</span>
+                <div class="budget-grid">
+                  <div class="br"><input type="radio" name="budget" id="b1" value="< 500 €"><label for="b1">< 500 €</label></div>
+                  <div class="br"><input type="radio" name="budget" id="b2" value="500–1k €"><label for="b2">500–1k €</label></div>
+                  <div class="br"><input type="radio" name="budget" id="b3" value="1k–2.5k €"><label for="b3">1k–2.5k €</label></div>
+                  <div class="br"><input type="radio" name="budget" id="b4" value="2.5k–5k €"><label for="b4">2.5k–5k €</label></div>
+                  <div class="br"><input type="radio" name="budget" id="b5" value="> 5k €"><label for="b5">> 5k €</label></div>
+                  <div class="br"><input type="radio" name="budget" id="b6" value="À définir"><label for="b6">À définir</label></div>
+                </div>
+              </div>
+              <div class="fg"><textarea name="message" placeholder="Message" required></textarea><label>Décrivez votre projet</label></div>
+              <button type="submit" class="btn-send mag-btn">Envoyer ma demande <span class="btn-arrow">→</span></button>
+            </form>
+            <div class="success" id="suc">
+              <span class="success-icon">✦</span>
+              <h3>Message <em>envoyé !</em></h3>
+              <p>Merci ! Je vous réponds sous 24h avec une réponse personnalisée.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="fg"><textarea name="message" placeholder="Message" required></textarea><label>Décrivez votre projet</label></div>
-      <button type="submit" class="btn-send mag-btn">Envoyer ma demande <span class="btn-arrow">→</span></button>
-    </form>
-    <div class="success" id="suc">
-      <span class="success-icon">✦</span>
-      <h3>Message <em>envoyé !</em></h3>
-      <p>Merci ! Je vous réponds sous 24h avec une réponse personnalisée.</p>
+
+      <!-- Choice 2 : Calendly -->
+      <div class="c-choice-wrap">
+        <button type="button" class="c-choice" data-target="cal" aria-expanded="false" aria-controls="cPanelCal">
+          <span class="c-choice-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span class="c-choice-body">
+            <span class="c-choice-title">Réserver un appel gratuit</span>
+            <span class="c-choice-sub">30 minutes en visio ou téléphone — devis offert, sans engagement.</span>
+          </span>
+          <span class="c-choice-arrow" aria-hidden="true">↓</span>
+        </button>
+        <div class="c-panel" id="cPanelCal" role="region" aria-hidden="true">
+          <div class="c-panel-inner c-panel-cal">
+            <div class="calendly-inline-widget" data-url="https://calendly.com/nathan-fritsch-pro/30min?hide_gdpr_banner=1&primary_color=344d59" style="min-width:320px;height:700px;"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -346,6 +406,41 @@ document.querySelectorAll('.nav-drop-toggle').forEach(a=>a.addEventListener('cli
       e.preventDefault();
       fade.classList.add('show');
       setTimeout(()=>{location.href=href;},520);
+    });
+  });
+})();
+
+/* ── CONTACT CHOICES : expand form or Calendly ── */
+(function(){
+  const wraps=document.querySelectorAll('.c-choice-wrap');
+  if(!wraps.length) return;
+  let calLoaded=false;
+  wraps.forEach(wrap=>{
+    const btn=wrap.querySelector('.c-choice');
+    const panel=wrap.querySelector('.c-panel');
+    if(!btn||!panel) return;
+    btn.addEventListener('click',()=>{
+      const willOpen=!wrap.classList.contains('open');
+      wraps.forEach(w=>{
+        w.classList.remove('open');
+        w.querySelector('.c-choice')?.setAttribute('aria-expanded','false');
+        w.querySelector('.c-panel')?.setAttribute('aria-hidden','true');
+      });
+      if(willOpen){
+        wrap.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+        panel.setAttribute('aria-hidden','false');
+        /* lazy-load Calendly script the first time */
+        if(btn.dataset.target==='cal' && !calLoaded){
+          calLoaded=true;
+          const s=document.createElement('script');
+          s.src='https://assets.calendly.com/assets/external/widget.js';
+          s.async=true;
+          document.body.appendChild(s);
+        }
+        /* smooth scroll the newly opened card into view (nice on tall screens) */
+        setTimeout(()=>wrap.scrollIntoView({behavior:'smooth',block:'start'}),80);
+      }
     });
   });
 })();
