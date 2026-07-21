@@ -59,6 +59,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1rem 4rem;background
 
 /* INFO SIDE */
 .c-info{background:var(--white);padding:6rem 4rem;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:2.5rem;}
+/* wrapper only used to group items for mobile reorder — transparent on desktop */
+.c-info-rest{display:contents;}
 .info-block h4{font-size:.58rem;letter-spacing:.38em;text-transform:uppercase;color:var(--a);margin-bottom:.9rem;}
 .info-block p,.info-block a{font-size:.92rem;color:var(--muted);line-height:1.7;font-weight:300;text-decoration:none;display:block;}
 .info-block a:hover{color:var(--text);}
@@ -179,7 +181,14 @@ footer a{color:var(--a);text-decoration:none;}
   body.nav-open::before{content:'';position:fixed;inset:0;z-index:199;background:rgba(0,0,0,.45);animation:navFade .35s ease;}
   @keyframes navFade{from{opacity:0}to{opacity:1}}
 
-  .c-hero{padding:7rem 1.5rem 4rem;}.c-main{grid-template-columns:1fr;}.c-info{padding:3rem 1.5rem;}.c-form-side{padding:3rem 1.5rem;}.f-row{grid-template-columns:1fr;}.budget-grid{grid-template-columns:1fr 1fr;}footer{padding:2rem 1.5rem;}
+  .c-hero{padding:7rem 1.5rem 4rem;}
+  /* mobile ordering : avail on top, form/Calendly middle, other infos bottom */
+  .c-main{display:flex;flex-direction:column;grid-template-columns:none;}
+  .c-info{display:contents;}
+  .c-info>.avail{order:1;margin:2rem 1.5rem 0;background:var(--white);padding:1.4rem;border:1px solid var(--border);}
+  .c-form-side{order:2;padding:3rem 1.5rem;}
+  .c-info-rest{order:3;display:flex;flex-direction:column;gap:2rem;background:var(--white);padding:2.5rem 1.5rem 3rem;border-top:1px solid var(--border);}
+  .f-row{grid-template-columns:1fr;}.budget-grid{grid-template-columns:1fr 1fr;}footer{padding:2rem 1.5rem;}
 }
 
 /* PAGE FADE TRANSITION */
@@ -250,29 +259,31 @@ footer a{color:var(--a);text-decoration:none;}
       </div>
       <p><strong>Réponse garantie sous 24h.</strong><br>Devis gratuit et sans engagement.</p>
     </div>
-    <div class="c-div"></div>
-    <div class="info-block" data-r="up" data-d="1">
-      <h4>Email</h4>
-      <a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a>
-    </div>
-    <div class="c-div"></div>
-    <div class="info-block" data-r="up" data-d="2">
-      <h4>Basé à</h4>
-      <p>Bordeaux, France<br>Disponible partout en France<br>et à l'étranger</p>
-    </div>
-    <div class="c-div"></div>
-    <div class="info-block" data-r="up" data-d="2">
-      <h4>Suivez mon travail</h4>
-      <div class="soc-row">
-        <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="soc" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
-        </a>
+    <div class="c-info-rest">
+      <div class="c-div"></div>
+      <div class="info-block" data-r="up" data-d="1">
+        <h4>Email</h4>
+        <a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a>
       </div>
-    </div>
-    <div class="c-div"></div>
-    <div class="info-block" data-r="up" data-d="3">
-      <h4>Spécialités</h4>
-      <p>Événementiel · Sport<br>Immobilier · Drone</p>
+      <div class="c-div"></div>
+      <div class="info-block" data-r="up" data-d="2">
+        <h4>Basé à</h4>
+        <p>Bordeaux, France<br>Disponible partout en France<br>et à l'étranger</p>
+      </div>
+      <div class="c-div"></div>
+      <div class="info-block" data-r="up" data-d="2">
+        <h4>Suivez mon travail</h4>
+        <div class="soc-row">
+          <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="soc" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="c-div"></div>
+      <div class="info-block" data-r="up" data-d="3">
+        <h4>Spécialités</h4>
+        <p>Événementiel · Sport<br>Immobilier · Drone</p>
+      </div>
     </div>
   </div>
 
