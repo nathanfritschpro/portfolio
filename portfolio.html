@@ -1118,9 +1118,11 @@ function renderGrid(projects){
       const soon=p.comingSoon;
       card.classList.toggle('is-soon',!!soon);
       // no dedicated cover image → show a frame of the video itself
+      const cd=(window.PHOTO_DIMS||{})[p.cover];
+      const cdAttr=cd?` width="${cd[0]}" height="${cd[1]}"`:'';
       const coverMedia = p.coverVideo
         ? `<video src="${p.video}#t=2" muted playsinline preload="metadata"></video>`
-        : `<img src="${p.cover}" loading="lazy" alt="${p.title}">`;
+        : `<img src="${p.cover}" loading="lazy" decoding="async" alt="${p.title}"${cdAttr}>`;
       card.innerHTML=`
         <div class="vf-cover">
           ${coverMedia}
