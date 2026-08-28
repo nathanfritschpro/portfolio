@@ -102,9 +102,9 @@ nav.sticky .nav-logo span{color:var(--a);}
 .nav-drop::after{content:'';position:absolute;left:-16px;right:-16px;top:100%;height:16px;}
 .nav-sub{position:absolute;top:calc(100% + 12px);left:50%;transform:translate(-50%,8px);min-width:150px;background:rgba(248,247,244,.98);border:1px solid var(--border);box-shadow:0 18px 45px rgba(17,17,17,.16);padding:.45rem 0;opacity:0;visibility:hidden;transition:opacity .3s,transform .3s,visibility .3s;z-index:300;}
 .nav-drop:hover .nav-sub{opacity:1;visibility:visible;transform:translate(-50%,0);}
-.nav-sub a{display:block;padding:.62rem 1.3rem;font-family:'Inter',sans-serif;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;text-shadow:none;transition:color .25s,background .25s;}
-.nav-sub a:hover{color:var(--a);background:rgba(52,77,89,.06);}
-.nav-sub a::after{display:none;}
+.nav-links .nav-sub a,nav.sticky .nav-links .nav-sub a{display:block;padding:.62rem 1.3rem;font-family:'Inter',sans-serif;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text)!important;text-decoration:none;text-shadow:none!important;font-weight:500;transition:color .25s,background .25s;}
+.nav-links .nav-sub a:hover,nav.sticky .nav-links .nav-sub a:hover{color:var(--a)!important;background:rgba(52,77,89,.08);}
+.nav-links .nav-sub a::after{display:none!important;}
 /* over the hero image: bright, bolder so they stand apart from the hero tagline */
 .nav-links a{font-family:'Inter',sans-serif;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.92);text-decoration:none;font-weight:500;transition:color .35s;position:relative;text-shadow:0 2px 14px rgba(0,0,0,.55);}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:#fff;transition:width .35s,background .35s;}
