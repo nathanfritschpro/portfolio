@@ -128,7 +128,7 @@ body.entered .h-bg{filter:brightness(.52) contrast(1.08);}
 .h-content{position:relative;z-index:2;max-width:900px;text-align:center;will-change:transform;}
 .h-content::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:130%;height:150%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 55% 50% at 50% 50%,rgba(10,16,20,.55) 0%,rgba(10,16,20,.28) 45%,transparent 72%);opacity:0;transition:opacity 1.2s ease;}
 body.entered .h-content::before{opacity:1;}
-.h-tag{font-size:.72rem;letter-spacing:.42em;text-transform:uppercase;color:rgba(236,241,243,.95);margin-bottom:1.4rem;display:block;opacity:0;font-weight:500;}
+.h-tag{font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;color:rgba(236,241,243,.75);margin-bottom:1.4rem;display:block;opacity:0;}
 body.entered .h-tag{animation:sUp .8s ease .5s forwards;}
 .h-title{font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:430;font-size:clamp(3.9rem,9.8vw,10rem);line-height:.98;color:var(--white);margin-bottom:2rem;letter-spacing:-.015em;text-shadow:0 2px 12px rgba(0,0,0,.45),0 14px 60px rgba(0,0,0,.4);}
 .h-title .ln{display:block;overflow:hidden;}
@@ -146,10 +146,6 @@ body.entered .h-title .ln span{transform:translateY(0);}
 @keyframes emShimmer{to{background-position:220% 0;}}
 @keyframes lineUp{to{transform:translateY(0)}}
 @keyframes sUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-.h-sub{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(1rem,1.5vw,1.35rem);color:rgba(248,247,244,.92);line-height:1.5;max-width:720px;margin:0 auto 2rem;text-shadow:0 1px 8px rgba(0,0,0,.5);opacity:0;}
-body.entered .h-sub{animation:sUp .8s ease .8s forwards;}
-.h-sub strong{font-weight:500;color:#fff;}
-@media(max-width:900px){.h-sub{font-size:.95rem;padding:0 .5rem;}}
 .h-meta{display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap;opacity:0;}
 body.entered .h-meta{animation:sUp .8s ease .95s forwards;}
 .h-meta-sep{width:35px;height:1px;background:rgba(248,247,244,.45);}
@@ -244,11 +240,6 @@ body.entered .h-scroll{animation:fIn .8s ease 1.4s forwards;}
 .svc:hover .svc-chip{border-color:var(--a);color:var(--a);}
 /* SCROLL-EXPANSION HERO */
 #se-hero{position:relative;height:155vh;background:var(--bg);}
-.se-scroll-cue{position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(255,255,255,.85);pointer-events:none;z-index:5;text-shadow:0 1px 6px rgba(0,0,0,.55);animation:scBounce 2.2s ease infinite;}
-.se-scroll-cue span{font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;font-weight:500;}
-.se-scroll-cue svg{width:22px;height:22px;}
-@keyframes scBounce{0%,100%{transform:translate(-50%,0);opacity:.85;}50%{transform:translate(-50%,8px);opacity:1;}}
-@media(max-width:768px){.se-scroll-cue{bottom:1.4rem;}.se-scroll-cue span{font-size:.55rem;}}
 .se-stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
 .se-bg{position:absolute;inset:0;z-index:0;background-image:url('photos/ski/ski-02-26/IMG_4629.jpg');background-size:cover;background-position:center;filter:brightness(.4) blur(4px);transform:scale(1.08);will-change:opacity;}
 .se-frame{position:relative;z-index:1;width:46vw;height:64vh;border-radius:20px;overflow:hidden;box-shadow:0 40px 90px rgba(17,17,17,.35);will-change:width,height,border-radius;}
@@ -540,13 +531,12 @@ footer{background:var(--text);color:rgba(248,247,244,.4);padding:4rem;display:fl
   <div class="h-over"></div>
   <div class="h-grain"></div>
   <div class="h-content">
-    <span class="h-tag">Photographe · Vidéaste · Pilote de drone — Bordeaux · France & International</span>
+    <span class="h-tag">Photographe & Vidéaste · Pilote de drone · Bordeaux · France & International</span>
     <h1 class="h-title">
       <span class="ln"><span>L'instant</span></span>
       <span class="ln"><span>L'<em>émotion</em></span></span>
       <span class="ln"><span>L'image</span></span>
     </h1>
-    <p class="h-sub">Je crée du <strong>contenu visuel professionnel</strong> pour <strong>entreprises, agents immobiliers, conciergeries</strong> et particuliers — de votre événement, votre projet ou votre bien, jusqu'à l'image qui le met en valeur.</p>
     <div class="h-meta">
       <span>Événementiel</span>
       <div class="h-meta-sep"></div>
@@ -612,10 +602,6 @@ footer{background:var(--text);color:rgba(248,247,244,.4);padding:4rem;display:fl
         <h2 class="se-title" id="seTitle">Photo <span class="se-dash">—</span> Vidéo</h2>
         <span class="se-sub">Sport · Événementiel · Immobilier · Drone</span>
       </div>
-      <div class="se-scroll-cue">
-        <span>Défiler pour découvrir</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg>
-      </div>
     </div>
   </div>
 </section>
@@ -661,7 +647,7 @@ footer{background:var(--text);color:rgba(248,247,244,.4);padding:4rem;display:fl
       <div class="svc-body">
         <span class="svc-tag-text" data-r="up">Photo · Vidéo · Drone · HDR</span>
         <h3 class="svc-name" data-r="up" data-d="1">Immobilier</h3>
-        <p class="svc-desc" data-r="up" data-d="2">Pour <strong>agents immobiliers, conciergeries et propriétaires</strong> — photos HDR, vidéos de présentation et prises de vues aériennes pour mettre en valeur vos biens, accélérer vos ventes et vos locations.</p>
+        <p class="svc-desc" data-r="up" data-d="2">Photos HDR et vidéos de présentation pour mettre en valeur vos biens et accélérer vos ventes.</p>
         <div class="svc-links" data-r="up" data-d="3">
           <a href="portfolio.html?type=photo&cat=immobilier" class="svc-link">Voir mes réalisations immobilières</a>
           <a href="contact.html" class="svc-link svc-link-sub">Me contacter</a>
@@ -676,7 +662,7 @@ footer{background:var(--text);color:rgba(248,247,244,.4);padding:4rem;display:fl
   <div class="cta-bg">CRÉONS<br>ENSEMBLE</div>
   <span class="cta-lbl" data-r="up">Un projet en tête ?</span>
   <h2 class="cta-title" data-r="up" data-d="1">Travaillons<br><em>ensemble.</em></h2>
-  <p class="cta-sub" data-r="up" data-d="2">Entreprise, agent immobilier, conciergerie ou particulier — un événement, une compétition, un bien à valoriser ? Parlons-en.</p>
+  <p class="cta-sub" data-r="up" data-d="2">Vous avez un événement, une compétition, un bien à valoriser ? Parlons-en.</p>
   <a href="contact.html" class="cta-btn mag-btn" data-r="up" data-d="3">
     Démarrer un projet <span class="cta-arrow">→</span>
   </a>
