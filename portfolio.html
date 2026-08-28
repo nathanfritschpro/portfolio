@@ -1166,7 +1166,7 @@ function renderGrid(projects){
     el.addEventListener('mouseleave',()=>document.body.classList.remove('ch'));
   });
   // lazy clip-reveal
-  grid.querySelectorAll('.pf-col img,.vf-cover img').forEach(im=>{ im.classList.add('clip-rev'); clipObs.observe(im); });
+  grid.querySelectorAll('.pf-col img').forEach(im=>{ im.classList.add('clip-rev'); clipObs.observe(im); });
   grid.querySelectorAll('[data-r]').forEach(el=>obs.observe(el));
   collectParallax();
   parallax();
