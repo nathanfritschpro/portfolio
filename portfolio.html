@@ -393,7 +393,7 @@ body{background:var(--bg);}
   <div role="navigation" aria-label="Navigation principale">
     <ul class="hd-nav">
       <li><button type="button" aria-haspopup="true">Services <svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m2 3.5 3 3 3-3"/></svg></button>
-        <div class="hd-dd"><div class="hd-dd-in"><a href="entreprises.html"><b>Entreprises & marques</b><span>Contenus pour votre communication</span></a><a href="immobilier.html"><b>Immobilier & conciergeries</b><span>Valoriser et louer plus vite</span></a><a href="sport.html"><b>Sport</b><span>Compétitions, clubs, athlètes</span></a><a href="evenementiel.html"><b>Événementiel</b><span>Soirées, séminaires, célébrations</span></a></div></div></li>
+        <div class="hd-dd"><div class="hd-dd-in"><a href="evenementiel.html"><b>Événementiel</b><span>Soirées, séminaires, célébrations</span></a><a href="sport.html"><b>Sport</b><span>Compétitions, clubs, athlètes</span></a><a href="immobilier.html"><b>Immobilier et conciergeries</b><span>Valoriser et louer plus vite</span></a><a href="entreprises.html"><b>Entreprises et marques</b><span>Contenus pour votre communication</span></a></div></div></li>
       <li><button type="button" aria-haspopup="true">Réalisations <svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m2 3.5 3 3 3-3"/></svg></button>
         <div class="hd-dd"><div class="hd-dd-in">
           <a href="portfolio.html?type=photo"><b>Photos</b><span>Reportages et séries</span></a>
@@ -411,7 +411,7 @@ body{background:var(--bg);}
 <div class="mm" role="dialog" aria-label="Menu">
   <ul class="mm-links">
     <li><a href="index.html">Accueil</a></li>
-    <li><a href="entreprises.html">Entreprises & marques</a></li><li><a href="immobilier.html">Immobilier & conciergeries</a></li><li><a href="sport.html">Sport</a></li><li><a href="evenementiel.html">Événementiel</a></li>
+    <li><a href="evenementiel.html">Événementiel</a></li><li><a href="sport.html">Sport</a></li><li><a href="immobilier.html">Immobilier et conciergeries</a></li><li><a href="entreprises.html">Entreprises et marques</a></li>
     <li><a href="portfolio.html?type=photo">Réalisations</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
@@ -436,7 +436,7 @@ body{background:var(--bg);}
   <div class="ph-inner">
     <span class="ph-tag" data-r="up">Mes réalisations</span>
     <h1 class="ph-title" data-r="up" data-d="1">Mon<br><em>Portfolio</em></h1>
-    <p class="ph-sub" data-r="up" data-d="2">Photo & vidéo — événementiel, sport, immobilier. Chaque projet, une histoire.</p>
+    <p class="ph-sub" data-r="up" data-d="2">Photo et vidéo — événementiel, sport, immobilier. Chaque projet, une histoire.</p>
   </div>
 </div>
 
@@ -494,7 +494,7 @@ body{background:var(--bg);}
         <h3>Un projet en tête ?<br><em>Parlons-en.</em></h3>
         <a href="contact.html" class="btn light">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
       </div>
-      <div><h4>Services</h4><ul><li><a href="entreprises.html">Entreprises & marques</a></li><li><a href="immobilier.html">Immobilier & conciergeries</a></li><li><a href="sport.html">Sport</a></li><li><a href="evenementiel.html">Événementiel</a></li></ul></div>
+      <div><h4>Services</h4><ul><li><a href="evenementiel.html">Événementiel</a></li><li><a href="sport.html">Sport</a></li><li><a href="immobilier.html">Immobilier et conciergeries</a></li><li><a href="entreprises.html">Entreprises et marques</a></li></ul></div>
       <div><h4>Réalisations</h4><ul>
         <li><a href="portfolio.html?type=photo">Photos</a></li>
         <li><a href="portfolio.html?type=video">Vidéos</a></li>
@@ -509,7 +509,7 @@ body{background:var(--bg);}
     </div>
     <div class="fx-big" aria-hidden="true">Nathan Fritsch</div>
     <div class="fx-bot">
-      <span>© <span data-year>2026</span> Nathan Fritsch · Photographe &amp; vidéaste à Bordeaux</span>
+      <span>© <span data-year>2026</span> Nathan Fritsch · Photographe et vidéaste à Bordeaux</span>
       <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
     </div>
   </div>
@@ -1048,7 +1048,7 @@ const PROJECTS = [
   },
   {
     id:'video-immo-ext',
-    title:'Extérieurs & environnement',
+    title:'Extérieurs et environnement',
     subtitle:'Vidéo · Immobilier',
     cat:'immobilier', type:'video',
     tags:['Vidéo','Immobilier'],
@@ -1204,7 +1204,7 @@ function renderGrid(projects){
   parallax();
 }
 function catLabel(c){return{evenement:'Événement',sport:'Sport',immobilier:'Immobilier'}[c]||c;}
-function typeLabel(t){return{photo:'Photo',video:'Vidéo','les-deux':'Photo & Vidéo'}[t]||t;}
+function typeLabel(t){return{photo:'Photo',video:'Vidéo','les-deux':'Photo et Vidéo'}[t]||t;}
 
 // ── FILTER ──
 let activeCat='tout', activeType='les-deux';
@@ -1459,7 +1459,7 @@ document.querySelectorAll('.nav-drop-toggle').forEach(a=>a.addEventListener('cli
 // ── INIT ──
 renderGrid(PROJECTS);
 
-// apply category and/or type coming from the URL (?cat=… & ?type=photo|video)
+// apply category and/or type coming from the URL (?cat=… et ?type=photo|video)
 (function(){
   const params=new URLSearchParams(location.search);
   const cat=params.get('cat');

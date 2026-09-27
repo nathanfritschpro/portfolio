@@ -17,8 +17,8 @@ PLUS = '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width=
 MAIL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>'
 
 SERVICES = [
-    dict(slug="entreprises", cat="evenement", nav="Entreprises & marques", short="Contenus pour votre communication",
-         title="Entreprises & marques", kicker="Photo & vidéo corporate",
+    dict(slug="entreprises", cat="evenement", nav="Entreprises et marques", short="Contenus pour votre communication",
+         title="Entreprises et marques", kicker="Photo et vidéo corporate",
          h1='Des images qui donnent <em class="it-a">envie</em> de vous choisir.',
          lead="Photos et vidéos pour votre site, vos réseaux et vos clients.",
          hero="assets/img/mahi.jpg",
@@ -27,30 +27,30 @@ SERVICES = [
                  ("Portraits professionnels", "Dirigeants, équipes, collaborateurs : des portraits naturels qui humanisent votre marque."),
                  ("Film de présentation", "Une vidéo qui raconte votre activité en quelques minutes, pour votre site, vos salons ou vos rendez-vous commerciaux."),
                  ("Formats courts pour les réseaux", "Reels, stories, contenus verticaux : des vidéos rythmées, montées pour être vues."),
-                 ("Séminaires & inaugurations", "Vos temps forts d'entreprise couverts en photo et en vidéo, livrés prêts à partager.")],
+                 ("Séminaires et inaugurations", "Vos temps forts d'entreprise couverts en photo et en vidéo, livrés prêts à partager.")],
          why=[("Un seul interlocuteur", "Photo et vidéo réalisées par la même personne, le même jour si besoin. Un style homogène, une organisation simplifiée."),
               ("Pensé pour votre communication", "Je pars de vos usages (site, réseaux, print) pour livrer les bons formats, directement exploitables."),
               ("Discret et efficace", "Je m'intègre à votre activité sans la perturber, pour capter des images vraies.")],
          case=("Le Mahi Mahi", "Base nautique · Lacanau", "Reportage photo et film d'ambiance pour embellir la communication de la base et promouvoir ses excursions sur le lac.", "assets/img/mahi-3.jpg", "portfolio.html?type=photo&cat=evenement"),
          form="entreprise"),
-    dict(slug="immobilier", cat="immobilier", nav="Immobilier & conciergeries", short="Valoriser et louer plus vite",
-         title="Immobilier & conciergeries", kicker="Photo HDR & vidéo de visite",
+    dict(slug="immobilier", cat="immobilier", nav="Immobilier et conciergeries", short="Valoriser et louer plus vite",
+         title="Immobilier et conciergeries", kicker="Photo HDR et vidéo de visite",
          h1='Vos biens méritent mieux qu\'une photo de <em class="it-a">téléphone</em>.',
          lead="Photos HDR et vidéos de visite qui font cliquer sur vos annonces.",
          hero="assets/img/immo.jpg",
          gallery=["assets/img/immo-2.jpg", "assets/img/immo.jpg", "assets/img/immo-3.jpg", "assets/img/immo-4.jpg"],
          offers=[("Photographie HDR", "Des intérieurs lumineux et fidèles, sans fenêtres brûlées ni coins sombres. Chaque pièce sous son meilleur angle."),
                  ("Vidéo de visite", "Un film fluide qui fait vivre le bien et ses volumes, idéal pour les annonces et les réseaux."),
-                 ("Annonces Airbnb & Booking", "Pour les conciergeries et locations saisonnières : des photos qui convertissent et se démarquent des annonces voisines."),
+                 ("Annonces Airbnb et Booking", "Pour les conciergeries et locations saisonnières : des photos qui convertissent et se démarquent des annonces voisines."),
                  ("Formats verticaux", "Des vidéos courtes pensées pour Instagram et TikTok, pour donner de la visibilité à vos mandats."),
-                 ("Détails & ambiance", "Matériaux, décoration, extérieurs, lumière du soir : les images qui font rêver et déclenchent la visite.")],
+                 ("Détails et ambiance", "Matériaux, décoration, extérieurs, lumière du soir : les images qui font rêver et déclenchent la visite.")],
          why=[("Des annonces qui sortent du lot", "Sur un portail, la première photo décide du clic. Je la travaille comme une couverture."),
               ("Réactivité", "Je m'adapte à vos agendas de mandats et aux disponibilités des propriétaires et locataires."),
               ("Retouche soignée", "Chaque image est traitée à la main : lignes droites, couleurs justes, lumière naturelle.")],
          case=("Présentation villa", "Vidéo · Vente immobilière", "Film de présentation réalisé pour un agent immobilier afin de l'aider à vendre le bien de son client : volumes, lumière et détails mis en valeur.", "assets/img/immo-3.jpg", "portfolio.html?type=video&cat=immobilier"),
          form="immobilier"),
     dict(slug="sport", cat="sport", nav="Sport", short="Compétitions, clubs, athlètes",
-         title="Sport", kicker="Photo & vidéo sportive",
+         title="Sport", kicker="Photo et vidéo sportive",
          h1='L\'intensité d\'un geste, <em class="it-a">figée</em> pour de bon.',
          lead="Compétitions, clubs, athlètes. Tous les sports.",
          hero="assets/img/triathlon-2.jpg",
@@ -58,15 +58,15 @@ SERVICES = [
          offers=[("Couverture de compétition", "Du départ à la remise des prix : action, coulisses, public et podiums sur une ou plusieurs journées."),
                  ("Contenus pour les partenaires", "Des images qui mettent en valeur vos sponsors et vos marques partenaires, livrées aux bons formats."),
                  ("Portraits d'athlètes", "Pour vos réseaux, vos dossiers de sponsoring ou votre presse."),
-                 ("Aftermovie & vidéos récap", "Un film rythmé qui fait revivre l'événement et donne envie de revenir l'année suivante."),
-                 ("Clubs & associations", "Des images pour vos licenciés, vos réseaux et vos demandes de subventions.")],
+                 ("Aftermovie et vidéos récap", "Un film rythmé qui fait revivre l'événement et donne envie de revenir l'année suivante."),
+                 ("Clubs et associations", "Des images pour vos licenciés, vos réseaux et vos demandes de subventions.")],
          why=[("Au cœur de l'action", "Placement, anticipation, réactivité : je connais le terrain et les temps forts d'une compétition."),
               ("Du volume sans perdre la qualité", "Des centaines d'images triées et retouchées, prêtes pour vos médias."),
               ("Passionné de sport", "Je pratique et j'aime ce que je photographie. Ça se voit dans les images.")],
          case=("Lacanau Pro", "Compétition de surf · Lacanau", "Reportage photo et vidéo sur plusieurs jours de l'un des grands rendez-vous du surf : action dans l'eau, ambiance sur le sable et énergie du public.", "assets/img/lacanau-3.jpg", "portfolio.html?type=photo&cat=sport"),
          form="sport"),
     dict(slug="evenementiel", cat="evenement", nav="Événementiel", short="Soirées, séminaires, célébrations",
-         title="Événementiel", kicker="Reportage photo & film d'événement",
+         title="Événementiel", kicker="Reportage photo et film d'événement",
          h1='Votre événement se vit une fois. Les <em class="it-a">images</em> restent.',
          lead="Soirées, séminaires, lancements, mariages. Photo et film.",
          hero="assets/img/schoolcup.jpg",
@@ -74,14 +74,17 @@ SERVICES = [
          offers=[("Reportage photo", "Ambiance, invités, discours, moments spontanés : toute l'histoire de votre événement, racontée en images."),
                  ("Aftermovie", "Un film court et rythmé pour prolonger l'événement sur vos réseaux et préparer la prochaine édition."),
                  ("Photos express pour les réseaux", "Une sélection d'images livrée rapidement pour publier pendant que l'événement fait encore parler."),
-                 ("Mariages & célébrations privées", "Des souvenirs naturels et élégants, sans poses forcées."),
-                 ("Événements sportifs & associatifs", "Courses, tournois, rassemblements : l'énergie collective captée du début à la fin.")],
+                 ("Mariages et célébrations privées", "Des souvenirs naturels et élégants, sans poses forcées."),
+                 ("Événements sportifs et associatifs", "Courses, tournois, rassemblements : l'énergie collective captée du début à la fin.")],
          why=[("Discrétion", "Je me fonds dans l'événement pour capter des instants vrais, sans jamais le perturber."),
               ("Anticipation", "Je prépare le déroulé avec vous pour ne manquer aucun temps fort."),
               ("Photo + vidéo", "Les deux au même endroit, avec le même regard. Un seul contact, un résultat cohérent.")],
          case=("School Cup", "Événement sportif étudiant", "Couverture complète d'une journée de compétitions étudiantes : épreuves, cérémonies, tribunes et instants d'émotion.", "assets/img/schoolcup-2.jpg", "portfolio.html?type=photo&cat=evenement"),
          form="evenement"),
 ]
+
+
+SERVICES = [next(x for x in SERVICES if x['slug']==k) for k in ('evenementiel','sport','immobilier','entreprises')]
 
 
 def head(title, desc, extra_css="", path=""):
@@ -175,7 +178,7 @@ def footer():
     </div>
     <div class="fx-big" aria-hidden="true">Nathan Fritsch</div>
     <div class="fx-bot">
-      <span>© <span data-year>2026</span> Nathan Fritsch · Photographe &amp; vidéaste à Bordeaux</span>
+      <span>© <span data-year>2026</span> Nathan Fritsch · Photographe et vidéaste à Bordeaux</span>
       <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
     </div>
   </div>
@@ -363,17 +366,17 @@ body.ready .hero-bg{transform:scale(1.02);}
 """
 
 WHO = [
-    ("entreprises", "Entreprises<br>& marques", "Des images qui vendent votre marque.", "assets/img/mahi.jpg"),
-    ("immobilier", "Immobilier<br>& conciergeries", "Vendez et louez plus vite.", "assets/img/immo.jpg"),
-    ("sport", "Sport", "L'intensité, au plus près de l'action.", "assets/img/sport.jpg"),
     ("evenementiel", "Événementiel", "Vos moments forts, pour toujours.", "assets/img/event.jpg"),
+    ("sport", "Sport", "L'intensité, au plus près de l'action.", "assets/img/sport.jpg"),
+    ("immobilier", "Immobilier<br>et conciergeries", "Vendez et louez plus vite.", "assets/img/immo.jpg"),
+    ("entreprises", "Entreprises<br>et marques", "Des images qui vendent votre marque.", "assets/img/mahi.jpg"),
 ]
 CASES = [
+    ("School Cup", "Événement étudiant", "Une journée de compétitions, de cérémonies et d'émotion, du premier au dernier instant.", "assets/img/schoolcup.jpg", "portfolio.html?type=photo&cat=evenement", ""),
     ("Lacanau Pro", "Surf · Compétition", "Plusieurs jours au cœur d'un grand rendez-vous du surf, en photo et en vidéo.", "assets/img/lacanau.jpg", "portfolio.html?type=photo&cat=sport", ""),
     ("Triathlon de Lacanau", "Sport · 2 jours", "Départs, transitions, arrivées : toute la course documentée, jusque sur la moto photo.", "assets/img/triathlon-2.jpg", "portfolio.html?type=photo&cat=sport", "wide"),
-    ("Le Mahi Mahi", "Entreprise · Communication", "Des images pour embellir la communication d'une base nautique et vendre ses excursions.", "assets/img/mahi.jpg", "portfolio.html?type=photo&cat=evenement", "wide"),
-    ("School Cup", "Événement étudiant", "Une journée de compétitions, de cérémonies et d'émotion, du premier au dernier instant.", "assets/img/schoolcup.jpg", "portfolio.html?type=photo&cat=evenement", ""),
     ("Villa à vendre", "Immobilier · Vidéo", "Un film de présentation pour aider un agent immobilier à vendre le bien de son client.", "assets/img/immo-2.jpg", "portfolio.html?type=video&cat=immobilier", "wide"),
+    ("Le Mahi Mahi", "Entreprise · Communication", "Des images pour embellir la communication d'une base nautique et vendre ses excursions.", "assets/img/mahi.jpg", "portfolio.html?type=photo&cat=evenement", "wide"),
 ]
 FAQ = [
     ("Où intervenez-vous ?", "Je suis basé à Bordeaux et je me déplace partout en France, ainsi qu'à l'étranger. Les éventuels frais de déplacement sont indiqués clairement dans le devis."),
@@ -399,13 +402,13 @@ def index():
     biz_ld = json.dumps({"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Nathan Fritsch, photographe et vidéaste", "image": f"{SITE}/assets/img/hero.jpg", "url": SITE, "email": EMAIL, "areaServed": "France", "address": {"@type": "PostalAddress", "addressLocality": "Bordeaux", "addressCountry": "FR"}, "sameAs": [IG]}, ensure_ascii=False)
     mani = "Vous avez le projet.<br><em>Je crée les images.</em>"
 
-    return head("Nathan Fritsch · Photographe & vidéaste à Bordeaux",
+    return head("Nathan Fritsch · Photographe et vidéaste à Bordeaux",
                 "Photographe et vidéaste professionnel à Bordeaux. Photo et vidéo pour les entreprises, l'immobilier, le sport et l'événementiel, partout en France. Devis gratuit.",
                 INDEX_CSS) + f"""<body class="dark-top">
 <div class="intro" aria-hidden="true"><div class="intro-in">
   <div class="intro-name"><span>Nathan Fritsch</span></div>
   <div class="intro-bar"></div>
-  <div class="intro-sub">Photographe &amp; vidéaste</div>
+  <div class="intro-sub">Photographe et vidéaste</div>
 </div></div>
 {header()}
 <main>
@@ -415,10 +418,10 @@ def index():
     <div class="hero-grid">
       <div>
         <span class="eyebrow" data-rv>Bordeaux · Partout en France</span>
-        <h1 class="d1 split">Photographe &amp; vidéaste <span class="sm">L'instant, l'émotion, l'image.</span></h1>
+        <h1 class="d1 split">Photographe et vidéaste <span class="sm">L'instant, l'émotion, l'image.</span></h1>
       </div>
       <div class="hero-side">
-        <p data-rv style="--dl:.35s">Marques, immobilier, sport, événements.<br>Des images qui font la différence.</p>
+        <p data-rv style="--dl:.35s">Événements, sport, immobilier, marques.<br>Des images qui font la différence.</p>
         <div class="hero-actions" data-rv style="--dl:.5s">
           <a href="contact.html" class="btn light big">Demander un devis <span class="ar">{ARROW}</span></a>
           <a href="#realisations" class="link" style="color:#fff">Voir les réalisations {ARR_R}</a>
@@ -427,7 +430,7 @@ def index():
     </div>
     <div class="hero-bar" data-rv style="--dl:.65s">
       <div class="hero-tags">
-        <a href="entreprises.html">Entreprises</a><a href="immobilier.html">Immobilier</a><a href="sport.html">Sport</a><a href="evenementiel.html">Événementiel</a>
+        <a href="evenementiel.html">Événementiel</a><a href="sport.html">Sport</a><a href="immobilier.html">Immobilier</a><a href="entreprises.html">Entreprises</a>
       </div>
       <div class="hero-scroll"><i></i>Défiler</div>
     </div>
@@ -440,7 +443,7 @@ def index():
   <div class="wrap">
     <p class="mani-txt" id="mani">{mani}</p>
     <div class="mani-row">
-      <div data-rv><b>Photo &amp; vidéo</b><span>Un seul interlocuteur</span></div>
+      <div data-rv><b>Photo et vidéo</b><span>Un seul interlocuteur</span></div>
       <div data-rv style="--dl:.1s"><b>Réponse sous 24 h</b><span>Devis gratuit</span></div>
       <div data-rv style="--dl:.2s"><b>Partout en France</b><span>Basé à Bordeaux</span></div>
     </div>
@@ -454,8 +457,8 @@ def index():
       <div class="se-shade"></div>
       <div class="se-head">
         <span class="se-tag">Deux savoir-faire, un seul regard</span>
-        <h2 class="se-title" id="seTitle">Photo <em>&amp;</em> Vidéo</h2>
-        <span class="se-sub">Entreprises · Immobilier · Sport · Événementiel</span>
+        <h2 class="se-title" id="seTitle">Photo <em>et</em> Vidéo</h2>
+        <span class="se-sub">Événementiel · Sport · Immobilier · Entreprises</span>
       </div>
       <div class="se-scroll-cue" id="seCue">
         <span>Défiler pour découvrir</span>
@@ -484,7 +487,7 @@ def index():
       {cases}
       <a href="portfolio.html?type=photo" class="case-all" data-cursor="Explorer">
         <b>Tout le <em>portfolio</em></b>
-        <span><span>Photos &amp; vidéos</span><span class="case-ar">{ARROW}</span></span>
+        <span><span>Photos et vidéos</span><span class="case-ar">{ARROW}</span></span>
       </a>
     </div>
     <div class="wrap"><div class="work-prog"><i id="wProg"></i></div></div>
@@ -509,12 +512,14 @@ def index():
   <div class="wrap about">
     <div class="about-img imgrv" data-cursor="Nathan">
       <img src="assets/img/about.jpg" alt="Portrait de Nathan Fritsch, photographe et vidéaste à Bordeaux" loading="lazy">
-      <div class="about-badge"><b>Nathan Fritsch</b>Photographe &amp; vidéaste · Bordeaux</div>
+      <div class="about-badge"><b>Nathan Fritsch</b>Photographe et vidéaste · Bordeaux</div>
     </div>
     <div class="about-txt">
       <h2 class="d2 split">Enchanté, <em class="it-a">moi c'est Nathan.</em></h2>
-      <p data-rv>Photographe et vidéaste à Bordeaux. Je saisis <strong>l'intensité d'un geste et l'émotion d'un instant.</strong></p>
-      <p class="about-q" data-rv>« Toujours faire de son mieux, même quand personne ne regarde. »</p>
+      <p data-rv>Jeune photographe et vidéaste basé à Bordeaux — disponible partout en France et à l'étranger pour accompagner mes clients.</p>
+      <p data-rv>Tout a commencé il y a trois ans, avec le premier appareil de mon père — et depuis, l'image ne m'a plus lâché. Je me consacre surtout au sport et à l'événementiel, sans oublier l'immobilier : des univers où je cherche à saisir <strong>l'intensité d'un geste et l'émotion d'un instant</strong>.</p>
+      <p data-rv>Ce qui me guide, c'est le regard — cette façon de voir et de raconter qui rend chaque image unique. J'avance avec une idée simple : <strong>toujours faire de son mieux, même quand personne ne regarde</strong>.</p>
+      <p class="about-q" data-rv>Figez l'instant, capturez l'émotion.</p>
       <div class="about-sig" data-rv><a href="contact.html" class="btn light">Travaillons ensemble <span class="ar">{ARROW}</span></a></div>
     </div>
   </div>
@@ -594,7 +599,7 @@ def service(s):
     others = "".join(f'<a href="{o["slug"]}.html" class="other" data-cursor="Découvrir"><img src="{o["hero"]}" alt="" loading="lazy"><b>{o["nav"]} {ARROW}</b></a>' for o in SERVICES if o is not s)
     cname, ctag, cdesc, cimg, clink = s["case"]
     plain_h1 = s["h1"].replace('<em class="it-a">', "").replace("</em>", "")
-    return head(f"{s['title']} · Photographe & vidéaste à Bordeaux · Nathan Fritsch",
+    return head(f"{s['title']} · Photographe et vidéaste à Bordeaux · Nathan Fritsch",
                 f"{s['kicker']} à Bordeaux et partout en France. {s['lead'][:120]}",
                 SVC_CSS, f"{s['slug']}") + f"""<body class="dark-top">
 {header()}
@@ -739,7 +744,7 @@ FORM_TYPES = [("entreprise", "Entreprise / marque", "Communication, réseaux, po
 def contact():
     types = "".join(f'<div class="opt"><input type="radio" name="type_projet" id="t-{k}" value="{t}" data-k="{k}"><label for="t-{k}"><b>{t}</b><span>{d}</span></label></div>' for k, t, d in FORM_TYPES)
     need = "".join(f'<div class="opt"><input type="radio" name="besoin" id="n{i}" value="{v}"><label for="n{i}"><b>{v}</b></label></div>' for i, v in enumerate(["Photo", "Vidéo", "Photo + vidéo", "Je ne sais pas encore"]))
-    return head("Contact & devis · Nathan Fritsch, photographe & vidéaste à Bordeaux",
+    return head("Contact et devis · Nathan Fritsch, photographe et vidéaste à Bordeaux",
                 "Demandez un devis gratuit pour votre projet photo ou vidéo à Bordeaux et partout en France. Réponse sous 24 h.",
                 CONTACT_CSS, "contact") + f"""<body class="dark-top">
 {header('contact')}
