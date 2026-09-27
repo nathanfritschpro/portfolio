@@ -113,7 +113,7 @@ def head(title, desc, extra_css="", path=""):
 
 def header(active=""):
     svc_dd = "".join(f'<a href="{s["slug"]}.html"><b>{s["nav"]}</b><span>{s["short"]}</span></a>' for s in SERVICES)
-    mm_svc = "".join(f'<li><a href="{s["slug"]}.html">{s["nav"]}</a></li>' for i, s in enumerate(SERVICES))
+    mm_svc = "".join(f'<a href="{s["slug"]}.html">{s["nav"]}</a>' for s in SERVICES)
     on = lambda k: ' class="on"' if active == k else ""
     return f"""<header class="hd">
   <a href="index.html" class="hd-logo" aria-label="Nathan Fritsch, accueil"><b>Nathan Fritsch</b><small>Photo · Vidéo · Bordeaux</small></a>
@@ -136,12 +136,17 @@ def header(active=""):
   </div>
 </header>
 <div class="mm" role="dialog" aria-label="Menu">
-  <ul class="mm-links">
-    <li><a href="index.html">Accueil</a></li>
-    {mm_svc}
-    <li><a href="portfolio.html?type=photo">Réalisations</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
+  <div class="mm-nav" role="navigation" aria-label="Menu mobile">
+    <div class="mm-g">
+      <button type="button" class="mm-t" aria-expanded="false">Services<span class="mm-pl"></span></button>
+      <div class="mm-sub"><div>{mm_svc}</div></div>
+    </div>
+    <div class="mm-g">
+      <button type="button" class="mm-t" aria-expanded="false">Réalisations<span class="mm-pl"></span></button>
+      <div class="mm-sub"><div><a href="portfolio.html?type=photo">Photos</a><a href="portfolio.html?type=video">Vidéos</a></div></div>
+    </div>
+    <div class="mm-g"><a href="contact.html" class="mm-t">Contact</a></div>
+  </div>
   <div class="mm-foot">
     <a href="contact.html" class="btn light">Demander un devis <span class="ar">{ARROW}</span></a>
     <p><a href="mailto:{EMAIL}">{EMAIL}</a> · <a href="{IG}" target="_blank" rel="noopener">Instagram</a></p>

@@ -81,7 +81,7 @@
 
   /* ── Mobile menu ── */
   const burger=document.querySelector('.hd-burger');
-  function closeMenu(){ body.classList.remove('menu-open'); burger&&burger.setAttribute('aria-expanded','false'); lenis&&lenis.start(); }
+  function closeMenu(){ body.classList.remove('menu-open'); document.querySelectorAll('.mm-g.open').forEach(x=>{x.classList.remove('open');x.querySelector('.mm-t').setAttribute('aria-expanded','false');}); burger&&burger.setAttribute('aria-expanded','false'); lenis&&lenis.start(); }
   burger&&burger.addEventListener('click',()=>{
     const on=!body.classList.contains('menu-open');
     body.classList.toggle('menu-open',on);
@@ -90,6 +90,12 @@
     on?(lenis&&lenis.stop()):(lenis&&lenis.start());
   });
   addEventListener('keydown',e=>{ if(e.key==='Escape') closeMenu(); });
+  // Menu mobile : sous-menus repliés, un seul ouvert à la fois
+  document.querySelectorAll('.mm-g button.mm-t').forEach(b=>b.addEventListener('click',()=>{
+    const g=b.closest('.mm-g'), open=!g.classList.contains('open');
+    document.querySelectorAll('.mm-g.open').forEach(x=>{x.classList.remove('open');x.querySelector('.mm-t').setAttribute('aria-expanded','false');});
+    g.classList.toggle('open',open); b.setAttribute('aria-expanded',open);
+  }));
 
   /* ── Split headings into words ── */
   document.querySelectorAll('.split').forEach(el=>{
