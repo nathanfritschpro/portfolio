@@ -39,7 +39,7 @@
     if(cur===3){
       const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
       const bits=[val('besoin'),val('date'),val('lieu')].filter(Boolean).map(esc).join(' · ');
-      recap.innerHTML=`<b>${esc(val('type_projet'))}</b> · ${bits}${val('budget')?'<br>Budget : '+esc(val('budget')):''}`;
+      recap.innerHTML=`<b>${esc(val('type_projet'))}</b> · ${bits}`;
     }
     const top=form.closest('.ct-r').getBoundingClientRect().top+scrollY-20;
     if(scrollY>top) (window.__lenis?window.__lenis.scrollTo(top):scrollTo({top,behavior:'smooth'}));

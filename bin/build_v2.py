@@ -20,7 +20,7 @@ SERVICES = [
     dict(slug="entreprises", cat="evenement", nav="Entreprises & marques", short="Contenus pour votre communication",
          title="Entreprises & marques", kicker="Photo & vidéo corporate",
          h1='Des images qui donnent <em class="it-a">envie</em> de vous choisir.',
-         lead="Site internet, réseaux sociaux, présentation commerciale : je crée des photos et des vidéos à votre image, pensées pour faire connaître votre activité et donner confiance à vos clients.",
+         lead="Photos et vidéos pour votre site, vos réseaux et vos clients.",
          hero="assets/img/mahi.jpg",
          gallery=["assets/img/mahi-2.jpg", "assets/img/mahi.jpg", "assets/img/mahi-3.jpg", "assets/img/event.jpg"],
          offers=[("Photos pour votre site et vos réseaux", "Vos lieux, vos produits, vos équipes et vos clients en situation. Un stock d'images cohérent pour communiquer toute l'année."),
@@ -36,7 +36,7 @@ SERVICES = [
     dict(slug="immobilier", cat="immobilier", nav="Immobilier & conciergeries", short="Valoriser et louer plus vite",
          title="Immobilier & conciergeries", kicker="Photo HDR & vidéo de visite",
          h1='Vos biens méritent mieux qu\'une photo de <em class="it-a">téléphone</em>.',
-         lead="Agents immobiliers, conciergeries, propriétaires : des photos lumineuses et des vidéos de visite qui font ressortir chaque bien dans les annonces, pour vendre ou louer plus vite.",
+         lead="Photos HDR et vidéos de visite qui font cliquer sur vos annonces.",
          hero="assets/img/immo.jpg",
          gallery=["assets/img/immo-2.jpg", "assets/img/immo.jpg", "assets/img/immo-3.jpg", "assets/img/immo-4.jpg"],
          offers=[("Photographie HDR", "Des intérieurs lumineux et fidèles, sans fenêtres brûlées ni coins sombres. Chaque pièce sous son meilleur angle."),
@@ -52,7 +52,7 @@ SERVICES = [
     dict(slug="sport", cat="sport", nav="Sport", short="Compétitions, clubs, athlètes",
          title="Sport", kicker="Photo & vidéo sportive",
          h1='L\'intensité d\'un geste, <em class="it-a">figée</em> pour de bon.',
-         lead="Compétitions, clubs, organisateurs, athlètes : je capture l'adrénaline au plus près de l'action pour vos médias, vos partenaires et vos souvenirs. Surf, ski, triathlon, golf, et tous les autres sports.",
+         lead="Compétitions, clubs, athlètes. Tous les sports.",
          hero="assets/img/triathlon-2.jpg",
          gallery=["assets/img/lacanau.jpg", "assets/img/sport.jpg", "assets/img/surf.jpg", "assets/img/ski.jpg"],
          offers=[("Couverture de compétition", "Du départ à la remise des prix : action, coulisses, public et podiums sur une ou plusieurs journées."),
@@ -68,7 +68,7 @@ SERVICES = [
     dict(slug="evenementiel", cat="evenement", nav="Événementiel", short="Soirées, séminaires, célébrations",
          title="Événementiel", kicker="Reportage photo & film d'événement",
          h1='Votre événement se vit une fois. Les <em class="it-a">images</em> restent.',
-         lead="Soirées d'entreprise, séminaires, lancements, mariages, anniversaires, événements sportifs ou associatifs : je documente vos moments forts avec précision et émotion.",
+         lead="Soirées, séminaires, lancements, mariages. Photo et film.",
          hero="assets/img/schoolcup.jpg",
          gallery=["assets/img/event.jpg", "assets/img/schoolcup-2.jpg", "assets/img/triathlon.jpg", "assets/img/mahi-2.jpg"],
          offers=[("Reportage photo", "Ambiance, invités, discours, moments spontanés : toute l'histoire de votre événement, racontée en images."),
@@ -110,7 +110,7 @@ def head(title, desc, extra_css="", path=""):
 
 def header(active=""):
     svc_dd = "".join(f'<a href="{s["slug"]}.html"><b>{s["nav"]}</b><span>{s["short"]}</span></a>' for s in SERVICES)
-    mm_svc = "".join(f'<li><a href="{s["slug"]}.html"><small>0{i+2}</small>{s["nav"]}</a></li>' for i, s in enumerate(SERVICES))
+    mm_svc = "".join(f'<li><a href="{s["slug"]}.html">{s["nav"]}</a></li>' for i, s in enumerate(SERVICES))
     on = lambda k: ' class="on"' if active == k else ""
     return f"""<header class="hd">
   <a href="index.html" class="hd-logo" aria-label="Nathan Fritsch, accueil"><b>Nathan Fritsch</b><small>Photo · Vidéo · Bordeaux</small></a>
@@ -134,10 +134,10 @@ def header(active=""):
 </header>
 <div class="mm" role="dialog" aria-label="Menu">
   <ul class="mm-links">
-    <li><a href="index.html"><small>01</small>Accueil</a></li>
+    <li><a href="index.html">Accueil</a></li>
     {mm_svc}
-    <li><a href="portfolio.html?type=photo"><small>06</small>Réalisations</a></li>
-    <li><a href="contact.html"><small>07</small>Contact</a></li>
+    <li><a href="portfolio.html?type=photo">Réalisations</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
   <div class="mm-foot">
     <a href="contact.html" class="btn light">Demander un devis <span class="ar">{ARROW}</span></a>
@@ -183,23 +183,21 @@ def footer():
 """
 
 
-SCRIPTS = """<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
-<script src="assets/site.js" defer></script>
+SCRIPTS = """<script src="assets/site.js" defer></script>
 """
 
 
-def cta_end(img, title='Un projet ?<br><em class="it-a">Parlons-en.</em>', text="Racontez-moi votre besoin en deux minutes. Je vous réponds sous 24 h avec des idées et un devis gratuit, sans engagement.", q=""):
+def cta_end(img, title='Un projet ?<br><em class="it-a">Parlons-en.</em>', text="Devis gratuit. Réponse sous 24 h.", q=""):
     return f"""<section class="cta-end">
   <div class="cta-end-bg" style="background-image:url('{img}')" data-px=".12"></div>
   <div class="wrap">
-    <span class="eyebrow lt" data-rv>Devis gratuit · Réponse sous 24 h</span>
     <h2 class="d1 split">{title}</h2>
     <p data-rv style="--dl:.2s">{text}</p>
     <div class="cta-end-actions" data-rv style="--dl:.3s">
       <a href="contact.html{q}" class="btn light big">Demander un devis <span class="ar">{ARROW}</span></a>
       <a href="{CAL}" target="_blank" rel="noopener" class="btn ghost-l big">Réserver un appel <span class="ar">{ARROW}</span></a>
     </div>
-    <div class="cta-end-meta" data-rv style="--dl:.4s"><span>Ou directement :</span><a href="mailto:{EMAIL}">{EMAIL}</a></div>
+    <div class="cta-end-meta" data-rv style="--dl:.4s"><a href="mailto:{EMAIL}">{EMAIL}</a></div>
   </div>
 </section>
 """
@@ -215,7 +213,7 @@ body.ready .hero-bg{transform:scale(1.02);}
 .hero-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:4rem;align-items:end;}
 .hero .eyebrow{color:var(--a-xl);margin-bottom:1.6rem;}
 .hero h1{max-width:11ch;}
-.hero h1 .sm{display:block;font-size:.34em;font-style:italic;font-weight:340;letter-spacing:-.01em;color:var(--a-l);margin-top:.55em;line-height:1.1;}
+.hero h1 .sm{display:block;font-size:.34em;font-style:normal;font-weight:450;letter-spacing:-.01em;color:var(--a-l);margin-top:.55em;line-height:1.1;}
 .hero-side{display:flex;flex-direction:column;gap:2rem;padding-bottom:.6rem;}
 .hero-side p{color:rgba(255,255,255,.78);font-weight:300;font-size:clamp(1rem,1.2vw,1.12rem);line-height:1.75;max-width:30em;}
 .hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.4rem 2rem;}
@@ -230,14 +228,14 @@ body.ready .hero-bg{transform:scale(1.02);}
 .hero [data-hold] [data-rv],.hero [data-hold] .split{transition-delay:calc(var(--dl,0s) + .15s);}
 
 /* manifesto */
-.mani{padding:clamp(6rem,13vw,11rem) 0 clamp(5rem,9vw,8rem);}
-.mani-txt{font-family:var(--serif);font-weight:370;font-size:clamp(1.9rem,4.1vw,4.2rem);line-height:1.12;letter-spacing:-.02em;max-width:22ch;}
+.mani{padding:clamp(5rem,10vw,9rem) 0 clamp(4rem,7vw,6rem);}
+.mani-txt{font-family:var(--serif);font-weight:450;font-size:clamp(2.6rem,7vw,7.4rem);line-height:1;letter-spacing:-.03em;}
 .mani-txt .mw{opacity:.14;transition:opacity .35s linear;}
 .mani-txt .mw.lit{opacity:1;}
-.mani-txt em{font-style:italic;color:var(--a);}
+.mani-txt em{font-style:normal;color:var(--a);}
 .mani-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:clamp(3.5rem,7vw,6rem);padding-top:2.2rem;border-top:1px solid var(--line);}
 .mani-row div{display:flex;flex-direction:column;gap:.5rem;}
-.mani-row b{font-family:var(--serif);font-weight:420;font-size:1.3rem;}
+.mani-row b{font-family:var(--serif);font-weight:450;font-size:clamp(1.3rem,1.8vw,1.7rem);}
 .mani-row span{color:var(--mute);font-weight:300;font-size:.95rem;line-height:1.65;}
 .mani-row small{font-size:.66rem;letter-spacing:.2em;color:var(--a);font-weight:600;}
 
@@ -249,8 +247,8 @@ body.ready .hero-bg{transform:scale(1.02);}
 .se-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,15,16,.8) 0%,rgba(13,15,16,.25) 45%,rgba(13,15,16,.45) 100%);}
 .se-head{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:2rem;}
 .se-tag{font-size:.7rem;font-weight:500;letter-spacing:.34em;text-transform:uppercase;color:var(--a-xl);margin-bottom:1.2rem;}
-.se-title{font-family:var(--serif);font-weight:380;font-size:64px;line-height:1;letter-spacing:-.025em;white-space:nowrap;}
-.se-title em{font-style:italic;font-weight:320;color:var(--a-l);}
+.se-title{font-family:var(--serif);font-weight:450;font-size:64px;line-height:1;letter-spacing:-.025em;white-space:nowrap;}
+.se-title em{font-style:normal;font-weight:450;color:var(--a-l);}
 .se-sub{margin-top:1.6rem;font-size:clamp(.66rem,1.1vw,.84rem);letter-spacing:.26em;text-transform:uppercase;opacity:0;padding:.65rem 1.4rem;border:1px solid rgba(255,255,255,.3);border-radius:40px;background:rgba(255,255,255,.07);backdrop-filter:blur(6px);}
 .se-scroll-cue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(255,255,255,.88);z-index:5;animation:scB 2.2s ease infinite;transition:opacity .4s;}
 .se-scroll-cue span{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;font-weight:500;}
@@ -298,8 +296,8 @@ body.ready .hero-bg{transform:scale(1.02);}
 .case:hover .case-ar{background:var(--bone);color:var(--ink);transform:rotate(-45deg);}
 .case-all{flex:none;width:clamp(260px,26vw,380px);height:min(58vh,560px);border-radius:14px;border:1px solid var(--line-d);display:flex;flex-direction:column;justify-content:space-between;padding:2rem;text-decoration:none;color:var(--bone);transition:background .5s,color .5s;}
 .case-all:hover{background:var(--bone);color:var(--ink);}
-.case-all b{font-family:var(--serif);font-weight:380;font-size:clamp(1.8rem,2.6vw,2.6rem);line-height:1.05;letter-spacing:-.015em;}
-.case-all b em{font-style:italic;color:var(--a-l);}
+.case-all b{font-family:var(--serif);font-weight:450;font-size:clamp(1.8rem,2.6vw,2.6rem);line-height:1.05;letter-spacing:-.015em;}
+.case-all b em{font-style:normal;color:var(--a-l);}
 .case-all:hover b em{color:var(--a);}
 .case-all span{display:flex;gap:1rem;flex-direction:column;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;}
 .work-prog{height:1px;background:var(--line-d);position:relative;}
@@ -311,7 +309,7 @@ body.ready .hero-bg{transform:scale(1.02);}
 .steps{list-style:none;counter-reset:s;}
 .step{display:grid;grid-template-columns:auto 1fr;gap:2rem;padding:2.6rem 0;border-top:1px solid var(--line);}
 .step:last-child{border-bottom:1px solid var(--line);}
-.step-n{font-family:var(--serif);font-style:italic;font-weight:320;font-size:clamp(3rem,5vw,4.6rem);line-height:.8;color:var(--a);min-width:1.6em;}
+.step-n{font-family:var(--serif);font-style:normal;font-weight:450;font-size:clamp(3rem,5vw,4.6rem);line-height:.8;color:var(--a);min-width:1.6em;}
 .step h3{font-family:var(--serif);font-weight:420;font-size:clamp(1.4rem,2vw,1.9rem);margin-bottom:.8rem;letter-spacing:-.01em;}
 .step p{color:var(--mute);font-weight:300;line-height:1.8;}
 .step ul{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.1rem;}
@@ -326,9 +324,9 @@ body.ready .hero-bg{transform:scale(1.02);}
 .about-txt{display:flex;flex-direction:column;gap:1.7rem;}
 .about-txt p{color:var(--mute-d);font-weight:300;line-height:1.85;font-size:1.02rem;max-width:36em;}
 .about-txt p strong{color:var(--bone);font-weight:500;}
-.about-q{font-family:var(--serif);font-style:italic;font-weight:340;font-size:clamp(1.4rem,2.2vw,2rem);line-height:1.3;color:var(--bone);padding-left:1.4rem;border-left:1px solid var(--a-l);}
+.about-q{font-family:var(--serif);font-style:normal;font-weight:450;font-size:clamp(1.4rem,2.2vw,2rem);line-height:1.3;color:var(--bone);padding-left:1.4rem;border-left:1px solid var(--a-l);}
 .about-sig{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;margin-top:.6rem;}
-.about-sig span{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--a-l);}
+.about-sig span{font-family:var(--serif);font-style:normal;font-size:1.5rem;color:var(--a-l);}
 
 /* faq */
 .faq-wrap{display:grid;grid-template-columns:1fr 1.6fr;gap:clamp(3rem,7vw,7rem);}
@@ -365,10 +363,10 @@ body.ready .hero-bg{transform:scale(1.02);}
 """
 
 WHO = [
-    ("entreprises", "Entreprises<br>& marques", "Site, réseaux, présentations : des images qui donnent envie de vous choisir.", "assets/img/mahi.jpg"),
-    ("immobilier", "Immobilier<br>& conciergeries", "Photos HDR et vidéos de visite pour vendre et louer plus vite.", "assets/img/immo.jpg"),
-    ("sport", "Sport", "Compétitions, clubs, athlètes : l'intensité captée au plus près de l'action.", "assets/img/sport.jpg"),
-    ("evenementiel", "Événementiel", "Soirées, séminaires, célébrations : vos moments forts, racontés en images.", "assets/img/event.jpg"),
+    ("entreprises", "Entreprises<br>& marques", "Des images qui vendent votre marque.", "assets/img/mahi.jpg"),
+    ("immobilier", "Immobilier<br>& conciergeries", "Vendez et louez plus vite.", "assets/img/immo.jpg"),
+    ("sport", "Sport", "L'intensité, au plus près de l'action.", "assets/img/sport.jpg"),
+    ("evenementiel", "Événementiel", "Vos moments forts, pour toujours.", "assets/img/event.jpg"),
 ]
 CASES = [
     ("Lacanau Pro", "Surf · Compétition", "Plusieurs jours au cœur d'un grand rendez-vous du surf, en photo et en vidéo.", "assets/img/lacanau.jpg", "portfolio.html?type=photo&cat=sport", ""),
@@ -390,17 +388,16 @@ FAQ = [
 def index():
     who = "".join(f"""<a href="{s}.html" class="who-p" data-cursor="Découvrir" data-rv style="--dl:{i*.08:.2f}s">
         <img src="{img}" alt="" loading="lazy" decoding="async">
-        <span class="who-n">0{i+1}</span>
         <div class="who-b"><h3 class="who-t">{t}</h3><p class="who-d">{d}</p><span class="who-go"><span>{ARROW}</span>Découvrir</span></div>
       </a>""" for i, (s, t, d, img) in enumerate(WHO))
     cases = "".join(f"""<a href="{href}" class="case {cls}" data-cursor="Voir">
           <div class="case-img"><img src="{img}" alt="{t}" loading="lazy" decoding="async"><span class="case-tag">{tag}</span></div>
-          <div class="case-meta"><div><h3>{t}</h3><p>{d}</p></div><span class="case-ar">{ARROW}</span></div>
+          <div class="case-meta"><div><h3>{t}</h3></div><span class="case-ar">{ARROW}</span></div>
         </a>""" for (t, tag, d, img, href, cls) in CASES)
     faq = "".join(f'<details><summary>{q}<span class="pl">{PLUS}</span></summary><div class="ans">{a}</div></details>' for q, a in FAQ)
     faq_ld = json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]}, ensure_ascii=False)
     biz_ld = json.dumps({"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Nathan Fritsch, photographe et vidéaste", "image": f"{SITE}/assets/img/hero.jpg", "url": SITE, "email": EMAIL, "areaServed": "France", "address": {"@type": "PostalAddress", "addressLocality": "Bordeaux", "addressCountry": "FR"}, "sameAs": [IG]}, ensure_ascii=False)
-    mani = "Un événement à faire vivre, un bien à vendre, une marque à faire connaître. Mon métier : transformer votre besoin en <em>images qui travaillent pour vous.</em>"
+    mani = "Vous avez le projet.<br><em>Je crée les images.</em>"
 
     return head("Nathan Fritsch · Photographe & vidéaste à Bordeaux",
                 "Photographe et vidéaste professionnel à Bordeaux. Photo et vidéo pour les entreprises, l'immobilier, le sport et l'événementiel, partout en France. Devis gratuit.",
@@ -421,7 +418,7 @@ def index():
         <h1 class="d1 split">Photographe &amp; vidéaste <span class="sm">L'instant, l'émotion, l'image.</span></h1>
       </div>
       <div class="hero-side">
-        <p data-rv style="--dl:.35s">Je transforme vos événements, vos lieux et vos projets en contenus photo et vidéo professionnels, prêts à publier, à vendre et à partager.</p>
+        <p data-rv style="--dl:.35s">Marques, immobilier, sport, événements.<br>Des images qui font la différence.</p>
         <div class="hero-actions" data-rv style="--dl:.5s">
           <a href="contact.html" class="btn light big">Demander un devis <span class="ar">{ARROW}</span></a>
           <a href="#realisations" class="link" style="color:#fff">Voir les réalisations {ARR_R}</a>
@@ -441,12 +438,11 @@ def index():
 
 <section class="mani">
   <div class="wrap">
-    <span class="eyebrow" data-rv>Ce que je fais</span>
-    <p class="mani-txt" id="mani" style="margin-top:2rem">{mani}</p>
+    <p class="mani-txt" id="mani">{mani}</p>
     <div class="mani-row">
-      <div data-rv><small>01</small><b>Photo &amp; vidéo</b><span>Un seul interlocuteur pour vos images et vos films, avec le même regard.</span></div>
-      <div data-rv style="--dl:.1s"><small>02</small><b>Réponse sous 24 h</b><span>Un échange rapide, des idées concrètes et un devis gratuit, sans engagement.</span></div>
-      <div data-rv style="--dl:.2s"><small>03</small><b>Bordeaux &amp; au-delà</b><span>Basé à Bordeaux, je me déplace partout en France et à l'étranger.</span></div>
+      <div data-rv><b>Photo &amp; vidéo</b><span>Un seul interlocuteur</span></div>
+      <div data-rv style="--dl:.1s"><b>Réponse sous 24 h</b><span>Devis gratuit</span></div>
+      <div data-rv style="--dl:.2s"><b>Partout en France</b><span>Basé à Bordeaux</span></div>
     </div>
   </div>
 </section>
@@ -472,8 +468,7 @@ def index():
 <section class="sec" id="services" style="padding-top:clamp(3rem,6vw,5rem)">
   <div class="wrap">
     <div class="who-head">
-      <div><span class="eyebrow" data-rv>Pour qui ?</span><h2 class="d2 split" style="margin-top:1.4rem">Un besoin, <em class="it-a">des images</em> sur mesure.</h2></div>
-      <p class="lead" data-rv>Chaque secteur a ses codes. Je m'adapte à vos objectifs pour livrer des contenus qui servent vraiment votre communication.</p>
+      <h2 class="d2 split">Quel est <em class="it-a">votre projet ?</em></h2>
     </div>
     <div class="who">{who}</div>
   </div>
@@ -482,7 +477,7 @@ def index():
 <section class="work" id="realisations">
   <div class="work-pin">
     <div class="wrap work-top">
-      <div><span class="eyebrow lt" data-rv>Réalisations</span><h2 class="d2 split" style="margin-top:1.2rem">Projets <em class="it-a">récents</em></h2></div>
+      <h2 class="d2 split">Derniers <em class="it-a">projets</em></h2>
       <div class="work-count" data-rv><b id="wcN">01</b> / 0{len(CASES)}</div>
     </div>
     <div class="work-track" id="wTrack">
@@ -499,15 +494,13 @@ def index():
 <section class="sec bone">
   <div class="wrap method">
     <div class="method-l">
-      <span class="eyebrow" data-rv>Comment ça marche</span>
-      <h2 class="d2 split">Simple, du premier message à la <em class="it-a">livraison.</em></h2>
-      <p class="lead" data-rv>Vous savez à chaque étape ce qui se passe et ce que vous allez recevoir.</p>
+      <h2 class="d2 split">3 étapes. <em class="it-a">C'est tout.</em></h2>
       <div data-rv><a href="contact.html" class="btn">Démarrer mon projet <span class="ar">{ARROW}</span></a></div>
     </div>
     <ol class="steps">
-      <li class="step" data-rv><span class="step-n">01</span><div><h3>On échange</h3><p>Vous me présentez votre projet par le formulaire ou lors d'un appel gratuit. On définit ensemble vos objectifs, vos usages et votre calendrier. Je vous envoie un devis clair.</p><ul><li>Appel gratuit</li><li>Devis détaillé</li></ul></div></li>
-      <li class="step" data-rv><span class="step-n">02</span><div><h3>Je réalise</h3><p>Le jour J, je m'occupe de tout : repérage, lumière, cadrage. Discret et réactif, je capte les images dont vous avez besoin sans perturber votre activité.</p><ul><li>Photo</li><li>Vidéo</li><li>Sur place</li></ul></div></li>
-      <li class="step" data-rv><span class="step-n">03</span><div><h3>Je livre</h3><p>Photos sélectionnées et retouchées, vidéos montées et étalonnées, exportées aux bons formats pour votre site, vos réseaux ou vos supports imprimés.</p><ul><li>Retouche</li><li>Montage</li><li>Formats web &amp; réseaux</li></ul></div></li>
+      <li class="step" data-rv><span class="step-n">01</span><div><h3>On échange</h3><p>Appel gratuit, devis clair.</p></div></li>
+      <li class="step" data-rv><span class="step-n">02</span><div><h3>Je réalise</h3><p>Sur place, discret, efficace.</p></div></li>
+      <li class="step" data-rv><span class="step-n">03</span><div><h3>Je livre</h3><p>Prêt pour le web, les réseaux et l'impression.</p></div></li>
     </ol>
   </div>
 </section>
@@ -519,25 +512,11 @@ def index():
       <div class="about-badge"><b>Nathan Fritsch</b>Photographe &amp; vidéaste · Bordeaux</div>
     </div>
     <div class="about-txt">
-      <span class="eyebrow lt" data-rv>À propos</span>
-      <h2 class="d2 split">Derrière <em class="it-a">l'objectif.</em></h2>
-      <p data-rv>Tout a commencé avec le premier appareil de mon père. Depuis, l'image ne m'a plus lâché. Aujourd'hui, j'accompagne <strong>entreprises, agents immobiliers, conciergeries, organisateurs et particuliers</strong> qui veulent des images à la hauteur de leurs projets.</p>
-      <p data-rv>Sport, événementiel, immobilier : des univers différents, une même exigence. Saisir <strong>l'intensité d'un geste et l'émotion d'un instant</strong>, et livrer des contenus qui servent vraiment vos objectifs.</p>
+      <h2 class="d2 split">Enchanté, <em class="it-a">moi c'est Nathan.</em></h2>
+      <p data-rv>Photographe et vidéaste à Bordeaux. Je saisis <strong>l'intensité d'un geste et l'émotion d'un instant.</strong></p>
       <p class="about-q" data-rv>« Toujours faire de son mieux, même quand personne ne regarde. »</p>
-      <div class="about-sig" data-rv><span>Nathan</span><a href="contact.html" class="btn light">Travaillons ensemble <span class="ar">{ARROW}</span></a></div>
+      <div class="about-sig" data-rv><a href="contact.html" class="btn light">Travaillons ensemble <span class="ar">{ARROW}</span></a></div>
     </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap faq-wrap">
-    <div class="faq-l">
-      <span class="eyebrow" data-rv>Questions fréquentes</span>
-      <h2 class="d2 split">Tout ce que vous <em class="it-a">voulez savoir.</em></h2>
-      <p class="lead" data-rv>Une autre question ? Écrivez-moi, je réponds sous 24 h.</p>
-      <div data-rv><a href="mailto:{EMAIL}" class="link">M'écrire {ARR_R}</a></div>
-    </div>
-    <div class="faq" data-rv>{faq}</div>
   </div>
 </section>
 
@@ -545,7 +524,6 @@ def index():
 </main>
 {footer()}
 <script type="application/ld+json">{biz_ld}</script>
-<script type="application/ld+json">{faq_ld}</script>
 {SCRIPTS}<script src="assets/home.js" defer></script>
 </body>
 </html>
@@ -566,7 +544,7 @@ body.ready .sh-bg{transform:scale(1);}
 .sh-row p{max-width:34em;color:rgba(255,255,255,.8);font-weight:300;font-size:1.08rem;line-height:1.75;}
 .offers{display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(3rem,7vw,7rem);}
 .offers-l{position:sticky;top:18vh;align-self:start;display:flex;flex-direction:column;gap:1.5rem;}
-.offer{display:grid;grid-template-columns:3.5rem 1fr;gap:1.5rem;padding:2.2rem 0;border-top:1px solid var(--line);transition:padding .5s var(--ease);}
+.offer{display:block;padding:1.6rem 0;border-top:1px solid var(--line);transition:padding .5s var(--ease);}
 .offer:last-child{border-bottom:1px solid var(--line);}
 .offer:hover{padding-left:.8rem;}
 .offer span{font-size:.72rem;font-weight:600;letter-spacing:.14em;color:var(--a);padding-top:.5rem;}
@@ -610,7 +588,7 @@ body.ready .sh-bg{transform:scale(1);}
 
 
 def service(s):
-    offers = "".join(f'<div class="offer" data-rv><span>0{i+1}</span><div><h3>{t}</h3><p>{d}</p></div></div>' for i, (t, d) in enumerate(s["offers"]))
+    offers = "".join(f'<div class="offer" data-rv><h3>{t}</h3></div>' for t, d in s["offers"])
     why = "".join(f'<div data-rv style="--dl:{i*.1:.1f}s"><small>0{i+1}</small><b>{t}</b><p>{d}</p></div>' for i, (t, d) in enumerate(s["why"]))
     gal = "".join(f'<figure class="imgrv" data-cursor="Voir"><img src="{g}" alt="{s["title"]}, réalisation de Nathan Fritsch" loading="lazy" decoding="async"></figure>' for g in s["gallery"])
     others = "".join(f'<a href="{o["slug"]}.html" class="other" data-cursor="Découvrir"><img src="{o["hero"]}" alt="" loading="lazy"><b>{o["nav"]} {ARROW}</b></a>' for o in SERVICES if o is not s)
@@ -624,7 +602,6 @@ def service(s):
 <section class="sh">
   <div class="sh-bg" style="background-image:url('{s['hero']}')" data-px="-.15" role="img" aria-label="{s['title']}"></div>
   <div class="wrap">
-    <div class="crumb" data-rv><a href="index.html">Accueil</a><span>/</span><span>Services</span><span>/</span><span>{s['title']}</span></div>
     <span class="eyebrow lt" data-rv>{s['kicker']} · Bordeaux</span>
     <h1 class="d1 split" aria-label="{plain_h1}">{s['h1']}</h1>
     <div class="sh-row">
@@ -637,9 +614,7 @@ def service(s):
 <section class="sec">
   <div class="wrap offers">
     <div class="offers-l">
-      <span class="eyebrow" data-rv>Ce que je réalise</span>
-      <h2 class="d2 split">Des contenus pensés pour <em class="it-a">vos usages.</em></h2>
-      <p class="lead" data-rv>Chaque prestation est construite sur mesure, selon vos objectifs, votre budget et vos délais.</p>
+      <h2 class="d2 split">Ce que je <em class="it-a">réalise.</em></h2>
       <div data-rv><a href="contact.html?type={s['form']}" class="btn">Parler de mon projet <span class="ar">{ARROW}</span></a></div>
     </div>
     <div>{offers}</div>
@@ -656,22 +631,12 @@ def service(s):
   </div>
 </section>
 
-<section class="sec on-dark">
-  <div class="wrap">
-    <span class="eyebrow lt" data-rv>Pourquoi moi</span>
-    <h2 class="d2 split" style="margin-top:1.4rem;max-width:16ch">Ce qui fait <em class="it-a">la différence.</em></h2>
-    <div class="why">{why}</div>
-  </div>
-</section>
-
 <section class="sec">
   <div class="wrap feat">
     <div class="feat-img imgrv" data-cursor="Voir"><img src="{cimg}" alt="{cname}" loading="lazy"></div>
     <div class="feat-txt">
-      <span class="eyebrow" data-rv>Projet à la une</span>
-      <h2 class="d2 split">{cname}</h2>
+            <h2 class="d2 split">{cname}</h2>
       <span class="tag" data-rv>{ctag}</span>
-      <p class="lead" data-rv>{cdesc}</p>
       <div data-rv><a href="{clink}" class="link">Voir le projet {ARR_R}</a></div>
     </div>
   </div>
@@ -681,7 +646,7 @@ def service(s):
 
 <section class="sec" style="padding-bottom:clamp(4rem,7vw,6rem)">
   <div class="wrap">
-    <span class="eyebrow" data-rv>Autres services</span>
+    <h2 class="d3" data-rv>Autres services</h2>
     <div class="others" style="margin-top:2rem">{others}</div>
   </div>
 </section>
@@ -708,8 +673,8 @@ body.ready .ct-l-bg{transform:scale(1);}
 .ct-info a:hover{color:var(--a-l);}
 .ct-r{padding:clamp(7.5rem,14vh,9rem) clamp(1.5rem,5vw,5.5rem) 5rem;display:flex;flex-direction:column;gap:2.4rem;background:var(--paper);}
 .ct-top{display:flex;flex-direction:column;gap:1rem;}
-.ct-top h2{font-family:var(--serif);font-weight:390;font-size:clamp(1.9rem,3vw,2.8rem);letter-spacing:-.02em;line-height:1.08;}
-.ct-top h2 em{font-style:italic;color:var(--a);}
+.ct-top h2{font-family:var(--serif);font-weight:450;font-size:clamp(1.9rem,3vw,2.8rem);letter-spacing:-.02em;line-height:1.08;}
+.ct-top h2 em{font-style:normal;color:var(--a);}
 .ct-top p{color:var(--mute);font-weight:300;}
 .prog{display:flex;align-items:center;gap:1rem;}
 .prog-bar{flex:1;height:2px;background:var(--line);border-radius:2px;overflow:hidden;}
@@ -774,7 +739,6 @@ FORM_TYPES = [("entreprise", "Entreprise / marque", "Communication, réseaux, po
 def contact():
     types = "".join(f'<div class="opt"><input type="radio" name="type_projet" id="t-{k}" value="{t}" data-k="{k}"><label for="t-{k}"><b>{t}</b><span>{d}</span></label></div>' for k, t, d in FORM_TYPES)
     need = "".join(f'<div class="opt"><input type="radio" name="besoin" id="n{i}" value="{v}"><label for="n{i}"><b>{v}</b></label></div>' for i, v in enumerate(["Photo", "Vidéo", "Photo + vidéo", "Je ne sais pas encore"]))
-    budg = "".join(f'<div class="opt"><input type="radio" name="budget" id="b{i}" value="{v}"><label for="b{i}"><b>{v}</b></label></div>' for i, v in enumerate(["Moins de 500 €", "500 à 1 000 €", "1 000 à 2 500 €", "Plus de 2 500 €", "À définir ensemble"]))
     return head("Contact & devis · Nathan Fritsch, photographe & vidéaste à Bordeaux",
                 "Demandez un devis gratuit pour votre projet photo ou vidéo à Bordeaux et partout en France. Réponse sous 24 h.",
                 CONTACT_CSS, "contact") + f"""<body class="dark-top">
@@ -783,7 +747,7 @@ def contact():
   <aside class="ct-l">
     <div class="ct-l-bg" role="img" aria-label="Surfeur au Lacanau Pro"></div>
     <div class="ct-l-in">
-      <span class="eyebrow lt" data-rv>Contact · Devis gratuit</span>
+      <span class="eyebrow lt" data-rv>Devis gratuit</span>
       <h1 class="d1 split" style="font-size:clamp(2.6rem,5.4vw,5.6rem)">Parlons de votre <em class="it-a">projet.</em></h1>
       <div class="ct-info" data-rv style="--dl:.3s">
         <div><small>Email</small><a href="mailto:{EMAIL}">{EMAIL}</a></div>
@@ -796,8 +760,7 @@ def contact():
 
   <section class="ct-r">
     <div class="ct-top">
-      <h2>Quelques questions, <em>deux minutes.</em></h2>
-      <p>Plus j'en sais, plus ma proposition sera juste. Réponse sous 24 h avec un devis gratuit.</p>
+      <h2>4 questions. <em>2 minutes.</em></h2>
     </div>
     <div class="prog" aria-hidden="true"><div class="prog-bar"><i id="pBar"></i></div><span id="pTxt">1 / 4</span></div>
 
@@ -824,9 +787,8 @@ def contact():
       </fieldset>
 
       <fieldset class="fs" data-step="3">
-        <legend>Parlez-moi de votre projet</legend>
-        <div><span class="q">Budget envisagé</span><div class="opts pill">{budg}</div></div>
-        <div class="fld"><label for="f-msg">Votre projet en quelques lignes</label><textarea id="f-msg" name="message" placeholder="Contexte, objectifs, usages des images (site, réseaux, annonces…), nombre de photos ou durée de vidéo souhaitée…" required></textarea></div>
+        <legend>Votre projet en quelques mots</legend>
+        <div class="fld"><label for="f-msg" class="sr">Message</label><textarea id="f-msg" name="message" placeholder="Ce que vous imaginez, pour quand, pour quel usage…" required></textarea></div>
         <p class="err" aria-live="polite"></p>
         <div class="nav-f"><button type="button" class="back">{ARR_R} Retour</button><button type="button" class="btn nx">Continuer <span class="ar">{ARR_R}</span></button></div>
       </fieldset>
@@ -850,7 +812,7 @@ def contact():
     <div class="done" id="done" role="status">
       <div class="done-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-10"/></svg></div>
       <h2 class="d3">Merci, c'est bien reçu.</h2>
-      <p class="lead">Je reviens vers vous sous 24 h avec des premières idées et un devis. En attendant, jetez un œil à mes dernières réalisations.</p>
+      <p class="lead">Réponse sous 24 h.</p>
       <a href="portfolio.html?type=photo" class="btn">Voir le portfolio <span class="ar">{ARROW}</span></a>
     </div>
 

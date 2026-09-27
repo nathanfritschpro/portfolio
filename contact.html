@@ -31,8 +31,8 @@ body.ready .ct-l-bg{transform:scale(1);}
 .ct-info a:hover{color:var(--a-l);}
 .ct-r{padding:clamp(7.5rem,14vh,9rem) clamp(1.5rem,5vw,5.5rem) 5rem;display:flex;flex-direction:column;gap:2.4rem;background:var(--paper);}
 .ct-top{display:flex;flex-direction:column;gap:1rem;}
-.ct-top h2{font-family:var(--serif);font-weight:390;font-size:clamp(1.9rem,3vw,2.8rem);letter-spacing:-.02em;line-height:1.08;}
-.ct-top h2 em{font-style:italic;color:var(--a);}
+.ct-top h2{font-family:var(--serif);font-weight:450;font-size:clamp(1.9rem,3vw,2.8rem);letter-spacing:-.02em;line-height:1.08;}
+.ct-top h2 em{font-style:normal;color:var(--a);}
 .ct-top p{color:var(--mute);font-weight:300;}
 .prog{display:flex;align-items:center;gap:1rem;}
 .prog-bar{flex:1;height:2px;background:var(--line);border-radius:2px;overflow:hidden;}
@@ -110,10 +110,10 @@ body.ready .ct-l-bg{transform:scale(1);}
 </header>
 <div class="mm" role="dialog" aria-label="Menu">
   <ul class="mm-links">
-    <li><a href="index.html"><small>01</small>Accueil</a></li>
-    <li><a href="entreprises.html"><small>02</small>Entreprises & marques</a></li><li><a href="immobilier.html"><small>03</small>Immobilier & conciergeries</a></li><li><a href="sport.html"><small>04</small>Sport</a></li><li><a href="evenementiel.html"><small>05</small>Événementiel</a></li>
-    <li><a href="portfolio.html?type=photo"><small>06</small>Réalisations</a></li>
-    <li><a href="contact.html"><small>07</small>Contact</a></li>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="entreprises.html">Entreprises & marques</a></li><li><a href="immobilier.html">Immobilier & conciergeries</a></li><li><a href="sport.html">Sport</a></li><li><a href="evenementiel.html">Événementiel</a></li>
+    <li><a href="portfolio.html?type=photo">Réalisations</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
   <div class="mm-foot">
     <a href="contact.html" class="btn light">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
@@ -129,7 +129,7 @@ body.ready .ct-l-bg{transform:scale(1);}
   <aside class="ct-l">
     <div class="ct-l-bg" role="img" aria-label="Surfeur au Lacanau Pro"></div>
     <div class="ct-l-in">
-      <span class="eyebrow lt" data-rv>Contact · Devis gratuit</span>
+      <span class="eyebrow lt" data-rv>Devis gratuit</span>
       <h1 class="d1 split" style="font-size:clamp(2.6rem,5.4vw,5.6rem)">Parlons de votre <em class="it-a">projet.</em></h1>
       <div class="ct-info" data-rv style="--dl:.3s">
         <div><small>Email</small><a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a></div>
@@ -142,8 +142,7 @@ body.ready .ct-l-bg{transform:scale(1);}
 
   <section class="ct-r">
     <div class="ct-top">
-      <h2>Quelques questions, <em>deux minutes.</em></h2>
-      <p>Plus j'en sais, plus ma proposition sera juste. Réponse sous 24 h avec un devis gratuit.</p>
+      <h2>4 questions. <em>2 minutes.</em></h2>
     </div>
     <div class="prog" aria-hidden="true"><div class="prog-bar"><i id="pBar"></i></div><span id="pTxt">1 / 4</span></div>
 
@@ -170,9 +169,8 @@ body.ready .ct-l-bg{transform:scale(1);}
       </fieldset>
 
       <fieldset class="fs" data-step="3">
-        <legend>Parlez-moi de votre projet</legend>
-        <div><span class="q">Budget envisagé</span><div class="opts pill"><div class="opt"><input type="radio" name="budget" id="b0" value="Moins de 500 €"><label for="b0"><b>Moins de 500 €</b></label></div><div class="opt"><input type="radio" name="budget" id="b1" value="500 à 1 000 €"><label for="b1"><b>500 à 1 000 €</b></label></div><div class="opt"><input type="radio" name="budget" id="b2" value="1 000 à 2 500 €"><label for="b2"><b>1 000 à 2 500 €</b></label></div><div class="opt"><input type="radio" name="budget" id="b3" value="Plus de 2 500 €"><label for="b3"><b>Plus de 2 500 €</b></label></div><div class="opt"><input type="radio" name="budget" id="b4" value="À définir ensemble"><label for="b4"><b>À définir ensemble</b></label></div></div></div>
-        <div class="fld"><label for="f-msg">Votre projet en quelques lignes</label><textarea id="f-msg" name="message" placeholder="Contexte, objectifs, usages des images (site, réseaux, annonces…), nombre de photos ou durée de vidéo souhaitée…" required></textarea></div>
+        <legend>Votre projet en quelques mots</legend>
+        <div class="fld"><label for="f-msg" class="sr">Message</label><textarea id="f-msg" name="message" placeholder="Ce que vous imaginez, pour quand, pour quel usage…" required></textarea></div>
         <p class="err" aria-live="polite"></p>
         <div class="nav-f"><button type="button" class="back"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg> Retour</button><button type="button" class="btn nx">Continuer <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></button></div>
       </fieldset>
@@ -196,7 +194,7 @@ body.ready .ct-l-bg{transform:scale(1);}
     <div class="done" id="done" role="status">
       <div class="done-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-10"/></svg></div>
       <h2 class="d3">Merci, c'est bien reçu.</h2>
-      <p class="lead">Je reviens vers vous sous 24 h avec des premières idées et un devis. En attendant, jetez un œil à mes dernières réalisations.</p>
+      <p class="lead">Réponse sous 24 h.</p>
       <a href="portfolio.html?type=photo" class="btn">Voir le portfolio <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
     </div>
 
@@ -234,7 +232,6 @@ body.ready .ct-l-bg{transform:scale(1);}
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
 <script src="assets/site.js" defer></script>
 <script src="assets/contact.js" defer></script>
 </body>

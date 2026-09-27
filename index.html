@@ -25,7 +25,7 @@ body.ready .hero-bg{transform:scale(1.02);}
 .hero-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:4rem;align-items:end;}
 .hero .eyebrow{color:var(--a-xl);margin-bottom:1.6rem;}
 .hero h1{max-width:11ch;}
-.hero h1 .sm{display:block;font-size:.34em;font-style:italic;font-weight:340;letter-spacing:-.01em;color:var(--a-l);margin-top:.55em;line-height:1.1;}
+.hero h1 .sm{display:block;font-size:.34em;font-style:normal;font-weight:450;letter-spacing:-.01em;color:var(--a-l);margin-top:.55em;line-height:1.1;}
 .hero-side{display:flex;flex-direction:column;gap:2rem;padding-bottom:.6rem;}
 .hero-side p{color:rgba(255,255,255,.78);font-weight:300;font-size:clamp(1rem,1.2vw,1.12rem);line-height:1.75;max-width:30em;}
 .hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.4rem 2rem;}
@@ -40,14 +40,14 @@ body.ready .hero-bg{transform:scale(1.02);}
 .hero [data-hold] [data-rv],.hero [data-hold] .split{transition-delay:calc(var(--dl,0s) + .15s);}
 
 /* manifesto */
-.mani{padding:clamp(6rem,13vw,11rem) 0 clamp(5rem,9vw,8rem);}
-.mani-txt{font-family:var(--serif);font-weight:370;font-size:clamp(1.9rem,4.1vw,4.2rem);line-height:1.12;letter-spacing:-.02em;max-width:22ch;}
+.mani{padding:clamp(5rem,10vw,9rem) 0 clamp(4rem,7vw,6rem);}
+.mani-txt{font-family:var(--serif);font-weight:450;font-size:clamp(2.6rem,7vw,7.4rem);line-height:1;letter-spacing:-.03em;}
 .mani-txt .mw{opacity:.14;transition:opacity .35s linear;}
 .mani-txt .mw.lit{opacity:1;}
-.mani-txt em{font-style:italic;color:var(--a);}
+.mani-txt em{font-style:normal;color:var(--a);}
 .mani-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:clamp(3.5rem,7vw,6rem);padding-top:2.2rem;border-top:1px solid var(--line);}
 .mani-row div{display:flex;flex-direction:column;gap:.5rem;}
-.mani-row b{font-family:var(--serif);font-weight:420;font-size:1.3rem;}
+.mani-row b{font-family:var(--serif);font-weight:450;font-size:clamp(1.3rem,1.8vw,1.7rem);}
 .mani-row span{color:var(--mute);font-weight:300;font-size:.95rem;line-height:1.65;}
 .mani-row small{font-size:.66rem;letter-spacing:.2em;color:var(--a);font-weight:600;}
 
@@ -59,8 +59,8 @@ body.ready .hero-bg{transform:scale(1.02);}
 .se-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,15,16,.8) 0%,rgba(13,15,16,.25) 45%,rgba(13,15,16,.45) 100%);}
 .se-head{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:2rem;}
 .se-tag{font-size:.7rem;font-weight:500;letter-spacing:.34em;text-transform:uppercase;color:var(--a-xl);margin-bottom:1.2rem;}
-.se-title{font-family:var(--serif);font-weight:380;font-size:64px;line-height:1;letter-spacing:-.025em;white-space:nowrap;}
-.se-title em{font-style:italic;font-weight:320;color:var(--a-l);}
+.se-title{font-family:var(--serif);font-weight:450;font-size:64px;line-height:1;letter-spacing:-.025em;white-space:nowrap;}
+.se-title em{font-style:normal;font-weight:450;color:var(--a-l);}
 .se-sub{margin-top:1.6rem;font-size:clamp(.66rem,1.1vw,.84rem);letter-spacing:.26em;text-transform:uppercase;opacity:0;padding:.65rem 1.4rem;border:1px solid rgba(255,255,255,.3);border-radius:40px;background:rgba(255,255,255,.07);backdrop-filter:blur(6px);}
 .se-scroll-cue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(255,255,255,.88);z-index:5;animation:scB 2.2s ease infinite;transition:opacity .4s;}
 .se-scroll-cue span{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;font-weight:500;}
@@ -108,8 +108,8 @@ body.ready .hero-bg{transform:scale(1.02);}
 .case:hover .case-ar{background:var(--bone);color:var(--ink);transform:rotate(-45deg);}
 .case-all{flex:none;width:clamp(260px,26vw,380px);height:min(58vh,560px);border-radius:14px;border:1px solid var(--line-d);display:flex;flex-direction:column;justify-content:space-between;padding:2rem;text-decoration:none;color:var(--bone);transition:background .5s,color .5s;}
 .case-all:hover{background:var(--bone);color:var(--ink);}
-.case-all b{font-family:var(--serif);font-weight:380;font-size:clamp(1.8rem,2.6vw,2.6rem);line-height:1.05;letter-spacing:-.015em;}
-.case-all b em{font-style:italic;color:var(--a-l);}
+.case-all b{font-family:var(--serif);font-weight:450;font-size:clamp(1.8rem,2.6vw,2.6rem);line-height:1.05;letter-spacing:-.015em;}
+.case-all b em{font-style:normal;color:var(--a-l);}
 .case-all:hover b em{color:var(--a);}
 .case-all span{display:flex;gap:1rem;flex-direction:column;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;}
 .work-prog{height:1px;background:var(--line-d);position:relative;}
@@ -121,7 +121,7 @@ body.ready .hero-bg{transform:scale(1.02);}
 .steps{list-style:none;counter-reset:s;}
 .step{display:grid;grid-template-columns:auto 1fr;gap:2rem;padding:2.6rem 0;border-top:1px solid var(--line);}
 .step:last-child{border-bottom:1px solid var(--line);}
-.step-n{font-family:var(--serif);font-style:italic;font-weight:320;font-size:clamp(3rem,5vw,4.6rem);line-height:.8;color:var(--a);min-width:1.6em;}
+.step-n{font-family:var(--serif);font-style:normal;font-weight:450;font-size:clamp(3rem,5vw,4.6rem);line-height:.8;color:var(--a);min-width:1.6em;}
 .step h3{font-family:var(--serif);font-weight:420;font-size:clamp(1.4rem,2vw,1.9rem);margin-bottom:.8rem;letter-spacing:-.01em;}
 .step p{color:var(--mute);font-weight:300;line-height:1.8;}
 .step ul{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.1rem;}
@@ -136,9 +136,9 @@ body.ready .hero-bg{transform:scale(1.02);}
 .about-txt{display:flex;flex-direction:column;gap:1.7rem;}
 .about-txt p{color:var(--mute-d);font-weight:300;line-height:1.85;font-size:1.02rem;max-width:36em;}
 .about-txt p strong{color:var(--bone);font-weight:500;}
-.about-q{font-family:var(--serif);font-style:italic;font-weight:340;font-size:clamp(1.4rem,2.2vw,2rem);line-height:1.3;color:var(--bone);padding-left:1.4rem;border-left:1px solid var(--a-l);}
+.about-q{font-family:var(--serif);font-style:normal;font-weight:450;font-size:clamp(1.4rem,2.2vw,2rem);line-height:1.3;color:var(--bone);padding-left:1.4rem;border-left:1px solid var(--a-l);}
 .about-sig{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;margin-top:.6rem;}
-.about-sig span{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--a-l);}
+.about-sig span{font-family:var(--serif);font-style:normal;font-size:1.5rem;color:var(--a-l);}
 
 /* faq */
 .faq-wrap{display:grid;grid-template-columns:1fr 1.6fr;gap:clamp(3rem,7vw,7rem);}
@@ -202,10 +202,10 @@ body.ready .hero-bg{transform:scale(1.02);}
 </header>
 <div class="mm" role="dialog" aria-label="Menu">
   <ul class="mm-links">
-    <li><a href="index.html"><small>01</small>Accueil</a></li>
-    <li><a href="entreprises.html"><small>02</small>Entreprises & marques</a></li><li><a href="immobilier.html"><small>03</small>Immobilier & conciergeries</a></li><li><a href="sport.html"><small>04</small>Sport</a></li><li><a href="evenementiel.html"><small>05</small>Événementiel</a></li>
-    <li><a href="portfolio.html?type=photo"><small>06</small>Réalisations</a></li>
-    <li><a href="contact.html"><small>07</small>Contact</a></li>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="entreprises.html">Entreprises & marques</a></li><li><a href="immobilier.html">Immobilier & conciergeries</a></li><li><a href="sport.html">Sport</a></li><li><a href="evenementiel.html">Événementiel</a></li>
+    <li><a href="portfolio.html?type=photo">Réalisations</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
   <div class="mm-foot">
     <a href="contact.html" class="btn light">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
@@ -227,7 +227,7 @@ body.ready .hero-bg{transform:scale(1.02);}
         <h1 class="d1 split">Photographe &amp; vidéaste <span class="sm">L'instant, l'émotion, l'image.</span></h1>
       </div>
       <div class="hero-side">
-        <p data-rv style="--dl:.35s">Je transforme vos événements, vos lieux et vos projets en contenus photo et vidéo professionnels, prêts à publier, à vendre et à partager.</p>
+        <p data-rv style="--dl:.35s">Marques, immobilier, sport, événements.<br>Des images qui font la différence.</p>
         <div class="hero-actions" data-rv style="--dl:.5s">
           <a href="contact.html" class="btn light big">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
           <a href="#realisations" class="link" style="color:#fff">Voir les réalisations <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></a>
@@ -247,12 +247,11 @@ body.ready .hero-bg{transform:scale(1.02);}
 
 <section class="mani">
   <div class="wrap">
-    <span class="eyebrow" data-rv>Ce que je fais</span>
-    <p class="mani-txt" id="mani" style="margin-top:2rem">Un événement à faire vivre, un bien à vendre, une marque à faire connaître. Mon métier : transformer votre besoin en <em>images qui travaillent pour vous.</em></p>
+    <p class="mani-txt" id="mani">Vous avez le projet.<br><em>Je crée les images.</em></p>
     <div class="mani-row">
-      <div data-rv><small>01</small><b>Photo &amp; vidéo</b><span>Un seul interlocuteur pour vos images et vos films, avec le même regard.</span></div>
-      <div data-rv style="--dl:.1s"><small>02</small><b>Réponse sous 24 h</b><span>Un échange rapide, des idées concrètes et un devis gratuit, sans engagement.</span></div>
-      <div data-rv style="--dl:.2s"><small>03</small><b>Bordeaux &amp; au-delà</b><span>Basé à Bordeaux, je me déplace partout en France et à l'étranger.</span></div>
+      <div data-rv><b>Photo &amp; vidéo</b><span>Un seul interlocuteur</span></div>
+      <div data-rv style="--dl:.1s"><b>Réponse sous 24 h</b><span>Devis gratuit</span></div>
+      <div data-rv style="--dl:.2s"><b>Partout en France</b><span>Basé à Bordeaux</span></div>
     </div>
   </div>
 </section>
@@ -278,25 +277,20 @@ body.ready .hero-bg{transform:scale(1.02);}
 <section class="sec" id="services" style="padding-top:clamp(3rem,6vw,5rem)">
   <div class="wrap">
     <div class="who-head">
-      <div><span class="eyebrow" data-rv>Pour qui ?</span><h2 class="d2 split" style="margin-top:1.4rem">Un besoin, <em class="it-a">des images</em> sur mesure.</h2></div>
-      <p class="lead" data-rv>Chaque secteur a ses codes. Je m'adapte à vos objectifs pour livrer des contenus qui servent vraiment votre communication.</p>
+      <h2 class="d2 split">Quel est <em class="it-a">votre projet ?</em></h2>
     </div>
     <div class="who"><a href="entreprises.html" class="who-p" data-cursor="Découvrir" data-rv style="--dl:0.00s">
         <img src="assets/img/mahi.jpg" alt="" loading="lazy" decoding="async">
-        <span class="who-n">01</span>
-        <div class="who-b"><h3 class="who-t">Entreprises<br>& marques</h3><p class="who-d">Site, réseaux, présentations : des images qui donnent envie de vous choisir.</p><span class="who-go"><span><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span>Découvrir</span></div>
+        <div class="who-b"><h3 class="who-t">Entreprises<br>& marques</h3><p class="who-d">Des images qui vendent votre marque.</p><span class="who-go"><span><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span>Découvrir</span></div>
       </a><a href="immobilier.html" class="who-p" data-cursor="Découvrir" data-rv style="--dl:0.08s">
         <img src="assets/img/immo.jpg" alt="" loading="lazy" decoding="async">
-        <span class="who-n">02</span>
-        <div class="who-b"><h3 class="who-t">Immobilier<br>& conciergeries</h3><p class="who-d">Photos HDR et vidéos de visite pour vendre et louer plus vite.</p><span class="who-go"><span><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span>Découvrir</span></div>
+        <div class="who-b"><h3 class="who-t">Immobilier<br>& conciergeries</h3><p class="who-d">Vendez et louez plus vite.</p><span class="who-go"><span><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span>Découvrir</span></div>
       </a><a href="sport.html" class="who-p" data-cursor="Découvrir" data-rv style="--dl:0.16s">
         <img src="assets/img/sport.jpg" alt="" loading="lazy" decoding="async">
-        <span class="who-n">03</span>
-        <div class="who-b"><h3 class="who-t">Sport</h3><p class="who-d">Compétitions, clubs, athlètes : l'intensité captée au plus près de l'action.</p><span class="who-go"><span><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span>Découvrir</span></div>
+        <div class="who-b"><h3 class="who-t">Sport</h3><p class="who-d">L'intensité, au plus près de l'action.</p><span class="who-go"><span><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span>Découvrir</span></div>
       </a><a href="evenementiel.html" class="who-p" data-cursor="Découvrir" data-rv style="--dl:0.24s">
         <img src="assets/img/event.jpg" alt="" loading="lazy" decoding="async">
-        <span class="who-n">04</span>
-        <div class="who-b"><h3 class="who-t">Événementiel</h3><p class="who-d">Soirées, séminaires, célébrations : vos moments forts, racontés en images.</p><span class="who-go"><span><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span>Découvrir</span></div>
+        <div class="who-b"><h3 class="who-t">Événementiel</h3><p class="who-d">Vos moments forts, pour toujours.</p><span class="who-go"><span><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span>Découvrir</span></div>
       </a></div>
   </div>
 </section>
@@ -304,25 +298,25 @@ body.ready .hero-bg{transform:scale(1.02);}
 <section class="work" id="realisations">
   <div class="work-pin">
     <div class="wrap work-top">
-      <div><span class="eyebrow lt" data-rv>Réalisations</span><h2 class="d2 split" style="margin-top:1.2rem">Projets <em class="it-a">récents</em></h2></div>
+      <h2 class="d2 split">Derniers <em class="it-a">projets</em></h2>
       <div class="work-count" data-rv><b id="wcN">01</b> / 05</div>
     </div>
     <div class="work-track" id="wTrack">
       <a href="portfolio.html?type=photo&cat=sport" class="case " data-cursor="Voir">
           <div class="case-img"><img src="assets/img/lacanau.jpg" alt="Lacanau Pro" loading="lazy" decoding="async"><span class="case-tag">Surf · Compétition</span></div>
-          <div class="case-meta"><div><h3>Lacanau Pro</h3><p>Plusieurs jours au cœur d'un grand rendez-vous du surf, en photo et en vidéo.</p></div><span class="case-ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></div>
+          <div class="case-meta"><div><h3>Lacanau Pro</h3></div><span class="case-ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></div>
         </a><a href="portfolio.html?type=photo&cat=sport" class="case wide" data-cursor="Voir">
           <div class="case-img"><img src="assets/img/triathlon-2.jpg" alt="Triathlon de Lacanau" loading="lazy" decoding="async"><span class="case-tag">Sport · 2 jours</span></div>
-          <div class="case-meta"><div><h3>Triathlon de Lacanau</h3><p>Départs, transitions, arrivées : toute la course documentée, jusque sur la moto photo.</p></div><span class="case-ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></div>
+          <div class="case-meta"><div><h3>Triathlon de Lacanau</h3></div><span class="case-ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></div>
         </a><a href="portfolio.html?type=photo&cat=evenement" class="case wide" data-cursor="Voir">
           <div class="case-img"><img src="assets/img/mahi.jpg" alt="Le Mahi Mahi" loading="lazy" decoding="async"><span class="case-tag">Entreprise · Communication</span></div>
-          <div class="case-meta"><div><h3>Le Mahi Mahi</h3><p>Des images pour embellir la communication d'une base nautique et vendre ses excursions.</p></div><span class="case-ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></div>
+          <div class="case-meta"><div><h3>Le Mahi Mahi</h3></div><span class="case-ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></div>
         </a><a href="portfolio.html?type=photo&cat=evenement" class="case " data-cursor="Voir">
           <div class="case-img"><img src="assets/img/schoolcup.jpg" alt="School Cup" loading="lazy" decoding="async"><span class="case-tag">Événement étudiant</span></div>
-          <div class="case-meta"><div><h3>School Cup</h3><p>Une journée de compétitions, de cérémonies et d'émotion, du premier au dernier instant.</p></div><span class="case-ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></div>
+          <div class="case-meta"><div><h3>School Cup</h3></div><span class="case-ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></div>
         </a><a href="portfolio.html?type=video&cat=immobilier" class="case wide" data-cursor="Voir">
           <div class="case-img"><img src="assets/img/immo-2.jpg" alt="Villa à vendre" loading="lazy" decoding="async"><span class="case-tag">Immobilier · Vidéo</span></div>
-          <div class="case-meta"><div><h3>Villa à vendre</h3><p>Un film de présentation pour aider un agent immobilier à vendre le bien de son client.</p></div><span class="case-ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></div>
+          <div class="case-meta"><div><h3>Villa à vendre</h3></div><span class="case-ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></div>
         </a>
       <a href="portfolio.html?type=photo" class="case-all" data-cursor="Explorer">
         <b>Tout le <em>portfolio</em></b>
@@ -336,15 +330,13 @@ body.ready .hero-bg{transform:scale(1.02);}
 <section class="sec bone">
   <div class="wrap method">
     <div class="method-l">
-      <span class="eyebrow" data-rv>Comment ça marche</span>
-      <h2 class="d2 split">Simple, du premier message à la <em class="it-a">livraison.</em></h2>
-      <p class="lead" data-rv>Vous savez à chaque étape ce qui se passe et ce que vous allez recevoir.</p>
+      <h2 class="d2 split">3 étapes. <em class="it-a">C'est tout.</em></h2>
       <div data-rv><a href="contact.html" class="btn">Démarrer mon projet <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a></div>
     </div>
     <ol class="steps">
-      <li class="step" data-rv><span class="step-n">01</span><div><h3>On échange</h3><p>Vous me présentez votre projet par le formulaire ou lors d'un appel gratuit. On définit ensemble vos objectifs, vos usages et votre calendrier. Je vous envoie un devis clair.</p><ul><li>Appel gratuit</li><li>Devis détaillé</li></ul></div></li>
-      <li class="step" data-rv><span class="step-n">02</span><div><h3>Je réalise</h3><p>Le jour J, je m'occupe de tout : repérage, lumière, cadrage. Discret et réactif, je capte les images dont vous avez besoin sans perturber votre activité.</p><ul><li>Photo</li><li>Vidéo</li><li>Sur place</li></ul></div></li>
-      <li class="step" data-rv><span class="step-n">03</span><div><h3>Je livre</h3><p>Photos sélectionnées et retouchées, vidéos montées et étalonnées, exportées aux bons formats pour votre site, vos réseaux ou vos supports imprimés.</p><ul><li>Retouche</li><li>Montage</li><li>Formats web &amp; réseaux</li></ul></div></li>
+      <li class="step" data-rv><span class="step-n">01</span><div><h3>On échange</h3><p>Appel gratuit, devis clair.</p></div></li>
+      <li class="step" data-rv><span class="step-n">02</span><div><h3>Je réalise</h3><p>Sur place, discret, efficace.</p></div></li>
+      <li class="step" data-rv><span class="step-n">03</span><div><h3>Je livre</h3><p>Prêt pour le web, les réseaux et l'impression.</p></div></li>
     </ol>
   </div>
 </section>
@@ -356,39 +348,24 @@ body.ready .hero-bg{transform:scale(1.02);}
       <div class="about-badge"><b>Nathan Fritsch</b>Photographe &amp; vidéaste · Bordeaux</div>
     </div>
     <div class="about-txt">
-      <span class="eyebrow lt" data-rv>À propos</span>
-      <h2 class="d2 split">Derrière <em class="it-a">l'objectif.</em></h2>
-      <p data-rv>Tout a commencé avec le premier appareil de mon père. Depuis, l'image ne m'a plus lâché. Aujourd'hui, j'accompagne <strong>entreprises, agents immobiliers, conciergeries, organisateurs et particuliers</strong> qui veulent des images à la hauteur de leurs projets.</p>
-      <p data-rv>Sport, événementiel, immobilier : des univers différents, une même exigence. Saisir <strong>l'intensité d'un geste et l'émotion d'un instant</strong>, et livrer des contenus qui servent vraiment vos objectifs.</p>
+      <h2 class="d2 split">Enchanté, <em class="it-a">moi c'est Nathan.</em></h2>
+      <p data-rv>Photographe et vidéaste à Bordeaux. Je saisis <strong>l'intensité d'un geste et l'émotion d'un instant.</strong></p>
       <p class="about-q" data-rv>« Toujours faire de son mieux, même quand personne ne regarde. »</p>
-      <div class="about-sig" data-rv><span>Nathan</span><a href="contact.html" class="btn light">Travaillons ensemble <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a></div>
+      <div class="about-sig" data-rv><a href="contact.html" class="btn light">Travaillons ensemble <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a></div>
     </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap faq-wrap">
-    <div class="faq-l">
-      <span class="eyebrow" data-rv>Questions fréquentes</span>
-      <h2 class="d2 split">Tout ce que vous <em class="it-a">voulez savoir.</em></h2>
-      <p class="lead" data-rv>Une autre question ? Écrivez-moi, je réponds sous 24 h.</p>
-      <div data-rv><a href="mailto:nathan.fritsch.pro@gmail.com" class="link">M'écrire <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></a></div>
-    </div>
-    <div class="faq" data-rv><details><summary>Où intervenez-vous ?<span class="pl"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 1v10M1 6h10"/></svg></span></summary><div class="ans">Je suis basé à Bordeaux et je me déplace partout en France, ainsi qu'à l'étranger. Les éventuels frais de déplacement sont indiqués clairement dans le devis.</div></details><details><summary>Photo, vidéo ou les deux ?<span class="pl"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 1v10M1 6h10"/></svg></span></summary><div class="ans">Les deux. Je peux réaliser photos et vidéos sur la même intervention : un seul interlocuteur, une seule organisation et un rendu cohérent entre vos images et vos films.</div></details><details><summary>Combien coûte une prestation ?<span class="pl"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 1v10M1 6h10"/></svg></span></summary><div class="ans">Chaque projet est différent : durée, volume d'images, montage vidéo, déplacement. Après un court échange, je vous envoie un devis détaillé, gratuit et sans engagement.</div></details><details><summary>Quand est-ce que je reçois mes images ?<span class="pl"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 1v10M1 6h10"/></svg></span></summary><div class="ans">Le délai de livraison est fixé ensemble avant le projet, selon le volume et vos échéances. Si vous avez besoin d'une sélection rapide pour vos réseaux, on le prévoit dès le départ.</div></details><details><summary>Puis-je utiliser les images pour ma communication ?<span class="pl"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 1v10M1 6h10"/></svg></span></summary><div class="ans">Oui. Les droits d'utilisation (site, réseaux sociaux, print, publicité) sont précisés dans le devis selon vos besoins, pour que vous puissiez les exploiter en toute sérénité.</div></details><details><summary>Comment se passe la prise de contact ?<span class="pl"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 1v10M1 6h10"/></svg></span></summary><div class="ans">Vous remplissez le formulaire ou vous réservez un appel de 30 minutes. On parle de votre projet, de vos objectifs et de vos contraintes, puis je vous fais une proposition.</div></details></div>
   </div>
 </section>
 
 <section class="cta-end">
   <div class="cta-end-bg" style="background-image:url('assets/img/sunset.jpg')" data-px=".12"></div>
   <div class="wrap">
-    <span class="eyebrow lt" data-rv>Devis gratuit · Réponse sous 24 h</span>
     <h2 class="d1 split">Un projet ?<br><em class="it-a">Parlons-en.</em></h2>
-    <p data-rv style="--dl:.2s">Racontez-moi votre besoin en deux minutes. Je vous réponds sous 24 h avec des idées et un devis gratuit, sans engagement.</p>
+    <p data-rv style="--dl:.2s">Devis gratuit. Réponse sous 24 h.</p>
     <div class="cta-end-actions" data-rv style="--dl:.3s">
       <a href="contact.html" class="btn light big">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
       <a href="https://calendly.com/nathan-fritsch-pro/30min" target="_blank" rel="noopener" class="btn ghost-l big">Réserver un appel <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
     </div>
-    <div class="cta-end-meta" data-rv style="--dl:.4s"><span>Ou directement :</span><a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a></div>
+    <div class="cta-end-meta" data-rv style="--dl:.4s"><a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a></div>
   </div>
 </section>
 
@@ -422,8 +399,6 @@ body.ready .hero-bg{transform:scale(1.02);}
 </footer>
 
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Nathan Fritsch, photographe et vidéaste", "image": "https://nathanfritsch.fr/assets/img/hero.jpg", "url": "https://nathanfritsch.fr", "email": "nathan.fritsch.pro@gmail.com", "areaServed": "France", "address": {"@type": "PostalAddress", "addressLocality": "Bordeaux", "addressCountry": "FR"}, "sameAs": ["https://www.instagram.com/nathanfrt_visuals"]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Où intervenez-vous ?", "acceptedAnswer": {"@type": "Answer", "text": "Je suis basé à Bordeaux et je me déplace partout en France, ainsi qu'à l'étranger. Les éventuels frais de déplacement sont indiqués clairement dans le devis."}}, {"@type": "Question", "name": "Photo, vidéo ou les deux ?", "acceptedAnswer": {"@type": "Answer", "text": "Les deux. Je peux réaliser photos et vidéos sur la même intervention : un seul interlocuteur, une seule organisation et un rendu cohérent entre vos images et vos films."}}, {"@type": "Question", "name": "Combien coûte une prestation ?", "acceptedAnswer": {"@type": "Answer", "text": "Chaque projet est différent : durée, volume d'images, montage vidéo, déplacement. Après un court échange, je vous envoie un devis détaillé, gratuit et sans engagement."}}, {"@type": "Question", "name": "Quand est-ce que je reçois mes images ?", "acceptedAnswer": {"@type": "Answer", "text": "Le délai de livraison est fixé ensemble avant le projet, selon le volume et vos échéances. Si vous avez besoin d'une sélection rapide pour vos réseaux, on le prévoit dès le départ."}}, {"@type": "Question", "name": "Puis-je utiliser les images pour ma communication ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Les droits d'utilisation (site, réseaux sociaux, print, publicité) sont précisés dans le devis selon vos besoins, pour que vous puissiez les exploiter en toute sérénité."}}, {"@type": "Question", "name": "Comment se passe la prise de contact ?", "acceptedAnswer": {"@type": "Answer", "text": "Vous remplissez le formulaire ou vous réservez un appel de 30 minutes. On parle de votre projet, de vos objectifs et de vos contraintes, puis je vous fais une proposition."}}]}</script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
 <script src="assets/site.js" defer></script>
 <script src="assets/home.js" defer></script>
 </body>
