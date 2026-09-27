@@ -363,6 +363,51 @@ body.ready .hero-bg{transform:scale(1.02);}
   .hero-side{gap:1.5rem;}
   .step{grid-template-columns:1fr;gap:1rem;}
 }
+@media (max-width:768px){
+  .hero-in{padding-bottom:2.2rem;}
+  .hero .eyebrow{margin-bottom:1.1rem;}
+  .hero-side{padding-bottom:0;}
+  .hero-side p{font-size:1rem;}
+  .hero-actions{flex-direction:column;align-items:stretch;gap:1.1rem;}
+  .hero-actions .btn{justify-content:space-between;}
+  .hero-actions .link{align-self:center;}
+  .hero-bar{display:none;}
+  .mani{padding:4.5rem 0 3.5rem;}
+  .mani-row{grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:2.6rem;padding-top:1.4rem;}
+  .mani-row b{font-size:1rem;line-height:1.2;}
+  .mani-row span{font-size:.78rem;line-height:1.4;}
+  .se-sub{white-space:nowrap;letter-spacing:.12em;font-size:.6rem;padding:.55rem 1rem;}
+  .se-tag{font-size:.6rem;letter-spacing:.22em;}
+  #services{padding-top:1.5rem!important;}
+  .who-head{margin-bottom:1.6rem;}
+  .who{display:grid!important;grid-template-columns:1fr 1fr;gap:8px;}
+  .who-p,.who:hover .who-p,.who .who-p:hover{height:auto!important;min-height:0!important;aspect-ratio:3/4;border-radius:14px;}
+  .who-d{display:none;}
+  .who-b{padding:1rem;gap:.6rem;}
+  .who-t{font-size:1.2rem;}
+  .who-go{font-size:0;gap:0;}
+  .who-go span{width:30px;height:30px;}
+  .work-pin{padding:4.5rem 0 3.5rem!important;gap:1.6rem;}
+  .work-top{align-items:center;}
+  .case,.case.wide,.case-all{width:80vw!important;}
+  .case-img,.case-all{height:auto!important;aspect-ratio:4/5;max-height:none!important;}
+  .case{gap:.9rem;}
+  .case h3{font-size:1.3rem;}
+  .case-ar{width:38px;height:38px;}
+  .swipe{display:flex!important;}
+  .work-count{display:none;}
+  .method{gap:2.5rem;}
+  .step{grid-template-columns:auto 1fr!important;gap:1.2rem!important;padding:1.5rem 0;align-items:baseline;}
+  .step-n{font-size:2.2rem;min-width:0;}
+  .step h3{font-size:1.25rem;margin-bottom:.25rem;}
+  .about{gap:2.4rem;}
+  .about-img{aspect-ratio:4/5;max-width:none;}
+  .about-txt{gap:1.3rem;}
+  .about-txt p{font-size:.98rem;line-height:1.8;}
+}
+.swipe{display:none;align-items:center;gap:.6rem;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute-d);}
+.swipe i{display:block;width:26px;height:1px;background:currentColor;position:relative;animation:sw 1.8s var(--ease-io) infinite;}
+@keyframes sw{0%,100%{transform:translateX(0);}50%{transform:translateX(8px);}}
 """
 
 WHO = [
@@ -481,7 +526,7 @@ def index():
   <div class="work-pin">
     <div class="wrap work-top">
       <h2 class="d2 split">Derniers <em class="it-a">projets</em></h2>
-      <div class="work-count" data-rv><b id="wcN">01</b> / 0{len(CASES)}</div>
+      <div class="work-count" data-rv><b id="wcN">01</b> / 0{len(CASES)}</div><span class="swipe">Glissez <i></i></span>
     </div>
     <div class="work-track" id="wTrack">
       {cases}
@@ -589,6 +634,23 @@ body.ready .sh-bg{transform:scale(1);}
   .gal figure:nth-child(4){aspect-ratio:4/3;}
 }
 @media (max-width:640px){.offer{grid-template-columns:1fr;gap:.4rem;}}
+
+@media (max-width:768px){
+  .sh{min-height:88svh;}
+  .sh .wrap{padding-top:7rem;padding-bottom:2.4rem;}
+  .sh h1{margin:1rem 0 1.4rem;}
+  .sh-row{flex-direction:column;align-items:stretch;gap:1.6rem;}
+  .sh-row p{font-size:1rem;}
+  .sh-row .btn{justify-content:space-between;}
+  .offers{gap:2rem;}
+  .offer{padding:1.1rem 0;}
+  .offer h3{font-size:1.2rem;margin:0;}
+  .gal{gap:8px;}
+  .feat{gap:2rem;}
+  .others{grid-template-columns:1fr 1fr!important;gap:8px;}
+  .other{aspect-ratio:3/4;padding:1rem;}
+  .other b{font-size:1.1rem;}
+}
 """
 
 
@@ -607,7 +669,7 @@ def service(s):
 <section class="sh">
   <div class="sh-bg" style="background-image:url('{s['hero']}')" data-px="-.15" role="img" aria-label="{s['title']}"></div>
   <div class="wrap">
-    <span class="eyebrow lt" data-rv>{s['kicker']} · Bordeaux</span>
+    <span class="eyebrow lt" data-rv>{s['kicker']}</span>
     <h1 class="d1 split" aria-label="{plain_h1}">{s['h1']}</h1>
     <div class="sh-row">
       <p data-rv style="--dl:.3s">{s['lead']}</p>
@@ -731,13 +793,27 @@ body.ready .ct-l-bg{transform:scale(1);}
   .ct-l{position:relative;height:auto;min-height:72svh;}
   .ct-r{padding-top:3.5rem;}
 }
-@media (max-width:640px){.row2,.alt,.ct-info{grid-template-columns:1fr;}.opts{grid-template-columns:1fr 1fr;}}
+@media (max-width:640px){.row2,.alt,.ct-info{grid-template-columns:1fr;}}
+
+@media (max-width:768px){
+  .ct-l{min-height:0;height:34svh;}
+  .ct-l-in{display:none;}
+  .ct-r{padding:2.2rem 1.25rem 7rem;gap:1.8rem;}
+  .ct-top h2{font-size:1.7rem;}
+  .opts{grid-template-columns:1fr;}
+  .opt label{padding:1.05rem 1.2rem;}
+  .opt label span{display:none;}
+  .opts.pill{display:grid;grid-template-columns:1fr 1fr;}
+  .opts.pill label{justify-content:center;border-radius:12px;}
+  .nav-f .btn{flex:1;justify-content:space-between;}
+  .mcta{display:none!important;}
+}
 """
 
-FORM_TYPES = [("entreprise", "Entreprise / marque", "Communication, réseaux, portraits"),
-              ("immobilier", "Immobilier / conciergerie", "Annonces, visites, locations"),
+FORM_TYPES = [("evenement", "Événement", "Soirée, séminaire, célébration"),
               ("sport", "Sport", "Compétition, club, athlète"),
-              ("evenement", "Événement", "Soirée, séminaire, célébration"),
+              ("immobilier", "Immobilier / conciergerie", "Annonces, visites, locations"),
+              ("entreprise", "Entreprise / marque", "Communication, réseaux, portraits"),
               ("particulier", "Projet personnel", "Portrait, souvenir, autre idée")]
 
 
@@ -769,7 +845,7 @@ def contact():
     </div>
     <div class="prog" aria-hidden="true"><div class="prog-bar"><i id="pBar"></i></div><span id="pTxt">1 / 4</span></div>
 
-    <form id="qf" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST" novalidate>
+    <form id="qf" action="https://formspree.io/f/xljdopkj" method="POST" novalidate>
       <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
       <input type="hidden" name="_subject" id="subj" value="Nouvelle demande de devis · site">
 
@@ -834,15 +910,15 @@ def contact():
 """
 
 
-def patch_portfolio():
+def patch_portfolio(name="portfolio.html", until=r'<div class=\"ph\">'):
     import re
-    p = ROOT / "portfolio.html"
+    p = ROOT / name
     t = p.read_text(encoding="utf-8")
     hd = "<!--V2-HD-->\n" + header() + "<!--/V2-HD-->\n"
     if "<!--V2-HD-->" in t:
         t = re.sub(r"<!--V2-HD-->.*?<!--/V2-HD-->\n", lambda m: hd, t, flags=re.S)
     else:
-        t = re.sub(r"<nav>.*?(?=<div class=\"ph\">)", lambda m: hd + "\n", t, count=1, flags=re.S)
+        t = re.sub(r"<nav>.*?(?=" + until + ")", lambda m: hd + "\n", t, count=1, flags=re.S)
     ft = "<!--V2-FT-->\n" + footer() + "<!--/V2-FT-->\n"
     if "<!--V2-FT-->" in t:
         t = re.sub(r"<!--V2-FT-->.*?<!--/V2-FT-->\n", lambda m: ft, t, flags=re.S)
@@ -856,8 +932,18 @@ def patch_portfolio():
     p.write_text(t, encoding="utf-8")
 
 
+import re as _re
+def nbsp(html):
+    parts = _re.split(r"(<script.*?</script>|<style.*?</style>|<[^>]+>)", html, flags=_re.S)
+    return "".join(p if p.startswith("<") else _re.sub(r" ([?!:;»])", "&nbsp;\\1", p).replace("« ", "«&nbsp;") for p in parts)
+
+
 if __name__ == "__main__":
+    _w = Path.write_text
+    Path.write_text = lambda self, t, **k: _w(self, nbsp(t) if self.name != "portfolio.html" else t, **k)
     patch_portfolio()
+    patch_portfolio("mentions-legales.html", "<main>")
+    patch_portfolio("confidentialite.html", "<main>")
     (ROOT / "index.html").write_text(index(), encoding="utf-8")
     for s in SERVICES:
         (ROOT / f"{s['slug']}.html").write_text(service(s), encoding="utf-8")

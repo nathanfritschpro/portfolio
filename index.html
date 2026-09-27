@@ -172,6 +172,51 @@ body.ready .hero-bg{transform:scale(1.02);}
   .hero-side{gap:1.5rem;}
   .step{grid-template-columns:1fr;gap:1rem;}
 }
+@media (max-width:768px){
+  .hero-in{padding-bottom:2.2rem;}
+  .hero .eyebrow{margin-bottom:1.1rem;}
+  .hero-side{padding-bottom:0;}
+  .hero-side p{font-size:1rem;}
+  .hero-actions{flex-direction:column;align-items:stretch;gap:1.1rem;}
+  .hero-actions .btn{justify-content:space-between;}
+  .hero-actions .link{align-self:center;}
+  .hero-bar{display:none;}
+  .mani{padding:4.5rem 0 3.5rem;}
+  .mani-row{grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:2.6rem;padding-top:1.4rem;}
+  .mani-row b{font-size:1rem;line-height:1.2;}
+  .mani-row span{font-size:.78rem;line-height:1.4;}
+  .se-sub{white-space:nowrap;letter-spacing:.12em;font-size:.6rem;padding:.55rem 1rem;}
+  .se-tag{font-size:.6rem;letter-spacing:.22em;}
+  #services{padding-top:1.5rem!important;}
+  .who-head{margin-bottom:1.6rem;}
+  .who{display:grid!important;grid-template-columns:1fr 1fr;gap:8px;}
+  .who-p,.who:hover .who-p,.who .who-p:hover{height:auto!important;min-height:0!important;aspect-ratio:3/4;border-radius:14px;}
+  .who-d{display:none;}
+  .who-b{padding:1rem;gap:.6rem;}
+  .who-t{font-size:1.2rem;}
+  .who-go{font-size:0;gap:0;}
+  .who-go span{width:30px;height:30px;}
+  .work-pin{padding:4.5rem 0 3.5rem!important;gap:1.6rem;}
+  .work-top{align-items:center;}
+  .case,.case.wide,.case-all{width:80vw!important;}
+  .case-img,.case-all{height:auto!important;aspect-ratio:4/5;max-height:none!important;}
+  .case{gap:.9rem;}
+  .case h3{font-size:1.3rem;}
+  .case-ar{width:38px;height:38px;}
+  .swipe{display:flex!important;}
+  .work-count{display:none;}
+  .method{gap:2.5rem;}
+  .step{grid-template-columns:auto 1fr!important;gap:1.2rem!important;padding:1.5rem 0;align-items:baseline;}
+  .step-n{font-size:2.2rem;min-width:0;}
+  .step h3{font-size:1.25rem;margin-bottom:.25rem;}
+  .about{gap:2.4rem;}
+  .about-img{aspect-ratio:4/5;max-width:none;}
+  .about-txt{gap:1.3rem;}
+  .about-txt p{font-size:.98rem;line-height:1.8;}
+}
+.swipe{display:none;align-items:center;gap:.6rem;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute-d);}
+.swipe i{display:block;width:26px;height:1px;background:currentColor;position:relative;animation:sw 1.8s var(--ease-io) infinite;}
+@keyframes sw{0%,100%{transform:translateX(0);}50%{transform:translateX(8px);}}
 </style>
 </head>
 <body class="dark-top">
@@ -277,7 +322,7 @@ body.ready .hero-bg{transform:scale(1.02);}
 <section class="sec" id="services" style="padding-top:clamp(3rem,6vw,5rem)">
   <div class="wrap">
     <div class="who-head">
-      <h2 class="d2 split">Quel est <em class="it-a">votre projet ?</em></h2>
+      <h2 class="d2 split">Quel est <em class="it-a">votre projet&nbsp;?</em></h2>
     </div>
     <div class="who"><a href="evenementiel.html" class="who-p" data-cursor="Découvrir" data-rv style="--dl:0.00s">
         <img src="assets/img/event.jpg" alt="" loading="lazy" decoding="async">
@@ -299,7 +344,7 @@ body.ready .hero-bg{transform:scale(1.02);}
   <div class="work-pin">
     <div class="wrap work-top">
       <h2 class="d2 split">Derniers <em class="it-a">projets</em></h2>
-      <div class="work-count" data-rv><b id="wcN">01</b> / 05</div>
+      <div class="work-count" data-rv><b id="wcN">01</b> / 05</div><span class="swipe">Glissez <i></i></span>
     </div>
     <div class="work-track" id="wTrack">
       <a href="portfolio.html?type=photo&cat=evenement" class="case " data-cursor="Voir">
@@ -350,8 +395,8 @@ body.ready .hero-bg{transform:scale(1.02);}
     <div class="about-txt">
       <h2 class="d2 split">Enchanté, <em class="it-a">moi c'est Nathan.</em></h2>
       <p data-rv>Jeune photographe et vidéaste basé à Bordeaux — disponible partout en France et à l'étranger pour accompagner mes clients.</p>
-      <p data-rv>Tout a commencé il y a trois ans, avec le premier appareil de mon père — et depuis, l'image ne m'a plus lâché. Je me consacre surtout au sport et à l'événementiel, sans oublier l'immobilier : des univers où je cherche à saisir <strong>l'intensité d'un geste et l'émotion d'un instant</strong>.</p>
-      <p data-rv>Ce qui me guide, c'est le regard — cette façon de voir et de raconter qui rend chaque image unique. J'avance avec une idée simple : <strong>toujours faire de son mieux, même quand personne ne regarde</strong>.</p>
+      <p data-rv>Tout a commencé il y a trois ans, avec le premier appareil de mon père — et depuis, l'image ne m'a plus lâché. Je me consacre surtout au sport et à l'événementiel, sans oublier l'immobilier&nbsp;: des univers où je cherche à saisir <strong>l'intensité d'un geste et l'émotion d'un instant</strong>.</p>
+      <p data-rv>Ce qui me guide, c'est le regard — cette façon de voir et de raconter qui rend chaque image unique. J'avance avec une idée simple&nbsp;: <strong>toujours faire de son mieux, même quand personne ne regarde</strong>.</p>
       <p class="about-q" data-rv>Figez l'instant, capturez l'émotion.</p>
       <div class="about-sig" data-rv><a href="contact.html" class="btn light">Travaillons ensemble <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a></div>
     </div>
@@ -361,7 +406,7 @@ body.ready .hero-bg{transform:scale(1.02);}
 <section class="cta-end">
   <div class="cta-end-bg" style="background-image:url('assets/img/sunset.jpg')" data-px=".12"></div>
   <div class="wrap">
-    <h2 class="d1 split">Un projet ?<br><em class="it-a">Parlons-en.</em></h2>
+    <h2 class="d1 split">Un projet&nbsp;?<br><em class="it-a">Parlons-en.</em></h2>
     <p data-rv style="--dl:.2s">Devis gratuit. Réponse sous 24 h.</p>
     <div class="cta-end-actions" data-rv style="--dl:.3s">
       <a href="contact.html" class="btn light big">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
@@ -376,7 +421,7 @@ body.ready .hero-bg{transform:scale(1.02);}
   <div class="wrap">
     <div class="fx-top">
       <div class="fx-cta">
-        <h3>Un projet en tête ?<br><em>Parlons-en.</em></h3>
+        <h3>Un projet en tête&nbsp;?<br><em>Parlons-en.</em></h3>
         <a href="contact.html" class="btn light">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
       </div>
       <div><h4>Services</h4><ul><li><a href="evenementiel.html">Événementiel</a></li><li><a href="sport.html">Sport</a></li><li><a href="immobilier.html">Immobilier et conciergeries</a></li><li><a href="entreprises.html">Entreprises et marques</a></li></ul></div>

@@ -234,3 +234,27 @@ html.no-intro .intro{display:none;}
   .btn{padding:1rem 1.3rem 1rem 1.5rem;font-size:.72rem;}
   .cta-end{min-height:84svh;}
 }
+
+/* ─── Mobile : respiration et hiérarchie ─── */
+@media (max-width:768px){
+  .sec{padding:4.5rem 0;}
+  .d1{font-size:clamp(2.6rem,11.5vw,3.6rem);line-height:1;}
+  .d2{font-size:clamp(2rem,8.6vw,2.7rem);line-height:1.06;}
+  .hd{padding:1rem 1.25rem;}
+  .hd.solid{padding-top:.7rem;padding-bottom:.7rem;}
+  .hd-logo b{font-size:1.15rem;}
+  .hd-logo small{font-size:.52rem;}
+  .hd-burger{width:42px;height:42px;}
+  .cta-end{min-height:78svh;}
+  .cta-end .wrap{gap:1.4rem;}
+  .cta-end-actions{flex-direction:column;align-items:stretch;width:100%;}
+  .cta-end-actions .btn{justify-content:space-between;}
+  .fx{padding:3.5rem 0 7rem;}
+  .fx-top{grid-template-columns:1fr 1fr;gap:2.2rem 1.5rem;padding-bottom:2.5rem;}
+  .fx-cta{grid-column:1/-1;}
+  .fx-top>div:last-child{grid-column:1/-1;}
+  .fx ul{gap:.55rem;}
+  .fx ul a{font-size:.9rem;}
+  .fx-bot{flex-direction:column;gap:.5rem;margin-top:2rem;}
+  .mcta .btn{padding-top:.95rem;padding-bottom:.95rem;}
+}

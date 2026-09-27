@@ -7,6 +7,7 @@
 <meta name="description" content="Mentions légales du site nathanfritsch.com.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📸%3C/text%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 <style>
 :root{--bg:#F8F7F4;--text:#111111;--muted:#8A8A85;--a:#344D59;--ah:#26383F;--border:#E4E1DA;--white:#FDFCF9;}
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -69,40 +70,54 @@ footer a:hover{color:var(--a);}
   main{padding:7rem 1.4rem 4rem;}
   footer{padding:2rem 1.4rem;}
 }
+/* V2 */
+#modal{z-index:520;}#lb{z-index:640;}.hd{color:var(--text)!important;}.hd::before{opacity:1!important;}
+body{background:var(--bg);}
+.fx a,.hd a{cursor:pointer;}
+h1 em,h2 em{font-style:normal;}
+@media(pointer:coarse){.fx a,.hd a{cursor:auto;}}
 </style>
 </head>
-<body>
+<body class="light-top">
 
-<nav>
-  <div class="nav-left">
-    <a href="index.html" class="nav-logo">N<span>.</span>FRITSCH</a>
-    <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
-    </a>
+<!--V2-HD-->
+<header class="hd">
+  <a href="index.html" class="hd-logo" aria-label="Nathan Fritsch, accueil"><b>Nathan Fritsch</b><small>Photo · Vidéo · Bordeaux</small></a>
+  <div role="navigation" aria-label="Navigation principale">
+    <ul class="hd-nav">
+      <li><button type="button" aria-haspopup="true">Services <svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m2 3.5 3 3 3-3"/></svg></button>
+        <div class="hd-dd"><div class="hd-dd-in"><a href="evenementiel.html"><b>Événementiel</b><span>Soirées, séminaires, célébrations</span></a><a href="sport.html"><b>Sport</b><span>Compétitions, clubs, athlètes</span></a><a href="immobilier.html"><b>Immobilier et conciergeries</b><span>Valoriser et louer plus vite</span></a><a href="entreprises.html"><b>Entreprises et marques</b><span>Contenus pour votre communication</span></a></div></div></li>
+      <li><button type="button" aria-haspopup="true">Réalisations <svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m2 3.5 3 3 3-3"/></svg></button>
+        <div class="hd-dd"><div class="hd-dd-in">
+          <a href="portfolio.html?type=photo"><b>Photos</b><span>Reportages et séries</span></a>
+          <a href="portfolio.html?type=video"><b>Vidéos</b><span>Films, aftermovies, formats courts</span></a>
+        </div></div></li>
+      <li><a href="index.html#apropos">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
   </div>
-  <ul class="nav-links">
+  <div class="hd-right">
+    <a href="contact.html" class="btn">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
+    <button class="hd-burger" type="button" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+<div class="mm" role="dialog" aria-label="Menu">
+  <ul class="mm-links">
     <li><a href="index.html">Accueil</a></li>
-    <li><a href="portfolio.html?type=photo">Portfolio</a></li>
+    <li><a href="evenementiel.html">Événementiel</a></li><li><a href="sport.html">Sport</a></li><li><a href="immobilier.html">Immobilier et conciergeries</a></li><li><a href="entreprises.html">Entreprises et marques</a></li>
+    <li><a href="portfolio.html?type=photo">Réalisations</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <a href="contact.html" class="nav-btn">Me contacter</a>
-  <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
-</nav>
-
-<div class="nav-mobile" id="navMobile">
-  <a href="index.html">Accueil</a>
-  <div class="nav-mobile-group">
-    <span class="nav-mobile-label">Portfolio</span>
-    <a href="portfolio.html?type=photo">Photos</a>
-    <a href="portfolio.html?type=video">Vidéos</a>
+  <div class="mm-foot">
+    <a href="contact.html" class="btn light">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
+    <p><a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a> · <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener">Instagram</a></p>
   </div>
-  <a href="contact.html">Contact</a>
-  <a href="contact.html" class="nav-mobile-cta">Me contacter</a>
-  <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="nav-mobile-ig">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
-    <span>@nathanfrt_visuals</span>
-  </a>
 </div>
+<div class="mcta">
+  <a href="contact.html" class="btn no-mag">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
+  <a href="mailto:nathan.fritsch.pro@gmail.com" class="btn tel no-mag" aria-label="Envoyer un email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+</div>
+<!--/V2-HD-->
 
 <main>
   <span class="page-tag">Informations</span>
@@ -112,7 +127,7 @@ footer a:hover{color:var(--a);}
   <p><strong>Nathan Fritsch</strong><br>
   Photographe et vidéaste<br>
   Mérignac, France<br>
-  Email : <a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a></p>
+  Email&nbsp;: <a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a></p>
 
   <h2>Directeur de la publication</h2>
   <p>Nathan Fritsch</p>
@@ -121,7 +136,7 @@ footer a:hover{color:var(--a);}
   <p><strong>Vercel Inc.</strong><br>
   340 S Lemon Ave #4133<br>
   Walnut, CA 91789, États-Unis<br>
-  Site web : <a href="https://vercel.com" target="_blank" rel="noopener">vercel.com</a></p>
+  Site web&nbsp;: <a href="https://vercel.com" target="_blank" rel="noopener">vercel.com</a></p>
 
   <h2>Nom de domaine</h2>
   <p>Le nom de domaine <strong>nathanfritsch.com</strong> est enregistré via <strong>OVHcloud</strong> — 2 rue Kellermann, 59100 Roubaix, France.</p>
@@ -146,10 +161,35 @@ footer a:hover{color:var(--a);}
   <a href="index.html" class="legal-back">← Retour à l'accueil</a>
 </main>
 
-<footer>
-  <p>© 2026 Nathan Fritsch — Photographe et Vidéaste</p>
-  <p><a href="index.html">Accueil</a> · <a href="portfolio.html?type=photo">Portfolio</a> · <a href="contact.html">Contact</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></p>
+<!--V2-FT-->
+<footer class="fx">
+  <div class="wrap">
+    <div class="fx-top">
+      <div class="fx-cta">
+        <h3>Un projet en tête&nbsp;?<br><em>Parlons-en.</em></h3>
+        <a href="contact.html" class="btn light">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
+      </div>
+      <div><h4>Services</h4><ul><li><a href="evenementiel.html">Événementiel</a></li><li><a href="sport.html">Sport</a></li><li><a href="immobilier.html">Immobilier et conciergeries</a></li><li><a href="entreprises.html">Entreprises et marques</a></li></ul></div>
+      <div><h4>Réalisations</h4><ul>
+        <li><a href="portfolio.html?type=photo">Photos</a></li>
+        <li><a href="portfolio.html?type=video">Vidéos</a></li>
+        <li><a href="index.html#apropos">À propos</a></li>
+      </ul></div>
+      <div><h4>Contact</h4><ul>
+        <li><a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a></li>
+        <li><a href="https://calendly.com/nathan-fritsch-pro/30min" target="_blank" rel="noopener">Réserver un appel</a></li>
+        <li><a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="contact.html">Bordeaux · France entière</a></li>
+      </ul></div>
+    </div>
+    <div class="fx-big" aria-hidden="true">Nathan Fritsch</div>
+    <div class="fx-bot">
+      <span>© <span data-year>2026</span> Nathan Fritsch · Photographe et vidéaste à Bordeaux</span>
+      <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+    </div>
+  </div>
 </footer>
+<!--/V2-FT-->
 
 <script>
 (function(){
@@ -170,5 +210,6 @@ footer a:hover{color:var(--a);}
   addEventListener('keydown',e=>{ if(e.key==='Escape') toggle(false); });
 })();
 </script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>

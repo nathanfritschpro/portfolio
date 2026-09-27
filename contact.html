@@ -84,7 +84,21 @@ body.ready .ct-l-bg{transform:scale(1);}
   .ct-l{position:relative;height:auto;min-height:72svh;}
   .ct-r{padding-top:3.5rem;}
 }
-@media (max-width:640px){.row2,.alt,.ct-info{grid-template-columns:1fr;}.opts{grid-template-columns:1fr 1fr;}}
+@media (max-width:640px){.row2,.alt,.ct-info{grid-template-columns:1fr;}}
+
+@media (max-width:768px){
+  .ct-l{min-height:0;height:34svh;}
+  .ct-l-in{display:none;}
+  .ct-r{padding:2.2rem 1.25rem 7rem;gap:1.8rem;}
+  .ct-top h2{font-size:1.7rem;}
+  .opts{grid-template-columns:1fr;}
+  .opt label{padding:1.05rem 1.2rem;}
+  .opt label span{display:none;}
+  .opts.pill{display:grid;grid-template-columns:1fr 1fr;}
+  .opts.pill label{justify-content:center;border-radius:12px;}
+  .nav-f .btn{flex:1;justify-content:space-between;}
+  .mcta{display:none!important;}
+}
 </style>
 </head>
 <body class="dark-top">
@@ -146,19 +160,19 @@ body.ready .ct-l-bg{transform:scale(1);}
     </div>
     <div class="prog" aria-hidden="true"><div class="prog-bar"><i id="pBar"></i></div><span id="pTxt">1 / 4</span></div>
 
-    <form id="qf" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST" novalidate>
+    <form id="qf" action="https://formspree.io/f/xljdopkj" method="POST" novalidate>
       <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
       <input type="hidden" name="_subject" id="subj" value="Nouvelle demande de devis · site">
 
       <fieldset class="fs on" data-step="1">
-        <legend>Quel type de projet ?</legend>
-        <div class="opts"><div class="opt"><input type="radio" name="type_projet" id="t-entreprise" value="Entreprise / marque" data-k="entreprise"><label for="t-entreprise"><b>Entreprise / marque</b><span>Communication, réseaux, portraits</span></label></div><div class="opt"><input type="radio" name="type_projet" id="t-immobilier" value="Immobilier / conciergerie" data-k="immobilier"><label for="t-immobilier"><b>Immobilier / conciergerie</b><span>Annonces, visites, locations</span></label></div><div class="opt"><input type="radio" name="type_projet" id="t-sport" value="Sport" data-k="sport"><label for="t-sport"><b>Sport</b><span>Compétition, club, athlète</span></label></div><div class="opt"><input type="radio" name="type_projet" id="t-evenement" value="Événement" data-k="evenement"><label for="t-evenement"><b>Événement</b><span>Soirée, séminaire, célébration</span></label></div><div class="opt"><input type="radio" name="type_projet" id="t-particulier" value="Projet personnel" data-k="particulier"><label for="t-particulier"><b>Projet personnel</b><span>Portrait, souvenir, autre idée</span></label></div></div>
+        <legend>Quel type de projet&nbsp;?</legend>
+        <div class="opts"><div class="opt"><input type="radio" name="type_projet" id="t-evenement" value="Événement" data-k="evenement"><label for="t-evenement"><b>Événement</b><span>Soirée, séminaire, célébration</span></label></div><div class="opt"><input type="radio" name="type_projet" id="t-sport" value="Sport" data-k="sport"><label for="t-sport"><b>Sport</b><span>Compétition, club, athlète</span></label></div><div class="opt"><input type="radio" name="type_projet" id="t-immobilier" value="Immobilier / conciergerie" data-k="immobilier"><label for="t-immobilier"><b>Immobilier / conciergerie</b><span>Annonces, visites, locations</span></label></div><div class="opt"><input type="radio" name="type_projet" id="t-entreprise" value="Entreprise / marque" data-k="entreprise"><label for="t-entreprise"><b>Entreprise / marque</b><span>Communication, réseaux, portraits</span></label></div><div class="opt"><input type="radio" name="type_projet" id="t-particulier" value="Projet personnel" data-k="particulier"><label for="t-particulier"><b>Projet personnel</b><span>Portrait, souvenir, autre idée</span></label></div></div>
         <p class="err" aria-live="polite"></p>
         <div class="nav-f"><span></span><button type="button" class="btn nx">Continuer <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></button></div>
       </fieldset>
 
       <fieldset class="fs" data-step="2">
-        <legend>De quoi avez-vous besoin ?</legend>
+        <legend>De quoi avez-vous besoin&nbsp;?</legend>
         <div><span class="q">Format</span><div class="opts pill"><div class="opt"><input type="radio" name="besoin" id="n0" value="Photo"><label for="n0"><b>Photo</b></label></div><div class="opt"><input type="radio" name="besoin" id="n1" value="Vidéo"><label for="n1"><b>Vidéo</b></label></div><div class="opt"><input type="radio" name="besoin" id="n2" value="Photo + vidéo"><label for="n2"><b>Photo + vidéo</b></label></div><div class="opt"><input type="radio" name="besoin" id="n3" value="Je ne sais pas encore"><label for="n3"><b>Je ne sais pas encore</b></label></div></div></div>
         <div class="row2">
           <div class="fld"><label for="f-date">Date ou période <i>(si connue)</i></label><input id="f-date" name="date" type="text" placeholder="Ex. 14 juin, ou septembre"></div>
@@ -176,7 +190,7 @@ body.ready .ct-l-bg{transform:scale(1);}
       </fieldset>
 
       <fieldset class="fs" data-step="4">
-        <legend>Où puis-je vous répondre ?</legend>
+        <legend>Où puis-je vous répondre&nbsp;?</legend>
         <div class="row2">
           <div class="fld"><label for="f-nom">Prénom et nom</label><input id="f-nom" name="nom" type="text" autocomplete="name" required></div>
           <div class="fld"><label for="f-soc">Entreprise <i>(facultatif)</i></label><input id="f-soc" name="entreprise" type="text" autocomplete="organization"></div>
@@ -208,7 +222,7 @@ body.ready .ct-l-bg{transform:scale(1);}
   <div class="wrap">
     <div class="fx-top">
       <div class="fx-cta">
-        <h3>Un projet en tête ?<br><em>Parlons-en.</em></h3>
+        <h3>Un projet en tête&nbsp;?<br><em>Parlons-en.</em></h3>
         <a href="contact.html" class="btn light">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
       </div>
       <div><h4>Services</h4><ul><li><a href="evenementiel.html">Événementiel</a></li><li><a href="sport.html">Sport</a></li><li><a href="immobilier.html">Immobilier et conciergeries</a></li><li><a href="entreprises.html">Entreprises et marques</a></li></ul></div>
