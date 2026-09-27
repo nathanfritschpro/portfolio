@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 <style>
 :root{--bg:#F8F7F4;--text:#111111;--muted:#888880;--a:#344D59;--ah:#2A3D48;--al:#ECF1F3;--white:#FFFFFF;--border:#E2DDD7;}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -369,9 +370,14 @@ footer a{color:var(--a);text-decoration:none;}
 /* LAZY CLIP-REVEAL for images */
 .clip-rev{clip-path:inset(0 0 100% 0);transition:clip-path 1.15s cubic-bezier(.66,0,.16,1);}
 .clip-rev.shown{clip-path:inset(0 0 0 0);}
+/* V2 */
+#modal{z-index:520;}#lb{z-index:640;}.hd{color:var(--text)!important;}.hd::before{opacity:1!important;}
+body{background:var(--bg);}
+.fx a,.hd a{cursor:none;}
+@media(pointer:coarse){.fx a,.hd a{cursor:auto;}}
 </style>
 </head>
-<body>
+<body class="dark-top" data-lite>
 
 <div id="pageFade" class="show"></div>
 <div id="prog"></div>
@@ -381,43 +387,44 @@ footer a{color:var(--a);text-decoration:none;}
   <div id="cur-lbl">VOIR<br>+</div>
 </div>
 
-<nav>
-  <div class="nav-left">
-    <a href="index.html" class="nav-logo">N<span>.</span>FRITSCH</a>
-    <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
-    </a>
+<!--V2-HD-->
+<header class="hd">
+  <a href="index.html" class="hd-logo" aria-label="Nathan Fritsch, accueil"><b>Nathan Fritsch</b><small>Photo · Vidéo · Bordeaux</small></a>
+  <div role="navigation" aria-label="Navigation principale">
+    <ul class="hd-nav">
+      <li><button type="button" aria-haspopup="true">Services <svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m2 3.5 3 3 3-3"/></svg></button>
+        <div class="hd-dd"><div class="hd-dd-in"><a href="entreprises.html"><b>Entreprises & marques</b><span>Contenus pour votre communication</span></a><a href="immobilier.html"><b>Immobilier & conciergeries</b><span>Valoriser et louer plus vite</span></a><a href="sport.html"><b>Sport</b><span>Compétitions, clubs, athlètes</span></a><a href="evenementiel.html"><b>Événementiel</b><span>Soirées, séminaires, célébrations</span></a></div></div></li>
+      <li><button type="button" aria-haspopup="true">Réalisations <svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m2 3.5 3 3 3-3"/></svg></button>
+        <div class="hd-dd"><div class="hd-dd-in">
+          <a href="portfolio.html?type=photo"><b>Photos</b><span>Reportages et séries</span></a>
+          <a href="portfolio.html?type=video"><b>Vidéos</b><span>Films, aftermovies, formats courts</span></a>
+        </div></div></li>
+      <li><a href="index.html#apropos">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
   </div>
-  <ul class="nav-links">
-    <li><a href="index.html">Accueil</a></li>
-    <li class="nav-drop">
-      <a class="nav-drop-toggle on">Portfolio</a>
-      <div class="nav-sub">
-        <a href="portfolio.html?type=photo">Photos</a>
-        <a href="portfolio.html?type=video">Vidéos</a>
-      </div>
-    </li>
-    <li><a href="contact.html">Contact</a></li>
+  <div class="hd-right">
+    <a href="contact.html" class="btn">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
+    <button class="hd-burger" type="button" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+<div class="mm" role="dialog" aria-label="Menu">
+  <ul class="mm-links">
+    <li><a href="index.html"><small>01</small>Accueil</a></li>
+    <li><a href="entreprises.html"><small>02</small>Entreprises & marques</a></li><li><a href="immobilier.html"><small>03</small>Immobilier & conciergeries</a></li><li><a href="sport.html"><small>04</small>Sport</a></li><li><a href="evenementiel.html"><small>05</small>Événementiel</a></li>
+    <li><a href="portfolio.html?type=photo"><small>06</small>Réalisations</a></li>
+    <li><a href="contact.html"><small>07</small>Contact</a></li>
   </ul>
-  <a href="contact.html" class="nav-btn mag-btn">Démarrer un projet</a>
-  <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-</nav>
-
-<!-- MOBILE MENU -->
-<div class="nav-mobile" id="navMobile">
-  <a href="index.html">Accueil</a>
-  <div class="nav-mobile-group">
-    <span class="nav-mobile-label">Portfolio</span>
-    <a href="portfolio.html?type=photo" class="on">Photos</a>
-    <a href="portfolio.html?type=video">Vidéos</a>
+  <div class="mm-foot">
+    <a href="contact.html" class="btn light">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
+    <p><a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a> · <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener">Instagram</a></p>
   </div>
-  <a href="contact.html">Contact</a>
-  <a href="contact.html" class="nav-mobile-cta">Démarrer un projet</a>
-  <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="nav-mobile-ig">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
-    <span>@nathanfrt_visuals</span>
-  </a>
 </div>
+<div class="mcta">
+  <a href="contact.html" class="btn no-mag">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
+  <a href="mailto:nathan.fritsch.pro@gmail.com" class="btn tel no-mag" aria-label="Envoyer un email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+</div>
+<!--/V2-HD-->
 
 <div class="ph">
   <div class="ph-bg"></div>
@@ -479,10 +486,35 @@ footer a{color:var(--a);text-decoration:none;}
   <div class="lb-cap"><span class="lb-cap-t" id="lbCapT"></span><span class="lb-cap-n" id="lbCapN"></span></div>
 </div>
 
-<footer>
-  <p>© 2026 Nathan Fritsch — Photographe & Vidéaste</p>
-  <p><a href="index.html">Accueil</a> · <a href="contact.html">Contact</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></p>
+<!--V2-FT-->
+<footer class="fx">
+  <div class="wrap">
+    <div class="fx-top">
+      <div class="fx-cta">
+        <h3>Un projet en tête ?<br><em>Parlons-en.</em></h3>
+        <a href="contact.html" class="btn light">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
+      </div>
+      <div><h4>Services</h4><ul><li><a href="entreprises.html">Entreprises & marques</a></li><li><a href="immobilier.html">Immobilier & conciergeries</a></li><li><a href="sport.html">Sport</a></li><li><a href="evenementiel.html">Événementiel</a></li></ul></div>
+      <div><h4>Réalisations</h4><ul>
+        <li><a href="portfolio.html?type=photo">Photos</a></li>
+        <li><a href="portfolio.html?type=video">Vidéos</a></li>
+        <li><a href="index.html#apropos">À propos</a></li>
+      </ul></div>
+      <div><h4>Contact</h4><ul>
+        <li><a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a></li>
+        <li><a href="https://calendly.com/nathan-fritsch-pro/30min" target="_blank" rel="noopener">Réserver un appel</a></li>
+        <li><a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="contact.html">Bordeaux · France entière</a></li>
+      </ul></div>
+    </div>
+    <div class="fx-big" aria-hidden="true">Nathan Fritsch</div>
+    <div class="fx-bot">
+      <span>© <span data-year>2026</span> Nathan Fritsch · Photographe &amp; vidéaste à Bordeaux</span>
+      <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+    </div>
+  </div>
 </footer>
+<!--/V2-FT-->
 
 <script src="photos-dims.js"></script>
 <script>
@@ -883,14 +915,14 @@ const PROJECTS = [
   {
     id:'surf-lacanau',
     title:'Surf — Lacanau',
-    subtitle:'Sport & Drone · Lacanau Océan',
+    subtitle:'Sport · Lacanau Océan',
     cat:'sport',
     type:'photo',
-    tags:['Sport','Drone','Surf','Océan'],
+    tags:['Sport','Surf','Océan'],
     cover:'photos/surf/lacanaupro2025/_MG_6116.JPG',
     galleryCover:'photos/surf/lacanau-sunset/IMG_5811.jpg',
     rowImgs:['photos/surf/DJI_0112.jpg','photos/surf/DJI_0106.jpg'],
-    desc:'Session photo et drone sur les vagues de Lacanau Océan. Captures aériennes des surfeurs en action — vues du ciel pour rendre toute l\'énergie et la beauté de ce sport. J\'aime le surf autant que photographier ceux qui le vivent.',
+    desc:'Session photo sur les vagues de Lacanau Océan. Les surfeurs en action, au plus près de la vague, pour rendre toute l\'énergie et la beauté de ce sport. J\'aime le surf autant que photographier ceux qui le vivent.',
     media:[
       'photos/surf/DJI_0106.jpg',
       'photos/surf/DJI_0112.jpg',
@@ -945,7 +977,7 @@ const PROJECTS = [
     subtitle:'Immobilier · HDR · Bordeaux',
     cat:'immobilier',
     type:'photo',
-    tags:['Immobilier','HDR','Architecture','Intérieur','Drone'],
+    tags:['Immobilier','HDR','Architecture','Intérieur'],
     cover:'photos/immo/DJI_0032.jpg',
     rowImgs:['photos/immo/IMG_5250-HDR.jpg','photos/immo/IMG_5253-HDR.jpg'],
     desc:'Shooting immobilier professionnel en HDR pour valoriser des biens d\'exception. Chaque pièce sublimée par une lumière travaillée, des angles soigneusement choisis et une post-production soignée pour un résultat qui donne envie.',
@@ -1015,22 +1047,22 @@ const PROJECTS = [
     desc:'Présentation d\'une villa réalisée pour un <strong>agent immobilier</strong>, pensée pour l\'aider à vendre le bien de son client. Cadrages soignés, rythme travaillé et mise en valeur des volumes, de la lumière et des détails qui font la différence.'
   },
   {
-    id:'video-immo-drone',
-    title:'Vue aérienne',
-    subtitle:'Vidéo · Immobilier · Drone',
+    id:'video-immo-ext',
+    title:'Extérieurs & environnement',
+    subtitle:'Vidéo · Immobilier',
     cat:'immobilier', type:'video',
-    tags:['Vidéo','Immobilier','Drone'],
+    tags:['Vidéo','Immobilier'],
     coverVideo:true,
     video:'videos/immo/DJI_0170.mp4',
-    desc:'Captation drone d\'un bien immobilier — vues aériennes pour révéler l\'environnement et les extérieurs d\'un coup d\'œil.'
+    desc:'Vidéo d\'un bien immobilier pour révéler l\'environnement et les extérieurs d\'un coup d\'œil.'
   },
   {
     id:'video-surf-sunset',
     title:'Sunset',
     titleFull:'Sunset',
-    subtitle:'Vidéo · Surf & Drone',
+    subtitle:'Vidéo · Surf',
     cat:'sport', type:'video',
-    tags:['Vidéo','Surf','Drone','Sunset'],
+    tags:['Vidéo','Surf','Sunset'],
     cover:'photos/surf/lacanau-sunset/IMG_5743.jpg',
     video:'videos/surf/sunset-cine.mp4',
     desc:'Film de surf au coucher du soleil. Lumière dorée, glisse et océan — un édit cinématique qui capture la magie de la fin de journée à Lacanau.'
@@ -1039,12 +1071,12 @@ const PROJECTS = [
     id:'video-surf',
     title:'Surf',
     titleFull:'Surf — Océan',
-    subtitle:'Vidéo · Surf & Drone',
+    subtitle:'Vidéo · Surf',
     cat:'sport', type:'video',
-    tags:['Vidéo','Surf','Drone','Océan'],
+    tags:['Vidéo','Surf','Océan'],
     cover:'photos/surf/lacanau-sunset/IMG_1424.JPG',
     video:'videos/surf/copy_62B93BBF-DF05-4655-B6B2-0E1BD0E6ED0D.mp4',
-    desc:'Session surf entre sol et drone. Je capture l\'énergie des vagues et l\'intensité du rider, au plus près de l\'action comme vu du ciel.'
+    desc:'Session surf filmée au plus près de l\'action. Je capture l\'énergie des vagues et l\'intensité du rider.'
   },
   {
     id:'video-golf',
@@ -1069,13 +1101,13 @@ const PROJECTS = [
   },
   {
     id:'video-immo-visite',
-    title:'Plans drone d\'une maison',
-    subtitle:'Vidéo · Immobilier · Drone',
+    title:'Plans extérieurs d\'une maison',
+    subtitle:'Vidéo · Immobilier',
     cat:'immobilier', type:'video',
-    tags:['Vidéo','Immobilier','Drone'],
+    tags:['Vidéo','Immobilier'],
     coverVideo:true,
     video:'videos/immo/copy_11AB6017-150B-4928-8CD5-D4D2920269E2.mp4',
-    desc:'Captation drone d\'une maison — plans aériens pour révéler l\'architecture, les extérieurs et l\'environnement du bien vu du ciel.'
+    desc:'Plans extérieurs d\'une maison pour révéler l\'architecture, les extérieurs et l\'environnement du bien.'
   },
   {
     id:'video-immo-bien',
@@ -1507,5 +1539,6 @@ renderGrid(PROJECTS);
   mq.addEventListener?.('change',e=>{ if(e.matches) toggle(false); });
 })();
 </script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>

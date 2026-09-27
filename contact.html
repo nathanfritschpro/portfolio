@@ -2,486 +2,240 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Nathan Fritsch</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Contact & devis · Nathan Fritsch, photographe & vidéaste à Bordeaux</title>
+<meta name="description" content="Demandez un devis gratuit pour votre projet photo ou vidéo à Bordeaux et partout en France. Réponse sous 24 h.">
+<link rel="canonical" href="https://nathanfritsch.fr/contact">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact & devis · Nathan Fritsch, photographe & vidéaste à Bordeaux">
+<meta property="og:description" content="Demandez un devis gratuit pour votre projet photo ou vidéo à Bordeaux et partout en France. Réponse sous 24 h.">
+<meta property="og:image" content="https://nathanfritsch.fr/assets/img/hero.jpg">
+<meta name="theme-color" content="#0D0F10">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230D0F10'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-size='34' fill='%23F4F1EC'%3ENF%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
 <style>
-:root{--bg:#F8F7F4;--text:#111111;--muted:#888880;--a:#344D59;--ah:#2A3D48;--white:#FFFFFF;--border:#E2DDD7;}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;cursor:none;}
-
-#prog{position:fixed;top:0;left:0;height:2px;background:var(--a);z-index:9998;width:0%;transition:width .05s linear;pointer-events:none;}
-
-#cur{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;}
-#cur-dot{width:7px;height:7px;background:var(--a);border-radius:50%;position:absolute;transform:translate(-50%,-50%);}
-#cur-ring{width:36px;height:36px;border:1.5px solid rgba(52,77,89,.4);border-radius:50%;position:absolute;transform:translate(-50%,-50%);transition:width .4s,height .4s,background .4s;}
-body.ch #cur-ring{width:58px;height:58px;background:rgba(52,77,89,.06);border-color:var(--a);}
-
-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1rem 4rem;background:rgba(248,247,244,.6);backdrop-filter:blur(32px) saturate(2.2);-webkit-backdrop-filter:blur(32px) saturate(2.2);border-bottom:1px solid rgba(255,255,255,.65);box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 6px 35px rgba(52,77,89,.07);display:flex;align-items:center;justify-content:space-between;}
-.nav-left{display:flex;align-items:center;gap:1.1rem;}
-.nav-ig{display:inline-flex;align-items:center;color:var(--a);transition:color .3s,transform .3s;}
-.nav-ig svg{width:21px;height:21px;}
-.nav-ig:hover{color:var(--ah);transform:translateY(-1px);}
-.nav-logo{font-family:'Fraunces',serif;font-weight:500;font-size:1.35rem;letter-spacing:.02em;color:var(--text);text-decoration:none;}
-.nav-logo span{color:var(--a);}
-.nav-links{display:flex;gap:2.5rem;list-style:none;}
-/* dropdown Portfolio → Photos / Vidéos */
-.nav-drop{position:relative;}
-.nav-drop::after{content:'';position:absolute;left:-16px;right:-16px;top:100%;height:16px;}
-.nav-sub{position:absolute;top:calc(100% + 12px);left:50%;transform:translate(-50%,8px);min-width:150px;background:rgba(248,247,244,.98);border:1px solid var(--border);box-shadow:0 18px 45px rgba(17,17,17,.16);padding:.45rem 0;opacity:0;visibility:hidden;transition:opacity .3s,transform .3s,visibility .3s;z-index:300;}
-.nav-drop:hover .nav-sub{opacity:1;visibility:visible;transform:translate(-50%,0);}
-.nav-sub a{display:block;padding:.62rem 1.3rem;font-family:'Inter',sans-serif;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s,background .25s;}
-.nav-sub a:hover{color:var(--a);background:rgba(52,77,89,.06);}
-.nav-sub a::after{display:none;}
-.nav-links a{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;position:relative;}
-.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--a);transition:width .35s;}
-.nav-links a:hover{color:var(--text);}
-.nav-links a.on{color:var(--a);}
-.nav-links a.on::after,.nav-links a:hover::after{width:100%;}
-.nav-btn{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;background:var(--a);color:var(--white);padding:.6rem 1.6rem;text-decoration:none;font-weight:500;transition:background .3s,transform .25s;}
-.nav-btn:hover{background:var(--ah);transform:translateY(-1px);}
-
-/* HERO */
-.c-hero{min-height:52vh;display:flex;flex-direction:column;justify-content:flex-end;padding:9rem 4rem 5rem;position:relative;overflow:hidden;}
-.c-hero-bg{position:absolute;inset:0;background-image:url('photos/surf/DJI_0106.jpg');background-size:cover;background-position:center;filter:brightness(.22);}
-.c-hero-over{position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,.88) 0%,transparent 60%);}
-.c-hero-inner{position:relative;z-index:1;}
-.c-hero-tag{font-size:.6rem;letter-spacing:.45em;text-transform:uppercase;color:rgba(236,241,243,.7);display:block;margin-bottom:1.2rem;}
-.c-hero h1{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(3.2rem,7.5vw,7rem);font-weight:430;line-height:1.0;letter-spacing:-.01em;color:#F8F7F4;}
-.c-hero h1 em{font-style:italic;color:var(--a);}
-.c-hero-sub{font-size:.95rem;color:rgba(248,247,244,.45);margin-top:1.5rem;font-weight:300;line-height:1.7;max-width:450px;}
-
-/* MAIN LAYOUT */
-.c-main{display:grid;grid-template-columns:1fr 1.6fr;}
-
-/* INFO SIDE */
-.c-info{background:var(--white);padding:6rem 4rem;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:2.5rem;}
-/* wrapper only used to group items for mobile reorder — transparent on desktop */
-.c-info-rest{display:contents;}
-.info-block h4{font-size:.58rem;letter-spacing:.38em;text-transform:uppercase;color:var(--a);margin-bottom:.9rem;}
-.info-block p,.info-block a{font-size:.92rem;color:var(--muted);line-height:1.7;font-weight:300;text-decoration:none;display:block;}
-.info-block a:hover{color:var(--text);}
-.c-div{width:40px;height:1px;background:var(--border);}
-.avail{border:1px solid var(--border);padding:1.4rem;background:var(--bg);}
-.avail-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.6rem;}
-.avail-dot{width:8px;height:8px;background:#22C55E;border-radius:50%;animation:pulse 2s ease infinite;flex-shrink:0;}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{box-shadow:0 0 0 6px rgba(34,197,94,0)}}
-.avail-lbl{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text);font-weight:500;}
-.avail p{font-size:.8rem;color:var(--muted);line-height:1.6;font-weight:300;}
-.soc-row{display:flex;gap:.6rem;margin-top:.3rem;}
-.soc{display:inline-flex;align-items:center;justify-content:center;color:var(--a);text-decoration:none;transition:color .3s,transform .3s;}
-.soc svg{width:32px;height:32px;display:block;}
-.soc:hover{color:var(--ah);transform:translateY(-1px);}
-
-/* FORM SIDE */
-.c-form-side{padding:6rem 5rem;background:var(--bg);}
-.form-intro h2{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:clamp(1.9rem,3.4vw,2.8rem);font-weight:450;letter-spacing:-.01em;margin-bottom:.5rem;}
-.form-intro h2 em{font-style:italic;color:var(--a);}
-.form-intro p{font-size:.85rem;color:var(--muted);margin-bottom:3rem;line-height:1.7;font-weight:300;}
-
-/* Choice cards + expanding panels */
-.c-choices{display:flex;flex-direction:column;gap:1.2rem;}
-.c-choice-wrap{border:1px solid var(--border);background:var(--white);border-radius:14px;overflow:hidden;transition:border-color .3s,box-shadow .35s;}
-.c-choice-wrap:hover{border-color:rgba(52,77,89,.35);}
-.c-choice-wrap.open{border-color:var(--a);box-shadow:0 18px 55px rgba(52,77,89,.14);}
-.c-choice{display:flex;align-items:center;gap:1.3rem;width:100%;padding:1.7rem 1.9rem;background:none;border:0;cursor:pointer;text-align:left;font-family:inherit;color:inherit;transition:background .3s;}
-.c-choice:hover{background:rgba(52,77,89,.03);}
-.c-choice-ico{flex-shrink:0;width:52px;height:52px;border-radius:50%;background:rgba(52,77,89,.08);color:var(--a);display:flex;align-items:center;justify-content:center;transition:background .3s,color .3s,transform .35s;}
-.c-choice-ico svg{width:24px;height:24px;}
-.c-choice-wrap.open .c-choice-ico{background:var(--a);color:var(--white);transform:scale(1.05);}
-.c-choice-body{flex:1;display:flex;flex-direction:column;gap:.35rem;}
-.c-choice-title{font-family:'Fraunces',serif;font-optical-sizing:auto;font-size:1.35rem;font-weight:500;color:var(--text);letter-spacing:-.005em;line-height:1.15;}
-.c-choice-sub{font-family:'Inter',sans-serif;font-size:.82rem;line-height:1.55;color:var(--muted);font-weight:300;}
-.c-choice-arrow{flex-shrink:0;font-size:1.2rem;color:var(--a);transition:transform .4s cubic-bezier(.4,0,.2,1);}
-.c-choice-wrap.open .c-choice-arrow{transform:rotate(180deg);}
-.c-panel{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1);}
-.c-choice-wrap.open .c-panel{max-height:2800px;}
-.c-panel-inner{padding:.4rem 1.9rem 2rem;border-top:1px solid var(--border);}
-.c-panel-cal{padding:.4rem .6rem 1rem;}
-.c-panel-cal .calendly-inline-widget{width:100%;}
-
-form{display:flex;flex-direction:column;gap:1.6rem;}
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;}
-.fg{position:relative;}
-.fg label{position:absolute;top:.95rem;left:1.1rem;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(136,136,128,.55);pointer-events:none;transition:top .25s,font-size .25s,color .25s;font-weight:400;}
-.fg input,.fg textarea,.fg select{width:100%;padding:.95rem 1.1rem;background:var(--white);border:1px solid var(--border);color:var(--text);font-family:'Inter',sans-serif;font-size:.9rem;font-weight:300;outline:none;transition:border-color .3s,box-shadow .3s;appearance:none;-webkit-appearance:none;}
-.fg input::placeholder,.fg textarea::placeholder{color:transparent;}
-.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--a);box-shadow:0 0 0 3px rgba(52,77,89,.07);}
-.fg input:focus~label,.fg input:not(:placeholder-shown)~label,
-.fg textarea:focus~label,.fg textarea:not(:placeholder-shown)~label,
-.fg select:focus~label,.fg select:valid~label{top:-.55rem;font-size:.58rem;color:var(--a);background:var(--bg);padding:0 .3rem;left:.8rem;}
-.fg textarea{min-height:130px;resize:vertical;}
-.fg select{cursor:none;}
-.fg select option{background:var(--white);color:var(--text);}
-
-.budget-title{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.75rem;}
-.budget-opt{font-size:.55rem;letter-spacing:.14em;text-transform:none;font-style:italic;color:var(--muted);opacity:.75;margin-left:.35rem;}
-.budget-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;}
-.br{position:relative;}
-.br input{position:absolute;opacity:0;pointer-events:none;}
-.br label{display:block;padding:.65rem .5rem;text-align:center;border:1px solid var(--border);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:none;background:var(--white);transition:all .3s;position:static;top:auto;left:auto;}
-.br input:checked+label{border-color:var(--a);color:var(--a);background:rgba(52,77,89,.05);}
-.br label:hover{border-color:rgba(52,77,89,.4);color:var(--text);}
-
-.btn-send{background:var(--a);color:var(--white);border:none;padding:1.1rem 2.8rem;font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;cursor:none;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:1rem;align-self:flex-start;}
-.btn-send::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.18);transform:translateX(-110%) skewX(-15deg);transition:transform .5s;}
-.btn-send:hover::before{transform:translateX(130%) skewX(-15deg);}
-.btn-send:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(52,77,89,.25);}
-.btn-arrow{font-size:1rem;transition:transform .3s;}
-.btn-send:hover .btn-arrow{transform:translateX(5px);}
-
-.success{display:none;text-align:center;padding:5rem 2rem;}
-.success.on{display:block;}
-.success-icon{font-size:2.5rem;color:var(--a);margin-bottom:1.5rem;display:block;}
-.success h3{font-family:'Fraunces',serif;font-optical-sizing:auto;font-weight:450;font-size:1.8rem;margin-bottom:1rem;}
-.success h3 em{font-style:italic;color:var(--a);}
-.success p{color:var(--muted);line-height:1.8;font-weight:300;}
-
-footer{background:var(--text);color:rgba(248,247,244,.4);padding:3rem 4rem;display:flex;justify-content:space-between;align-items:center;}
-footer p{font-size:.7rem;}
-footer a{color:var(--a);text-decoration:none;}
-
-[data-r]{opacity:0;transition:opacity .85s ease,transform .85s ease;}
-[data-r="up"]{transform:translateY(50px);}
-[data-r].vis{opacity:1;transform:none;}
-[data-d="1"]{transition-delay:.1s;}[data-d="2"]{transition-delay:.2s;}[data-d="3"]{transition-delay:.3s;}
-
-.nav-burger{display:none;}
-.nav-mobile{display:none;}
-
-/* Hide the custom cursor on touch devices (mobile + tablet up to iPad) */
-@media(max-width:1024px),(pointer:coarse){
-  body,.fg select,.br label,.btn-send,button,a{cursor:auto!important;}
-  #cur{display:none!important;}
+.hd{color:var(--text)!important;}.hd::before{opacity:1!important;}
+.ct{display:grid;grid-template-columns:.85fr 1.15fr;min-height:100vh;}
+.ct-l{position:sticky;top:0;height:100vh;height:100svh;color:#fff;overflow:hidden;display:flex;align-items:flex-end;}
+.ct-l-bg{position:absolute;inset:0;background:url('assets/img/lacanau-2.jpg') center/cover;transform:scale(1.08);transition:transform 2.4s var(--ease);}
+body.ready .ct-l-bg{transform:scale(1);}
+.ct-l::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,15,16,.5),rgba(13,15,16,.35) 40%,rgba(13,15,16,.92));}
+.ct-l-in{position:relative;z-index:2;padding:0 clamp(1.5rem,4vw,4rem) clamp(2rem,6vh,4rem);display:flex;flex-direction:column;gap:1.8rem;width:100%;}
+.ct-l h1{max-width:10ch;}
+.ct-info{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem 2rem;padding-top:1.8rem;border-top:1px solid rgba(255,255,255,.2);}
+.ct-info small{display:block;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--a-xl);margin-bottom:.35rem;}
+.ct-info a,.ct-info span{color:#fff;text-decoration:none;font-size:.95rem;word-break:break-word;}
+.ct-info a:hover{color:var(--a-l);}
+.ct-r{padding:clamp(7.5rem,14vh,9rem) clamp(1.5rem,5vw,5.5rem) 5rem;display:flex;flex-direction:column;gap:2.4rem;background:var(--paper);}
+.ct-top{display:flex;flex-direction:column;gap:1rem;}
+.ct-top h2{font-family:var(--serif);font-weight:390;font-size:clamp(1.9rem,3vw,2.8rem);letter-spacing:-.02em;line-height:1.08;}
+.ct-top h2 em{font-style:italic;color:var(--a);}
+.ct-top p{color:var(--mute);font-weight:300;}
+.prog{display:flex;align-items:center;gap:1rem;}
+.prog-bar{flex:1;height:2px;background:var(--line);border-radius:2px;overflow:hidden;}
+.prog-bar i{display:block;height:100%;background:var(--a);width:25%;transition:width .7s var(--ease);}
+.prog span{font-size:.72rem;letter-spacing:.14em;color:var(--mute);font-weight:500;min-width:3.6em;text-align:right;}
+.fs{border:0;display:none;flex-direction:column;gap:1.8rem;animation:stIn .7s var(--ease);}
+.fs.on{display:flex;}
+@keyframes stIn{from{opacity:0;transform:translateX(24px);}to{opacity:1;transform:none;}}
+.fs legend{font-family:var(--serif);font-weight:420;font-size:clamp(1.35rem,2vw,1.7rem);letter-spacing:-.01em;margin-bottom:.4rem;}
+.q{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--text);margin-bottom:.8rem;display:block;}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.7rem;}
+.opt{position:relative;}
+.opt input{position:absolute;opacity:0;pointer-events:none;}
+.opt label{display:flex;flex-direction:column;gap:.35rem;height:100%;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:14px;cursor:pointer;background:#fff;transition:border-color .3s,background .3s,box-shadow .4s,transform .4s var(--ease);}
+.opt label:hover{border-color:rgba(52,77,89,.5);transform:translateY(-2px);}
+.opt label b{font-weight:550;font-size:.95rem;}
+.opt label span{font-size:.8rem;color:var(--mute);line-height:1.45;}
+.opt input:checked+label{border-color:var(--a);background:var(--a-xl);box-shadow:0 0 0 1px var(--a) inset;}
+.opt input:focus-visible+label{outline:2px solid var(--a);outline-offset:2px;}
+.opts.pill{display:flex;flex-wrap:wrap;}
+.opts.pill label{flex-direction:row;padding:.8rem 1.2rem;border-radius:100px;}
+.fld{display:flex;flex-direction:column;gap:.5rem;}
+.fld label{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;}
+.fld label i{font-style:normal;color:var(--mute);font-weight:400;text-transform:none;letter-spacing:0;}
+.fld input,.fld textarea{width:100%;font:inherit;font-size:1rem;padding:1rem 1.1rem;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--text);transition:border-color .3s,box-shadow .3s;}
+.fld textarea{min-height:150px;resize:vertical;line-height:1.6;}
+.fld input:focus,.fld textarea:focus{outline:0;border-color:var(--a);box-shadow:0 0 0 3px rgba(52,77,89,.12);}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.nav-f{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:.6rem;}
+.back{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--mute);display:inline-flex;align-items:center;gap:.5rem;}
+.back:hover{color:var(--text);}
+.back svg{width:12px;height:12px;transform:rotate(180deg);}
+.err{color:#A1412F;font-size:.85rem;min-height:1.2em;}
+.recap{background:var(--bone);border-radius:14px;padding:1.2rem 1.4rem;font-size:.88rem;color:var(--mute);line-height:1.7;}
+.recap b{color:var(--text);font-weight:550;}
+.done{display:none;flex-direction:column;gap:1.4rem;align-items:flex-start;animation:stIn .7s var(--ease);}
+.done.on{display:flex;}
+.done-ic{width:64px;height:64px;border-radius:50%;background:var(--a);color:#fff;display:grid;place-items:center;}
+.done-ic svg{width:26px;height:26px;}
+.alt{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;padding-top:2rem;border-top:1px solid var(--line);}
+.alt a{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.2rem 1.3rem;border:1px solid var(--line);border-radius:14px;text-decoration:none;transition:border-color .3s,background .3s;}
+.alt a:hover{border-color:var(--a);background:#fff;}
+.alt b{display:block;font-weight:550;font-size:.95rem;}
+.alt span{font-size:.8rem;color:var(--mute);}
+.alt svg{width:12px;height:12px;flex:none;}
+.hp{position:absolute;left:-9999px;}
+@media (max-width:1080px){
+  .ct{grid-template-columns:1fr;}
+  .ct-l{position:relative;height:auto;min-height:72svh;}
+  .ct-r{padding-top:3.5rem;}
 }
-
-@media(max-width:900px){
-  nav{padding:1rem 1.2rem;}.nav-links{display:none;}
-  nav>.nav-btn{display:none;}
-  .nav-burger{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:none;border:0;padding:6px;cursor:pointer;z-index:210;}
-  .nav-burger span{display:block;width:24px;height:1.5px;background:var(--text);transition:transform .35s ease,opacity .25s ease,background .3s;}
-  body.nav-open .nav-burger span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
-  body.nav-open .nav-burger span:nth-child(2){opacity:0;}
-  body.nav-open .nav-burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
-  .nav-mobile{display:flex;flex-direction:column;gap:1.4rem;position:fixed;top:0;right:0;bottom:0;width:min(88vw,340px);z-index:205;background:rgba(248,247,244,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-left:1px solid var(--border);padding:6rem 2rem 2rem;transform:translateX(100%);transition:transform .45s cubic-bezier(.6,0,.3,1);overflow-y:auto;}
-  body.nav-open .nav-mobile{transform:translateX(0);}
-  .nav-mobile>a,.nav-mobile-group>a{display:block;font-family:'Inter',sans-serif;font-size:.82rem;letter-spacing:.24em;text-transform:uppercase;color:var(--text);text-decoration:none;padding:.4rem 0;transition:color .25s;font-weight:700;}
-  .nav-mobile-group>a{font-weight:400;}
-  .nav-mobile>a.on,.nav-mobile-group>a.on{color:var(--a);}
-  .nav-mobile-group{display:flex;flex-direction:column;gap:.7rem;padding-top:.6rem;border-top:1px solid var(--border);}
-  .nav-mobile-label{font-family:'Inter',sans-serif;font-size:.82rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--text);padding:.4rem 0;}
-  .nav-mobile-group>a{padding:.1rem 0 .1rem .9rem;font-size:.72rem;}
-  .nav-mobile-cta{margin-top:auto;background:var(--a);color:#fff!important;text-align:center;padding:1rem 1.4rem!important;letter-spacing:.2em!important;font-size:.7rem!important;}
-  .nav-mobile-ig{display:flex!important;align-items:center;gap:.7rem;color:var(--a)!important;padding-top:1rem!important;border-top:1px solid var(--border);}
-  .nav-mobile-ig svg{width:20px;height:20px;flex-shrink:0;}
-  .nav-mobile-ig span{font-size:.7rem;letter-spacing:.06em;color:var(--muted);text-transform:none;}
-  body.nav-open::before{content:'';position:fixed;inset:0;z-index:199;background:rgba(0,0,0,.45);animation:navFade .35s ease;}
-  @keyframes navFade{from{opacity:0}to{opacity:1}}
-
-  .c-hero{padding:7rem 1.5rem 4rem;}
-  /* mobile ordering : avail on top, form/Calendly middle, other infos bottom */
-  .c-main{display:flex;flex-direction:column;grid-template-columns:none;}
-  .c-info{display:contents;}
-  .c-info>.avail{order:1;margin:2rem 1.5rem 0;background:var(--white);padding:1.4rem;border:1px solid var(--border);}
-  .c-form-side{order:2;padding:3rem 1.5rem;}
-  .c-info-rest{order:3;display:flex;flex-direction:column;gap:2rem;background:var(--white);padding:2.5rem 1.5rem 3rem;border-top:1px solid var(--border);}
-  .f-row{grid-template-columns:1fr;}.budget-grid{grid-template-columns:1fr 1fr;}footer{padding:2rem 1.5rem;}
-}
-
-/* PAGE FADE TRANSITION */
-#pageFade{position:fixed;inset:0;z-index:9990;background:var(--bg);pointer-events:none;opacity:0;transition:opacity .55s ease;}
-#pageFade.show{opacity:1;}
+@media (max-width:640px){.row2,.alt,.ct-info{grid-template-columns:1fr;}.opts{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
-<body>
-
-<div id="pageFade" class="show"></div>
-<div id="prog"></div>
-<div id="cur"><div id="cur-dot"></div><div id="cur-ring"></div></div>
-
-<nav>
-  <div class="nav-left">
-    <a href="index.html" class="nav-logo">N<span>.</span>FRITSCH</a>
-    <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="nav-ig" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
-    </a>
+<body class="dark-top">
+<header class="hd">
+  <a href="index.html" class="hd-logo" aria-label="Nathan Fritsch, accueil"><b>Nathan Fritsch</b><small>Photo · Vidéo · Bordeaux</small></a>
+  <div role="navigation" aria-label="Navigation principale">
+    <ul class="hd-nav">
+      <li><button type="button" aria-haspopup="true">Services <svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m2 3.5 3 3 3-3"/></svg></button>
+        <div class="hd-dd"><div class="hd-dd-in"><a href="entreprises.html"><b>Entreprises & marques</b><span>Contenus pour votre communication</span></a><a href="immobilier.html"><b>Immobilier & conciergeries</b><span>Valoriser et louer plus vite</span></a><a href="sport.html"><b>Sport</b><span>Compétitions, clubs, athlètes</span></a><a href="evenementiel.html"><b>Événementiel</b><span>Soirées, séminaires, célébrations</span></a></div></div></li>
+      <li><button type="button" aria-haspopup="true">Réalisations <svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m2 3.5 3 3 3-3"/></svg></button>
+        <div class="hd-dd"><div class="hd-dd-in">
+          <a href="portfolio.html?type=photo"><b>Photos</b><span>Reportages et séries</span></a>
+          <a href="portfolio.html?type=video"><b>Vidéos</b><span>Films, aftermovies, formats courts</span></a>
+        </div></div></li>
+      <li><a href="index.html#apropos">À propos</a></li>
+      <li><a href="contact.html" class="on">Contact</a></li>
+    </ul>
   </div>
-  <ul class="nav-links">
-    <li><a href="index.html">Accueil</a></li>
-    <li class="nav-drop">
-      <a class="nav-drop-toggle">Portfolio</a>
-      <div class="nav-sub">
-        <a href="portfolio.html?type=photo">Photos</a>
-        <a href="portfolio.html?type=video">Vidéos</a>
-      </div>
-    </li>
-    <li><a href="contact.html" class="on">Contact</a></li>
+  <div class="hd-right">
+    <a href="contact.html" class="btn">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
+    <button class="hd-burger" type="button" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
+</header>
+<div class="mm" role="dialog" aria-label="Menu">
+  <ul class="mm-links">
+    <li><a href="index.html"><small>01</small>Accueil</a></li>
+    <li><a href="entreprises.html"><small>02</small>Entreprises & marques</a></li><li><a href="immobilier.html"><small>03</small>Immobilier & conciergeries</a></li><li><a href="sport.html"><small>04</small>Sport</a></li><li><a href="evenementiel.html"><small>05</small>Événementiel</a></li>
+    <li><a href="portfolio.html?type=photo"><small>06</small>Réalisations</a></li>
+    <li><a href="contact.html"><small>07</small>Contact</a></li>
   </ul>
-  <a href="contact.html" class="nav-btn mag-btn">Me contacter</a>
-  <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-</nav>
-
-<!-- MOBILE MENU -->
-<div class="nav-mobile" id="navMobile">
-  <a href="index.html">Accueil</a>
-  <div class="nav-mobile-group">
-    <span class="nav-mobile-label">Portfolio</span>
-    <a href="portfolio.html?type=photo">Photos</a>
-    <a href="portfolio.html?type=video">Vidéos</a>
-  </div>
-  <a href="contact.html" class="on">Contact</a>
-  <a href="contact.html" class="nav-mobile-cta">Me contacter</a>
-  <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="nav-mobile-ig">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
-    <span>@nathanfrt_visuals</span>
-  </a>
-</div>
-
-<div class="c-hero">
-  <div class="c-hero-bg"></div>
-  <div class="c-hero-over"></div>
-  <div class="c-hero-inner">
-    <span class="c-hero-tag">Parlons de votre projet</span>
-    <h1>Travaillons<br><em>ensemble.</em></h1>
-    <p class="c-hero-sub">Un événement, une compétition, un bien à valoriser ? Je suis là pour en faire quelque chose d'exceptionnel.</p>
+  <div class="mm-foot">
+    <a href="contact.html" class="btn light">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
+    <p><a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a> · <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener">Instagram</a></p>
   </div>
 </div>
-
-<div class="c-main">
-  <div class="c-info">
-    <div class="avail" data-r="up">
-      <div class="avail-row">
-        <div class="avail-dot"></div>
-        <span class="avail-lbl">Disponible pour nouveaux projets</span>
-      </div>
-      <p><strong>Réponse garantie sous 24h.</strong><br>Devis gratuit et sans engagement.</p>
-    </div>
-    <div class="c-info-rest">
-      <div class="c-div"></div>
-      <div class="info-block" data-r="up" data-d="1">
-        <h4>Email</h4>
-        <a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a>
-      </div>
-      <div class="c-div"></div>
-      <div class="info-block" data-r="up" data-d="2">
-        <h4>Basé à</h4>
-        <p>Bordeaux, France<br>Disponible partout en France<br>et à l'étranger</p>
-      </div>
-      <div class="c-div"></div>
-      <div class="info-block" data-r="up" data-d="2">
-        <h4>Suivez mon travail</h4>
-        <div class="soc-row">
-          <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" class="soc" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="c-div"></div>
-      <div class="info-block" data-r="up" data-d="3">
-        <h4>Spécialités</h4>
-        <p>Événementiel · Sport<br>Immobilier · Drone</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="c-form-side">
-    <div class="form-intro" data-r="up">
-      <h2>Comment souhaitez-vous <em>me contacter</em> ?</h2>
-      <p>Choisissez la méthode qui vous convient — je réponds toujours sous 24h.</p>
-    </div>
-
-    <div class="c-choices" data-r="up" data-d="1">
-      <!-- Choice 1 : formulaire écrit -->
-      <div class="c-choice-wrap">
-        <button type="button" class="c-choice" data-target="msg" aria-expanded="false" aria-controls="cPanelMsg">
-          <span class="c-choice-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-          </span>
-          <span class="c-choice-body">
-            <span class="c-choice-title">Envoyer un message</span>
-            <span class="c-choice-sub">Décrivez votre projet en détail par écrit. Idéal pour tout partager en une fois.</span>
-          </span>
-          <span class="c-choice-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="c-panel" id="cPanelMsg" role="region" aria-hidden="true">
-          <div class="c-panel-inner">
-            <form id="cForm"
-                  action="https://formspree.io/f/VOTRE_ID_FORMSPREE"
-                  method="POST">
-              <div class="f-row">
-                <div class="fg"><input type="text" name="prenom" placeholder="Prénom" required><label>Prénom</label></div>
-                <div class="fg"><input type="text" name="nom" placeholder="Nom" required><label>Nom</label></div>
-              </div>
-              <div class="fg"><input type="email" name="email" placeholder="Email" required><label>Email</label></div>
-              <div class="fg">
-                <select name="service" required>
-                  <option value="" disabled selected></option>
-                  <option>Événementiel</option>
-                  <option>Sport</option>
-                  <option>Immobilier</option>
-                  <option>Drone & Aérien</option>
-                  <option>Autre projet</option>
-                </select>
-                <label>Type de projet</label>
-              </div>
-              <div>
-                <span class="budget-title">Budget estimé <span class="budget-opt">(optionnel)</span></span>
-                <div class="budget-grid">
-                  <div class="br"><input type="radio" name="budget" id="b1" value="< 500 €"><label for="b1">< 500 €</label></div>
-                  <div class="br"><input type="radio" name="budget" id="b2" value="500–1k €"><label for="b2">500–1k €</label></div>
-                  <div class="br"><input type="radio" name="budget" id="b3" value="1k–2.5k €"><label for="b3">1k–2.5k €</label></div>
-                  <div class="br"><input type="radio" name="budget" id="b4" value="2.5k–5k €"><label for="b4">2.5k–5k €</label></div>
-                  <div class="br"><input type="radio" name="budget" id="b5" value="> 5k €"><label for="b5">> 5k €</label></div>
-                  <div class="br"><input type="radio" name="budget" id="b6" value="À définir"><label for="b6">À définir</label></div>
-                </div>
-              </div>
-              <div class="fg"><textarea name="message" placeholder="Message" required></textarea><label>Décrivez votre projet</label></div>
-              <button type="submit" class="btn-send mag-btn">Envoyer ma demande <span class="btn-arrow">→</span></button>
-            </form>
-            <div class="success" id="suc">
-              <span class="success-icon">✦</span>
-              <h3>Message <em>envoyé !</em></h3>
-              <p>Merci ! Je vous réponds sous 24h avec une réponse personnalisée.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Choice 2 : Calendly -->
-      <div class="c-choice-wrap">
-        <button type="button" class="c-choice" data-target="cal" aria-expanded="false" aria-controls="cPanelCal">
-          <span class="c-choice-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </span>
-          <span class="c-choice-body">
-            <span class="c-choice-title">Réserver un appel gratuit</span>
-            <span class="c-choice-sub">30 minutes au téléphone pour parler de votre projet — devis offert, sans engagement.</span>
-          </span>
-          <span class="c-choice-arrow" aria-hidden="true">↓</span>
-        </button>
-        <div class="c-panel" id="cPanelCal" role="region" aria-hidden="true">
-          <div class="c-panel-inner c-panel-cal">
-            <div class="calendly-inline-widget" data-url="https://calendly.com/nathan-fritsch-pro/30min?hide_gdpr_banner=1&primary_color=344d59" style="min-width:320px;height:700px;"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="mcta">
+  <a href="contact.html" class="btn no-mag">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
+  <a href="mailto:nathan.fritsch.pro@gmail.com" class="btn tel no-mag" aria-label="Envoyer un email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
 </div>
 
-<footer>
-  <p>© 2026 Nathan Fritsch — Photographe & Vidéaste</p>
-  <p><a href="index.html">Accueil</a> · <a href="portfolio.html?type=photo">Photos</a> · <a href="portfolio.html?type=video">Vidéos</a> · <a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></p>
+<main class="ct">
+  <aside class="ct-l">
+    <div class="ct-l-bg" role="img" aria-label="Surfeur au Lacanau Pro"></div>
+    <div class="ct-l-in">
+      <span class="eyebrow lt" data-rv>Contact · Devis gratuit</span>
+      <h1 class="d1 split" style="font-size:clamp(2.6rem,5.4vw,5.6rem)">Parlons de votre <em class="it-a">projet.</em></h1>
+      <div class="ct-info" data-rv style="--dl:.3s">
+        <div><small>Email</small><a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a></div>
+        <div><small>Réponse</small><span>Sous 24 h</span></div>
+        <div><small>Zone</small><span>Bordeaux · France entière</span></div>
+        <div><small>Instagram</small><a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener">@nathanfrt_visuals</a></div>
+      </div>
+    </div>
+  </aside>
+
+  <section class="ct-r">
+    <div class="ct-top">
+      <h2>Quelques questions, <em>deux minutes.</em></h2>
+      <p>Plus j'en sais, plus ma proposition sera juste. Réponse sous 24 h avec un devis gratuit.</p>
+    </div>
+    <div class="prog" aria-hidden="true"><div class="prog-bar"><i id="pBar"></i></div><span id="pTxt">1 / 4</span></div>
+
+    <form id="qf" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST" novalidate>
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_subject" id="subj" value="Nouvelle demande de devis · site">
+
+      <fieldset class="fs on" data-step="1">
+        <legend>Quel type de projet ?</legend>
+        <div class="opts"><div class="opt"><input type="radio" name="type_projet" id="t-entreprise" value="Entreprise / marque" data-k="entreprise"><label for="t-entreprise"><b>Entreprise / marque</b><span>Communication, réseaux, portraits</span></label></div><div class="opt"><input type="radio" name="type_projet" id="t-immobilier" value="Immobilier / conciergerie" data-k="immobilier"><label for="t-immobilier"><b>Immobilier / conciergerie</b><span>Annonces, visites, locations</span></label></div><div class="opt"><input type="radio" name="type_projet" id="t-sport" value="Sport" data-k="sport"><label for="t-sport"><b>Sport</b><span>Compétition, club, athlète</span></label></div><div class="opt"><input type="radio" name="type_projet" id="t-evenement" value="Événement" data-k="evenement"><label for="t-evenement"><b>Événement</b><span>Soirée, séminaire, célébration</span></label></div><div class="opt"><input type="radio" name="type_projet" id="t-particulier" value="Projet personnel" data-k="particulier"><label for="t-particulier"><b>Projet personnel</b><span>Portrait, souvenir, autre idée</span></label></div></div>
+        <p class="err" aria-live="polite"></p>
+        <div class="nav-f"><span></span><button type="button" class="btn nx">Continuer <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></button></div>
+      </fieldset>
+
+      <fieldset class="fs" data-step="2">
+        <legend>De quoi avez-vous besoin ?</legend>
+        <div><span class="q">Format</span><div class="opts pill"><div class="opt"><input type="radio" name="besoin" id="n0" value="Photo"><label for="n0"><b>Photo</b></label></div><div class="opt"><input type="radio" name="besoin" id="n1" value="Vidéo"><label for="n1"><b>Vidéo</b></label></div><div class="opt"><input type="radio" name="besoin" id="n2" value="Photo + vidéo"><label for="n2"><b>Photo + vidéo</b></label></div><div class="opt"><input type="radio" name="besoin" id="n3" value="Je ne sais pas encore"><label for="n3"><b>Je ne sais pas encore</b></label></div></div></div>
+        <div class="row2">
+          <div class="fld"><label for="f-date">Date ou période <i>(si connue)</i></label><input id="f-date" name="date" type="text" placeholder="Ex. 14 juin, ou septembre"></div>
+          <div class="fld"><label for="f-lieu">Lieu</label><input id="f-lieu" name="lieu" type="text" placeholder="Ex. Bordeaux, Lacanau…"></div>
+        </div>
+        <p class="err" aria-live="polite"></p>
+        <div class="nav-f"><button type="button" class="back"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg> Retour</button><button type="button" class="btn nx">Continuer <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></button></div>
+      </fieldset>
+
+      <fieldset class="fs" data-step="3">
+        <legend>Parlez-moi de votre projet</legend>
+        <div><span class="q">Budget envisagé</span><div class="opts pill"><div class="opt"><input type="radio" name="budget" id="b0" value="Moins de 500 €"><label for="b0"><b>Moins de 500 €</b></label></div><div class="opt"><input type="radio" name="budget" id="b1" value="500 à 1 000 €"><label for="b1"><b>500 à 1 000 €</b></label></div><div class="opt"><input type="radio" name="budget" id="b2" value="1 000 à 2 500 €"><label for="b2"><b>1 000 à 2 500 €</b></label></div><div class="opt"><input type="radio" name="budget" id="b3" value="Plus de 2 500 €"><label for="b3"><b>Plus de 2 500 €</b></label></div><div class="opt"><input type="radio" name="budget" id="b4" value="À définir ensemble"><label for="b4"><b>À définir ensemble</b></label></div></div></div>
+        <div class="fld"><label for="f-msg">Votre projet en quelques lignes</label><textarea id="f-msg" name="message" placeholder="Contexte, objectifs, usages des images (site, réseaux, annonces…), nombre de photos ou durée de vidéo souhaitée…" required></textarea></div>
+        <p class="err" aria-live="polite"></p>
+        <div class="nav-f"><button type="button" class="back"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg> Retour</button><button type="button" class="btn nx">Continuer <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></button></div>
+      </fieldset>
+
+      <fieldset class="fs" data-step="4">
+        <legend>Où puis-je vous répondre ?</legend>
+        <div class="row2">
+          <div class="fld"><label for="f-nom">Prénom et nom</label><input id="f-nom" name="nom" type="text" autocomplete="name" required></div>
+          <div class="fld"><label for="f-soc">Entreprise <i>(facultatif)</i></label><input id="f-soc" name="entreprise" type="text" autocomplete="organization"></div>
+        </div>
+        <div class="row2">
+          <div class="fld"><label for="f-mail">Email</label><input id="f-mail" name="email" type="email" autocomplete="email" required></div>
+          <div class="fld"><label for="f-tel">Téléphone <i>(facultatif)</i></label><input id="f-tel" name="telephone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="recap" id="recap"></div>
+        <p class="err" aria-live="polite"></p>
+        <div class="nav-f"><button type="button" class="back"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg> Retour</button><button type="submit" class="btn" id="sendBtn">Envoyer ma demande <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></button></div>
+      </fieldset>
+    </form>
+
+    <div class="done" id="done" role="status">
+      <div class="done-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-10"/></svg></div>
+      <h2 class="d3">Merci, c'est bien reçu.</h2>
+      <p class="lead">Je reviens vers vous sous 24 h avec des premières idées et un devis. En attendant, jetez un œil à mes dernières réalisations.</p>
+      <a href="portfolio.html?type=photo" class="btn">Voir le portfolio <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
+    </div>
+
+    <div class="alt">
+      <a href="https://calendly.com/nathan-fritsch-pro/30min" target="_blank" rel="noopener"><div><b>Réserver un appel</b><span>30 minutes, gratuit</span></div><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></a>
+      <a href="mailto:nathan.fritsch.pro@gmail.com"><div><b>Écrire un email</b><span>nathan.fritsch.pro@gmail.com</span></div><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></a>
+    </div>
+  </section>
+</main>
+<footer class="fx">
+  <div class="wrap">
+    <div class="fx-top">
+      <div class="fx-cta">
+        <h3>Un projet en tête ?<br><em>Parlons-en.</em></h3>
+        <a href="contact.html" class="btn light">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
+      </div>
+      <div><h4>Services</h4><ul><li><a href="entreprises.html">Entreprises & marques</a></li><li><a href="immobilier.html">Immobilier & conciergeries</a></li><li><a href="sport.html">Sport</a></li><li><a href="evenementiel.html">Événementiel</a></li></ul></div>
+      <div><h4>Réalisations</h4><ul>
+        <li><a href="portfolio.html?type=photo">Photos</a></li>
+        <li><a href="portfolio.html?type=video">Vidéos</a></li>
+        <li><a href="index.html#apropos">À propos</a></li>
+      </ul></div>
+      <div><h4>Contact</h4><ul>
+        <li><a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a></li>
+        <li><a href="https://calendly.com/nathan-fritsch-pro/30min" target="_blank" rel="noopener">Réserver un appel</a></li>
+        <li><a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="contact.html">Bordeaux · France entière</a></li>
+      </ul></div>
+    </div>
+    <div class="fx-big" aria-hidden="true">Nathan Fritsch</div>
+    <div class="fx-bot">
+      <span>© <span data-year>2026</span> Nathan Fritsch · Photographe &amp; vidéaste à Bordeaux</span>
+      <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
+    </div>
+  </div>
 </footer>
 
-<script>
-const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-(function t(){dot.style.left=mx+'px';dot.style.top=my+'px';rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(t);})();
-document.querySelectorAll('a,button,input,textarea,select,.br label').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('ch'));el.addEventListener('mouseleave',()=>document.body.classList.remove('ch'));});
-
-window.addEventListener('scroll',()=>{document.getElementById('prog').style.width=scrollY/(document.body.scrollHeight-innerHeight)*100+'%';});
-
-const obs=new IntersectionObserver(e=>{e.forEach(x=>x.target.classList.toggle('vis',x.isIntersecting));},{threshold:.1});
-document.querySelectorAll('[data-r]').forEach(el=>obs.observe(el));
-
-document.getElementById('cForm').addEventListener('submit',async function(e){
-  e.preventDefault();
-  const data=new FormData(this);
-  try{
-    const r=await fetch(this.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
-    if(r.ok){this.style.display='none';document.getElementById('suc').classList.add('on');}
-    else{alert('Erreur lors de l\'envoi. Contactez-moi par email directement.');}
-  }catch{alert('Problème de connexion. Contactez-moi par email directement.');}
-});
-
-// ── MAGNETIC BUTTONS ──
-document.querySelectorAll('.mag-btn').forEach(btn=>{
-  btn.addEventListener('mousemove',e=>{const r=btn.getBoundingClientRect();const x=(e.clientX-r.left-r.width/2)*.22;const y=(e.clientY-r.top-r.height/2)*.22;btn.style.transition='none';btn.style.transform=`translate(${x}px,${y}px)`;});
-  btn.addEventListener('mouseleave',()=>{btn.style.transition='transform .5s cubic-bezier(.25,.46,.45,.94)';btn.style.transform='';});
-});
-
-// ── NAV DROPDOWN — clicking "Portfolio" itself never navigates ──
-document.querySelectorAll('.nav-drop-toggle').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
-
-// ── PAGE FADE TRANSITION ──
-(function(){
-  const fade=document.getElementById('pageFade');
-  if(!fade) return;
-  const reveal=()=>fade.classList.remove('show');
-  requestAnimationFrame(()=>requestAnimationFrame(reveal));
-  window.addEventListener('pageshow',reveal);
-  document.querySelectorAll('a[href*=".html"]').forEach(a=>{
-    a.addEventListener('click',e=>{
-      const href=a.getAttribute('href');
-      if(!href||a.target==='_blank'||e.metaKey||e.ctrlKey||e.shiftKey) return;
-      e.preventDefault();
-      fade.classList.add('show');
-      setTimeout(()=>{location.href=href;},520);
-    });
-  });
-})();
-
-/* ── CONTACT CHOICES : expand form or Calendly ── */
-(function(){
-  const wraps=document.querySelectorAll('.c-choice-wrap');
-  if(!wraps.length) return;
-  let calLoaded=false;
-  wraps.forEach(wrap=>{
-    const btn=wrap.querySelector('.c-choice');
-    const panel=wrap.querySelector('.c-panel');
-    if(!btn||!panel) return;
-    btn.addEventListener('click',()=>{
-      const willOpen=!wrap.classList.contains('open');
-      wraps.forEach(w=>{
-        w.classList.remove('open');
-        w.querySelector('.c-choice')?.setAttribute('aria-expanded','false');
-        w.querySelector('.c-panel')?.setAttribute('aria-hidden','true');
-      });
-      if(willOpen){
-        wrap.classList.add('open');
-        btn.setAttribute('aria-expanded','true');
-        panel.setAttribute('aria-hidden','false');
-        /* lazy-load Calendly script the first time */
-        if(btn.dataset.target==='cal' && !calLoaded){
-          calLoaded=true;
-          const s=document.createElement('script');
-          s.src='https://assets.calendly.com/assets/external/widget.js';
-          s.async=true;
-          document.body.appendChild(s);
-        }
-        /* smooth scroll the newly opened card into view (nice on tall screens) */
-        setTimeout(()=>wrap.scrollIntoView({behavior:'smooth',block:'start'}),80);
-      }
-    });
-  });
-})();
-
-/* ── MOBILE MENU (burger + backdrop close) ── */
-(function(){
-  const b=document.getElementById('navBurger');
-  const panel=document.getElementById('navMobile');
-  if(!b||!panel) return;
-  function toggle(open){
-    const on = open===undefined ? !document.body.classList.contains('nav-open') : open;
-    document.body.classList.toggle('nav-open',on);
-    b.setAttribute('aria-expanded',on?'true':'false');
-  }
-  b.addEventListener('click',e=>{e.stopPropagation();toggle();});
-  panel.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggle(false)));
-  document.addEventListener('click',e=>{
-    if(!document.body.classList.contains('nav-open')) return;
-    if(panel.contains(e.target)||b.contains(e.target)) return;
-    toggle(false);
-  });
-  addEventListener('keydown',e=>{ if(e.key==='Escape') toggle(false); });
-  const mq=matchMedia('(min-width:901px)');
-  mq.addEventListener?.('change',e=>{ if(e.matches) toggle(false); });
-})();
-</script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script src="assets/site.js" defer></script>
+<script src="assets/contact.js" defer></script>
 </body>
 </html>
