@@ -6,6 +6,13 @@
   const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
   const lite=body.hasAttribute('data-lite'); // portfolio : garde son curseur et ses transitions
 
+  /* ── Défilement vers une ancre, avec filet de sécurité ── */
+  function goTo(el){
+    const top=el.getBoundingClientRect().top+scrollY-10, y0=scrollY;
+    scrollTo({top,behavior:reduce?'auto':'smooth'});
+    setTimeout(()=>{ if(Math.abs(scrollY-y0)<2&&Math.abs(top-y0)>2) scrollTo(0,top); },450);
+  }
+
   /* ── Smooth scroll (Lenis if available) ── */
   let lenis=null;
   if(window.Lenis&&!reduce&&!lite){
@@ -20,7 +27,7 @@
     if(!el) return;
     e.preventDefault();
     closeMenu();
-    lenis?lenis.scrollTo(el,{offset:-40}):el.scrollIntoView({behavior:'smooth'});
+    lenis?lenis.scrollTo(el,{offset:-40}):goTo(el);
   }));
 
   /* ── Intro curtain, first visit of the session only ── */
@@ -55,7 +62,14 @@
     if(!a||reduce||lite) return;
     const href=a.getAttribute('href');
     if(!href||a.target==='_blank'||e.metaKey||e.ctrlKey||e.shiftKey||href.startsWith('#')||href.startsWith('mailto:')||href.startsWith('tel:')||/^https?:/.test(href)) return;
-    if(href.split('#')[0]===location.pathname.split('/').pop()&&href.includes('#')) return;
+    // Lien vers une ancre de la page courante (ex. index.html#apropos) : simple défilement, pas de rideau
+    const u=new URL(href,location.href);
+    const norm=p=>p.replace(/\/index(\.html)?$/,'/').replace(/\.html$/,'');
+    if(norm(u.pathname)===norm(location.pathname)&&u.hash){
+      const el=document.querySelector(u.hash);
+      if(el){ e.preventDefault(); closeMenu(); goTo(el); history.replaceState(null,'',u.hash); }
+      return;
+    }
     e.preventDefault();
     try{sessionStorage.setItem('nf-pt','1');}catch(err){}
     pt.className='pt go';
