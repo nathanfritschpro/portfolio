@@ -9,6 +9,7 @@ EMAIL = "nathan.fritsch.pro@gmail.com"
 IG = "https://www.instagram.com/nathanfrt_visuals"
 CAL = "https://calendly.com/nathan-fritsch-pro/30min"
 SITE = "https://nathanfritsch.fr"
+VIDEO = (ROOT / "assets/video/presentation.mp4").exists()  # vidéo de présentation : déposer le fichier ici
 
 ARROW = '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg>'
 ARR_R = '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg>'
@@ -225,7 +226,7 @@ body.ready .hero-bg{transform:scale(1.02);}
 .hero-side{display:flex;flex-direction:column;gap:2rem;padding-bottom:.6rem;}
 .hero-side p{color:rgba(255,255,255,.78);font-weight:300;font-size:clamp(1rem,1.2vw,1.12rem);line-height:1.75;max-width:30em;}
 .hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:1.4rem 2rem;}
-.hero-bar{display:flex;justify-content:space-between;align-items:center;gap:2rem;margin-top:clamp(2.2rem,5vh,3.6rem);padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.18);}
+.hero-bar{display:flex;justify-content:flex-end;align-items:center;gap:2rem;margin-top:clamp(2.2rem,5vh,3.6rem);padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.18);}
 .hero-tags{display:flex;flex-wrap:wrap;gap:.6rem;}
 .hero-tags a{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:.55rem 1rem;border:1px solid rgba(255,255,255,.25);border-radius:100px;color:rgba(255,255,255,.88);transition:background .4s,color .4s,border-color .4s;}
 .hero-tags a:hover{background:#fff;color:var(--ink);border-color:#fff;}
@@ -264,6 +265,7 @@ body.ready .hero-bg{transform:scale(1.02);}
 @keyframes scB{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,8px);}}
 
 /* for who: accordion panels */
+.sec-cta{display:flex;align-items:center;justify-content:center;gap:1.6rem;flex-wrap:wrap;margin-top:clamp(2.5rem,5vw,4rem);font-family:var(--serif);font-size:clamp(1.2rem,1.8vw,1.5rem);}
 .who-head{display:flex;justify-content:space-between;align-items:flex-end;gap:3rem;margin-bottom:clamp(2.5rem,5vw,4rem);}
 .who-head .lead{max-width:26em;}
 .who{display:flex;gap:10px;height:min(78vh,760px);min-height:520px;}
@@ -326,7 +328,7 @@ body.ready .hero-bg{transform:scale(1.02);}
 /* about */
 .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(3rem,7vw,7rem);align-items:center;}
 .about-img{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4;}
-.about-img img{width:100%;height:100%;object-fit:cover;}
+.about-img img,.about-img video{width:100%;height:100%;object-fit:cover;background:#000;}
 .about-badge{position:absolute;left:1.2rem;bottom:1.2rem;background:rgba(13,15,16,.55);backdrop-filter:blur(10px);color:#fff;padding:.9rem 1.1rem;border-radius:12px;font-size:.8rem;line-height:1.4;}
 .about-badge b{display:block;font-family:var(--serif);font-weight:420;font-size:1.05rem;}
 .about-txt{display:flex;flex-direction:column;gap:1.7rem;}
@@ -439,6 +441,8 @@ FAQ = [
 
 
 def index():
+    ABOUT_MEDIA = ('<video src="assets/video/presentation.mp4" poster="assets/img/about.jpg" controls playsinline preload="none"></video>' if VIDEO
+                   else '<img src="assets/img/about.jpg" alt="Portrait de Nathan Fritsch, photographe et vidéaste à Bordeaux" loading="lazy">')
     who = "".join(f"""<a href="{s}.html" class="who-p" data-cursor="Découvrir" data-rv style="--dl:{i*.08:.2f}s">
         <img src="{img}" alt="" loading="lazy" decoding="async">
         <div class="who-b"><h3 class="who-t">{t}</h3><p class="who-d">{d}</p><span class="who-go"><span>{ARROW}</span>Découvrir</span></div>
@@ -471,7 +475,7 @@ def index():
         <h1 class="d1 split">Photographe et vidéaste <span class="sm">L'instant, l'émotion, l'image.</span></h1>
       </div>
       <div class="hero-side">
-        <p data-rv style="--dl:.35s">Événements, sport, immobilier, marques.<br>Des images qui font la différence.</p>
+        <p data-rv style="--dl:.35s">Événementiel, sport, immobilier, entreprises.</p>
         <div class="hero-actions" data-rv style="--dl:.5s">
           <a href="contact.html" class="btn light big">Demander un devis <span class="ar">{ARROW}</span></a>
           <a href="#realisations" class="link" style="color:#fff">Voir les réalisations {ARR_R}</a>
@@ -479,23 +483,7 @@ def index():
       </div>
     </div>
     <div class="hero-bar" data-rv style="--dl:.65s">
-      <div class="hero-tags">
-        <a href="evenementiel.html">Événementiel</a><a href="sport.html">Sport</a><a href="immobilier.html">Immobilier</a><a href="entreprises.html">Entreprises</a>
-      </div>
       <div class="hero-scroll"><i></i>Défiler</div>
-    </div>
-  </div>
-</section>
-
-<div class="marq" aria-label="Quelques projets réalisés"><div class="marq-t">{"".join(f'<span>{x}<i></i></span>' for x in ["Lacanau Pro", "Triathlon de Lacanau", "School Cup", "Le Mahi Mahi", "Compétition de golf", "Photographie immobilière", "Ski", "Surf à Lacanau"]*2)}</div></div>
-
-<section class="mani">
-  <div class="wrap">
-    <p class="mani-txt" id="mani">{mani}</p>
-    <div class="mani-row">
-      <div data-rv><b>Photo et vidéo</b><span>Un seul interlocuteur</span></div>
-      <div data-rv style="--dl:.1s"><b>Réponse sous 24 h</b><span>Devis gratuit</span></div>
-      <div data-rv style="--dl:.2s"><b>Partout en France</b><span>Basé à Bordeaux</span></div>
     </div>
   </div>
 </section>
@@ -524,6 +512,7 @@ def index():
       <h2 class="d2 split">Quel est <em class="it-a">votre projet ?</em></h2>
     </div>
     <div class="who">{who}</div>
+    <div class="sec-cta" data-rv><span>Un projet en tête&nbsp;?</span><a href="contact.html" class="btn big">Demander un devis <span class="ar">{ARROW}</span></a></div>
   </div>
 </section>
 
@@ -544,24 +533,10 @@ def index():
   </div>
 </section>
 
-<section class="sec bone">
-  <div class="wrap method">
-    <div class="method-l">
-      <h2 class="d2 split">3 étapes. <em class="it-a">C'est tout.</em></h2>
-      <div data-rv><a href="contact.html" class="btn">Démarrer mon projet <span class="ar">{ARROW}</span></a></div>
-    </div>
-    <ol class="steps">
-      <li class="step" data-rv><span class="step-n">01</span><div><h3>On échange</h3><p>Appel gratuit, devis clair.</p></div></li>
-      <li class="step" data-rv><span class="step-n">02</span><div><h3>Je réalise</h3><p>Sur place, discret, efficace.</p></div></li>
-      <li class="step" data-rv><span class="step-n">03</span><div><h3>Je livre</h3><p>Prêt pour le web, les réseaux et l'impression.</p></div></li>
-    </ol>
-  </div>
-</section>
-
 <section class="sec on-dark" id="apropos">
   <div class="wrap about">
-    <div class="about-img imgrv" data-cursor="Nathan">
-      <img src="assets/img/about.jpg" alt="Portrait de Nathan Fritsch, photographe et vidéaste à Bordeaux" loading="lazy">
+    <div class="about-img imgrv" data-cursor="{'Lecture' if VIDEO else 'Nathan'}">
+      {ABOUT_MEDIA}
       <div class="about-badge"><b>Nathan Fritsch</b>Photographe et vidéaste · Bordeaux</div>
     </div>
     <div class="about-txt">
