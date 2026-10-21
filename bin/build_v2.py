@@ -108,6 +108,7 @@ def head(title, desc, extra_css="", path=""):
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <style>{extra_css}</style>
+<script>try{{if(location.hash||sessionStorage.getItem("nf-pt")||sessionStorage.getItem("nf-intro"))document.documentElement.classList.add("no-intro")}}catch(e){{}}</script>
 </head>
 """
 
@@ -146,6 +147,7 @@ def header(active=""):
       <button type="button" class="mm-t" aria-expanded="false">Réalisations<span class="mm-pl"></span></button>
       <div class="mm-sub"><div><a href="portfolio.html?type=photo">Photos</a><a href="portfolio.html?type=video">Vidéos</a></div></div>
     </div>
+    <div class="mm-g"><a href="index.html#apropos" class="mm-t">À propos</a></div>
     <div class="mm-g"><a href="contact.html" class="mm-t">Contact</a></div>
   </div>
   <div class="mm-foot">

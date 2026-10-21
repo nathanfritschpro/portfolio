@@ -36,7 +36,9 @@
   if(intro){
     let seen=false;
     try{seen=sessionStorage.getItem('nf-intro')==='1';}catch(e){}
-    if(seen||reduce){ intro.remove(); startPage(); }
+    // pas d'intro si on arrive sur une ancre (#apropos) ou depuis une autre page du site
+    let internal=false; try{internal=sessionStorage.getItem('nf-pt')==='1';}catch(e){}
+    if(seen||reduce||location.hash||internal){ intro.remove(); startPage(); }
     else{
       try{sessionStorage.setItem('nf-intro','1');}catch(e){}
       lenis&&lenis.stop();
@@ -55,6 +57,7 @@
   if(arrived&&!reduce){
     pt.classList.add('leave');
     requestAnimationFrame(()=>requestAnimationFrame(()=>pt.classList.add('done')));
+    setTimeout(()=>pt.classList.add('done'),120);
     setTimeout(()=>pt.className='pt',950);
   }
   document.addEventListener('click',e=>{
@@ -138,7 +141,9 @@
     const els=[...document.querySelectorAll('[data-rv],.split,.imgrv')];
     els.forEach(el=>io.observe(el));
     // filet de sécurité : ce qui est déjà à l'écran apparaît tout de suite
-    requestAnimationFrame(()=>els.forEach(el=>{ const r=el.getBoundingClientRect(); if(r.top<innerHeight*.94&&r.bottom>0) el.classList.add('in'); }));
+    const check=()=>els.forEach(el=>{ if(el.classList.contains('in')) return; const r=el.getBoundingClientRect(); if(r.top<innerHeight*.94&&r.bottom>0) el.classList.add('in'); });
+    requestAnimationFrame(check); setTimeout(check,60); setTimeout(check,400); setTimeout(check,1200);
+    addEventListener('scroll',check,{passive:true}); addEventListener('load',check); addEventListener('hashchange',()=>setTimeout(check,60));
   }
   if(body.classList.contains('ready')) arm(); else { const t=setInterval(()=>{ if(body.classList.contains('ready')){clearInterval(t);arm();} },50); }
   window.__armHold=el=>el.querySelectorAll('[data-rv],.split,.imgrv').forEach(n=>n.classList.add('in'));
