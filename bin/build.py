@@ -31,6 +31,7 @@ PHOTOS: dict[str, list[str]] = json.loads((ROOT / "bin/photos.json").read_text(e
 ABOUT_PHOTO = "photos/about-8148.jpg"
 AVATAR = "assets/avatar.jpg"
 BAND_PHOTO = "photos/triatlon-lacnau/dimanche-M/IMG_1419.jpg"
+HERO_PHOTO = "photos/lacanau-pro/IMG_2296.jpg"
 # Vidéo de présentation : déposer le fichier ici, elle remplacera le portrait dans « À propos »
 ABOUT_VIDEO = "assets/video/presentation.mp4"
 
@@ -144,7 +145,7 @@ PROJECTS = [
          delivered=[("vid", "Un film vertical de {d0}", "L'ouverture racontée en moins d'une minute, au format Instagram et TikTok."),
                     ("cam", "Un reportage photo", "La foule, les équipes, les espaces et les premiers entraînements.")],
          films=[(OF_FILM, "Film de l'ouverture")], loop="videos/one-fitness/ouverture-loop-2.mp4", hero_loop="videos/one-fitness/ouverture-loop.mp4",
-         mosaic=["IMG_2824", "IMG_3393"], og=("IMG_3393", .43)),
+         mosaic=["IMG_3050", "IMG_2784"], og=("IMG_3050", .45)),
     dict(slug="french-kiss", title="French Kiss", kind="Restaurant", place="Bordeaux",
          sectors=["entreprises"], cover="IMG_2543",
          pitch="Un brunch en famille, filmé et photographié pour donner envie de réserver.",
@@ -154,7 +155,7 @@ PROJECTS = [
          films=[(FK_FILM, "Film du brunch")], loop="videos/french-kiss/brunch-loop-2.mp4", hero_loop="videos/french-kiss/brunch-loop.mp4",
          mosaic=["IMG_2543", "IMG_2500"], og=("IMG_2543", .77)),
     dict(slug="lacanau-pro", title="Lacanau Pro", kind="Compétition de surf", place="Lacanau",
-         sectors=["evenementiel", "sport"], cover="IMG_3564",
+         sectors=["evenementiel", "sport"], cover="IMG_3987",
          pitch="Plusieurs jours au cœur d'un grand rendez-vous du surf, en photo et en vidéo.",
          mission="Plusieurs jours au cœur du Lacanau Pro 2026, l'un des grands rendez-vous du surf&nbsp;: l'action dans l'eau, l'ambiance sur le sable, les riders et le public.",
          delivered=[("vid", "Un film de {d0}", "L'aftermovie de la compétition&nbsp;: surf, village, concerts et podiums."),
@@ -180,19 +181,20 @@ PROJECTS = [
          delivered=[("cam", "Un reportage photo", "Les matchs, les supporters, les célébrations et la remise des coupes.")],
          films=[], mosaic=["IMG_9333", "IMG_8011"], og=("IMG_9040", .5)),
     dict(slug="villas", title="Villas et biens", kind="Villas à vendre et à louer", place="Gironde",
-         sectors=["immobilier"], cover="DJI_0032",
-         pitch="Photos HDR et vidéos de présentation, pour vendre ou louer plus vite.",
-         mission="Des photos HDR et des vidéos de présentation réalisées pour des agents immobiliers et des propriétaires, pour mettre un bien en valeur et donner envie de le visiter.",
-         delivered=[("vid", "Des vidéos de présentation", "Des visites filmées pour la vente et la location saisonnière."),
-                    ("cam", "Des photos HDR", "Intérieurs lumineux, extérieurs et piscines sous leur meilleur angle.")],
-         films=[("videos/immo/maison-bertrand/immo-bertrand.mp4", "Villa à vendre"),
+         sectors=["immobilier"], cover="IMG_2630",
+         pitch="Photos et vidéo de visite, pour vendre ou louer plus vite.",
+         mission="Des photos et des vidéos de visite réalisées pour des propriétaires et des agents immobiliers&nbsp;: la piscine, le bar, les terrasses et les intérieurs, sous leur meilleur jour.",
+         delivered=[("vid", "Une vidéo de visite de {d0}", "La villa et ses extérieurs filmés comme une balade, pour l'annonce et les réseaux."),
+                    ("cam", "Un reportage photo", "Extérieurs, détails et intérieurs, lumineux et fidèles.")],
+         films=[("videos/immo/villa-bar.mp4", "Visite de la villa"),
+                ("videos/immo/maison-bertrand/immo-bertrand.mp4", "Villa à vendre"),
                 ("videos/immo/copy_467875FE-2541-41B5-A76C-6958B0EF4574.mp4", "Villa à louer"),
                 ("videos/immo/maison-huga.mp4", "Maison Huga"),
                 ("videos/immo/copy_11AB6017-150B-4928-8CD5-D4D2920269E2.mp4", "Extérieurs d'une maison"),
                 ("videos/immo/DJI_0170.mp4", "Environnement d'un bien")],
-         mosaic=["IMG_4788-HDR", "IMG_5253-HDR"], og=("IMG_4800-HDR", .5)),
+         mosaic=["IMG_2636", "IMG_2644"], og=("IMG_2630", .55)),
     dict(slug="surf", title="Surf à Lacanau", kind="Sessions de surf", place="Lacanau Océan",
-         sectors=["sport"], cover="_MG_6116",
+         sectors=["sport"], cover="_MG_6012",
          pitch="Du plein jour au coucher du soleil, au plus près des vagues.",
          mission="Des sessions à Lacanau Océan, du plein jour au coucher du soleil. J'aime le surf autant que photographier ceux qui le vivent.",
          delivered=[("vid", "Deux films courts", "Une session au coucher du soleil et une session au plus près des vagues."),
@@ -200,7 +202,7 @@ PROJECTS = [
          films=[("videos/surf/sunset-cine.mp4", "Sunset"), ("videos/surf/copy_62B93BBF-DF05-4655-B6B2-0E1BD0E6ED0D.mp4", "Session")],
          mosaic=["IMG_1432", "IMG_5743"], og=("IMG_5743", .5)),
     dict(slug="ski", title="Ski", kind="Sessions en montagne", place="",
-         sectors=["sport"], cover="IMG_4075",
+         sectors=["sport"], cover="IMG_3818",
          pitch="Descentes, poudreuse et grands décors.",
          mission="Des sessions en montagne&nbsp;: descentes, poudreuse et ambiance de station, au plus près de l'action comme dans les grands décors.",
          delivered=[("vid", "Un film court de {d0}", "Une session en montagne, montée au rythme de la glisse."),
@@ -261,7 +263,7 @@ def head(title: str, desc: str, path: str = "", og: str = "assets/og/accueil.jpg
 <meta property="og:url" content="{SITE}/{path}">
 <meta property="og:image" content="{SITE}/{og}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0B0D0E">
+<meta name="theme-color" content="#F5F1EA">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B0D0E'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-size='34' fill='%23F3F0EA'%3ENF%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -274,24 +276,15 @@ def head(title: str, desc: str, path: str = "", og: str = "assets/og/accueil.jpg
 
 def header(active: str = "", home: bool = False) -> str:
     quote = "#contact" if home else "contact.html"
-    dd = "".join(f'<a href="{s["slug"]}.html"><b>{s["name"]}</b><span>{s["short"]}</span></a>' for s in SECTORS)
-    mm_sectors = "".join(f'<a href="{s["slug"]}.html">{s["name"]}</a>' for s in SECTORS)
-    mm_projects = '<a href="realisations.html">Toutes les réalisations</a>' + "".join(
-        f'<a href="{p["slug"]}.html">{p["title"]}</a>' for p in PROJECTS[:4])
+    links = [("accueil", "index.html", "Accueil"), ("realisations", "realisations.html", "Réalisations"),
+             ("apropos", "a-propos.html", "À propos"), ("contact", "contact.html", "Contact")]
     on = lambda k: ' class="on" aria-current="page"' if active == k else ""
-    about = "#apropos" if home else "index.html#apropos"
+    nav = "".join(f'<li><a href="{h}"{on(k)}>{t}</a></li>' for k, h, t in links)
+    mm = "".join(f'<a href="{h}"{on(k)}><span>{t}</span>{I_RIGHT}</a>' for k, h, t in links)
     return f"""<a class="skip" href="#main">Aller au contenu</a>
 <header class="hd">
   <a href="index.html" class="logo" aria-label="Nathan Fritsch, accueil"><b>Nathan Fritsch</b><small>Photo · Vidéo · Bordeaux</small></a>
-  <div class="hd-nav" role="navigation" aria-label="Navigation principale">
-    <ul class="nav">
-      <li><a href="realisations.html"{on('realisations')}>Réalisations</a></li>
-      <li><button type="button" aria-haspopup="true">Services {I_CHEV}</button>
-        <div class="dd"><div class="dd-in">{dd}</div></div></li>
-      <li><a href="{about}">À propos</a></li>
-      <li><a href="contact.html"{on('contact')}>Contact</a></li>
-    </ul>
-  </div>
+  <div class="hd-nav" role="navigation" aria-label="Navigation principale"><ul class="nav">{nav}</ul></div>
   <div class="hd-right">
     <a class="hd-ig" href="{IG}" target="_blank" rel="noopener" aria-label="Instagram @{IG_HANDLE}">{I_IG}</a>
     <a href="{quote}" class="btn sm">Demander un devis <span class="ar">{I_ARROW}</span></a>
@@ -299,18 +292,7 @@ def header(active: str = "", home: bool = False) -> str:
   </div>
 </header>
 <div class="mm" id="menu" role="dialog" aria-label="Menu">
-  <div class="mm-nav" role="navigation" aria-label="Menu mobile">
-    <div class="mm-g">
-      <button type="button" class="mm-t" aria-expanded="false">Réalisations<span class="mm-pl"></span></button>
-      <div class="mm-sub"><div>{mm_projects}</div></div>
-    </div>
-    <div class="mm-g">
-      <button type="button" class="mm-t" aria-expanded="false">Services<span class="mm-pl"></span></button>
-      <div class="mm-sub"><div>{mm_sectors}</div></div>
-    </div>
-    <div class="mm-g"><a href="{about}" class="mm-t">À propos</a></div>
-    <div class="mm-g"><a href="contact.html" class="mm-t">Contact</a></div>
-  </div>
+  <div class="mm-nav" role="navigation" aria-label="Menu mobile">{mm}</div>
   <div class="mm-foot">
     <a href="{quote}" class="btn">Demander un devis <span class="ar">{I_ARROW}</span></a>
     <p><a href="{IG}" target="_blank" rel="noopener">@{IG_HANDLE}</a> · <a href="mailto:{EMAIL}">{EMAIL}</a></p>
@@ -339,7 +321,7 @@ def footer() -> str:
         <li><a href="french-kiss.html">French Kiss</a></li>
         <li><a href="lacanau-pro.html">Lacanau Pro</a></li>
       </ul></div>
-      <div><h4>Services</h4><ul>{sectors}</ul></div>
+      <div><h4>Services</h4><ul>{sectors}<li><a href="a-propos.html">À propos</a></li></ul></div>
       <div><h4>Contact</h4><ul>
         <li><a href="contact.html">Demander un devis</a></li>
         <li><a href="{CAL}" target="_blank" rel="noopener">Réserver un appel</a></li>
@@ -488,6 +470,51 @@ def cta_band(form: str = "") -> str:
 
 
 # ───────────────────────────── Accueil ─────────────────────────────
+def services_html() -> str:
+    check = I_CHECK
+    sectors = "".join(f'<a class="chip" href="{s["slug"]}.html">{s["name"]}</a>' for s in SECTORS)
+    return f"""<section class="sec light" id="services">
+  <div class="wrap">
+    <header class="sec-head col">
+      <h2 class="h-l split">Photo, vidéo, ou les deux.</h2>
+      <p class="lead" data-rv>Un seul interlocuteur, du premier échange à la livraison.</p>
+    </header>
+    <div class="offers">
+      <article class="offer" data-rv>
+        <span class="offer-ic">{I_CAM}</span>
+        <h3>Photo</h3>
+        <p>Votre lieu, vos équipes, vos produits, votre événement.</p>
+        <ul><li>{check}Chaque photo est retouchée</li><li>{check}Prêtes pour le web, les réseaux et l'impression</li></ul>
+      </article>
+      <article class="offer" data-rv style="--d:.08s">
+        <span class="offer-ic">{I_VID}</span>
+        <h3>Vidéo</h3>
+        <p>Des films courts, qui se regardent jusqu'au bout.</p>
+        <ul><li>{check}Format vertical pour Instagram et TikTok</li><li>{check}Format horizontal pour votre site</li><li>{check}Montage et étalonnage inclus</li></ul>
+      </article>
+      <article class="offer feat" data-rv style="--d:.16s">
+        <span class="offer-ic">{I_DUO}</span>
+        <h3>Photo + vidéo</h3>
+        <p>Les deux pendant la même intervention.</p>
+        <ul><li>{check}Un rendu cohérent entre vos photos et vos films</li><li>{check}Une seule organisation, un seul devis</li></ul>
+      </article>
+    </div>
+    <ol class="steps">
+      <li data-rv><span><b>On échange</b>Appel gratuit, devis clair.</span></li>
+      <li data-rv style="--d:.08s"><span><b>Je viens tourner</b>Sur place, discret, efficace.</span></li>
+      <li data-rv style="--d:.16s"><span><b>Vous recevez tout</b>Prêt à publier.</span></li>
+    </ol>
+    <div class="sectors" data-rv><span>Pour qui&nbsp;?</span>{sectors}</div>
+  </div>
+</section>"""
+
+
+def about_media() -> str:
+    if (ROOT / ABOUT_VIDEO).exists():
+        return f'<video src="{ABOUT_VIDEO}" poster="{thumb(ABOUT_PHOTO)}" controls playsinline preload="none"></video>'
+    return img(ABOUT_PHOTO, "Nathan Fritsch, photographe et vidéaste à Bordeaux", "(max-width:900px) 92vw, 40vw")
+
+
 def index() -> str:
     of, fk = BY_SLUG["one-fitness"], BY_SLUG["french-kiss"]
 
@@ -498,14 +525,11 @@ def index() -> str:
                 f'<span class="reel-tag"><small>{I_VID}{label}</small>{p["title"]}</span></a>')
 
     others = "".join(card(BY_SLUG[s]) for s in ["lacanau-pro", "le-mahi-mahi", "triathlon-lacanau", "school-cup", "villas", "surf"])
-    about_media = (f'<video src="{ABOUT_VIDEO}" poster="{thumb(ABOUT_PHOTO)}" controls playsinline preload="none"></video>'
-                   if (ROOT / ABOUT_VIDEO).exists() else img(ABOUT_PHOTO, "Nathan Fritsch, photographe et vidéaste à Bordeaux", "(max-width:900px) 92vw, 40vw"))
-    sectors = "".join(f'<a class="chip" href="{s["slug"]}.html">{s["name"]}</a>' for s in SECTORS)
-    check = I_CHECK
     ld = json.dumps({"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Nathan Fritsch, photographe et vidéaste",
                      "url": SITE, "image": f"{SITE}/assets/og/accueil.jpg", "email": EMAIL, "areaServed": "France",
                      "address": {"@type": "PostalAddress", "addressLocality": "Bordeaux", "addressCountry": "FR"}, "sameAs": [IG]}, ensure_ascii=False)
     body = f"""<section class="hero">
+  <div class="hero-bg">{img(HERO_PHOTO, "", "100vw", lazy=False)}</div>
   <div class="wrap hero-grid">
     <div class="hero-txt">
       <h1 class="h-xl split">Photographe et vidéaste <em>à Bordeaux</em></h1>
@@ -539,40 +563,7 @@ def index() -> str:
   </div>
 </section>
 
-<section class="sec light" id="services">
-  <div class="wrap">
-    <header class="sec-head col">
-      <h2 class="h-l split">Photo, vidéo, ou les deux.</h2>
-      <p class="lead" data-rv>Un seul interlocuteur, du premier échange à la livraison.</p>
-    </header>
-    <div class="offers">
-      <article class="offer" data-rv>
-        <span class="offer-ic">{I_CAM}</span>
-        <h3>Photo</h3>
-        <p>Votre lieu, vos équipes, vos produits, votre événement.</p>
-        <ul><li>{check}Chaque photo est retouchée</li><li>{check}Prêtes pour le web, les réseaux et l'impression</li></ul>
-      </article>
-      <article class="offer" data-rv style="--d:.08s">
-        <span class="offer-ic">{I_VID}</span>
-        <h3>Vidéo</h3>
-        <p>Des films courts, qui se regardent jusqu'au bout.</p>
-        <ul><li>{check}Format vertical pour Instagram et TikTok</li><li>{check}Format horizontal pour votre site</li><li>{check}Montage et étalonnage inclus</li></ul>
-      </article>
-      <article class="offer feat" data-rv style="--d:.16s">
-        <span class="offer-ic">{I_DUO}</span>
-        <h3>Photo + vidéo</h3>
-        <p>Les deux pendant la même intervention.</p>
-        <ul><li>{check}Un rendu cohérent entre vos photos et vos films</li><li>{check}Une seule organisation, un seul devis</li></ul>
-      </article>
-    </div>
-    <ol class="steps">
-      <li data-rv><span><b>On échange</b>Appel gratuit, devis clair.</span></li>
-      <li data-rv style="--d:.08s"><span><b>Je viens tourner</b>Sur place, discret, efficace.</span></li>
-      <li data-rv style="--d:.16s"><span><b>Vous recevez tout</b>Prêt à publier.</span></li>
-    </ol>
-    <div class="sectors" data-rv><span>Pour qui&nbsp;?</span>{sectors}</div>
-  </div>
-</section>
+{services_html()}
 
 <section class="band" aria-label="L'instant, l'émotion, l'image">
   <div class="band-frame" data-grow>
@@ -583,15 +574,13 @@ def index() -> str:
 
 <section class="sec" id="apropos">
   <div class="wrap about">
-    <div class="about-media" data-rv>{about_media}</div>
+    <div class="about-media" data-rv>{about_media()}</div>
     <div class="about-txt">
       <h2 class="h-l split">Enchanté, moi c'est Nathan.</h2>
       <p data-rv>Jeune photographe et vidéaste basé à Bordeaux — disponible partout en France et à l'étranger pour accompagner mes clients.</p>
-      <p data-rv>Tout a commencé il y a trois ans, avec le premier appareil de mon père — et depuis, l'image ne m'a plus lâché. Je me consacre surtout au sport et à l'événementiel, sans oublier l'immobilier : des univers où je cherche à saisir <strong>l'intensité d'un geste et l'émotion d'un instant</strong>.</p>
-      <p data-rv>Ce qui me guide, c'est le regard — cette façon de voir et de raconter qui rend chaque image unique. J'avance avec une idée simple : <strong>toujours faire de son mieux, même quand personne ne regarde</strong>.</p>
       <p class="about-quote" data-rv>Figez l'instant, capturez l'émotion.</p>
       <div class="about-cta" data-rv>
-        <a href="#contact" class="btn">Travaillons ensemble <span class="ar">{I_ARROW}</span></a>
+        <a href="a-propos.html" class="btn ghost">Mon parcours <span class="ar">{I_ARROW}</span></a>
         <a class="lnk" href="{IG}" target="_blank" rel="noopener">{I_IG} @{IG_HANDLE}</a>
       </div>
     </div>
@@ -602,11 +591,35 @@ def index() -> str:
 {contact_block("h2")}
 </section>
 """
-    preload = f'<link rel="preload" as="image" href="{ver(of["hero_loop"][:-4] + ".jpg")}" fetchpriority="high">\n'
+    preload = f'<link rel="preload" as="image" href="{thumb(HERO_PHOTO)}" imagesrcset="{thumb(HERO_PHOTO)} 720w, {HERO_PHOTO} 2048w" imagesizes="100vw" fetchpriority="high">\n'
     return page("Nathan Fritsch · Photographe et vidéaste à Bordeaux",
                 "Photographe et vidéaste à Bordeaux. Photos et vidéos pour les entreprises, l'événementiel, le sport et l'immobilier, partout en France. Devis gratuit, réponse sous 24 h.",
-                body, home=True, js=("contact.js",), preload=preload,
+                body, active="accueil", home=True, js=("contact.js",), preload=preload,
                 extra=f'<script type="application/ld+json">{ld}</script>\n')
+
+
+def apropos() -> str:
+    body = f"""<section class="ph">
+  <div class="wrap about">
+    <div class="about-media" data-rv>{about_media()}</div>
+    <div class="about-txt">
+      <h1 class="h-xl split">Enchanté, moi c'est Nathan.</h1>
+      <p data-rv>Jeune photographe et vidéaste basé à Bordeaux — disponible partout en France et à l'étranger pour accompagner mes clients.</p>
+      <p data-rv>Tout a commencé il y a trois ans, avec le premier appareil de mon père — et depuis, l'image ne m'a plus lâché. Je me consacre surtout au sport et à l'événementiel, sans oublier l'immobilier : des univers où je cherche à saisir <strong>l'intensité d'un geste et l'émotion d'un instant</strong>.</p>
+      <p data-rv>Ce qui me guide, c'est le regard — cette façon de voir et de raconter qui rend chaque image unique. J'avance avec une idée simple : <strong>toujours faire de son mieux, même quand personne ne regarde</strong>.</p>
+      <p class="about-quote" data-rv>Figez l'instant, capturez l'émotion.</p>
+      <div class="about-cta" data-rv>
+        <a href="contact.html" class="btn">Travaillons ensemble <span class="ar">{I_ARROW}</span></a>
+        <a class="lnk" href="{IG}" target="_blank" rel="noopener">{I_IG} @{IG_HANDLE}</a>
+      </div>
+    </div>
+  </div>
+</section>
+{services_html()}
+{cta_band()}"""
+    return page("À propos · Nathan Fritsch, photographe et vidéaste à Bordeaux",
+                "Nathan Fritsch, photographe et vidéaste basé à Bordeaux, disponible partout en France. Photo, vidéo, ou les deux.",
+                body, path="a-propos", active="apropos")
 
 
 # ───────────────────────────── Réalisations + secteurs ─────────────────────────────
@@ -715,7 +728,7 @@ def project(p: dict, nxt: dict) -> str:
     </section>"""
     body = f"""<article class="proj">
   <div class="wrap">
-    <a class="back" href="realisations.html">{I_BACK} Réalisations</a>
+    <a class="back" href="realisations.html" data-back>{I_BACK} Toutes les réalisations</a>
     {top}
     {more_films}
     {gallery}
@@ -727,12 +740,13 @@ def project(p: dict, nxt: dict) -> str:
     <span class="h-l">{nxt['title']}</span>
     <span class="next-sub">{sub(nxt)}</span>
   </a>
+  <div class="wrap next-back"><a class="back" href="realisations.html" data-back>{I_BACK} Toutes les réalisations</a></div>
 </section>
 {cta_band(form)}"""
     what = "Photo et vidéo" if p["has_video"] else "Reportage photo"
     desc = re.sub(r"<[^>]+>", "", p["mission"]).replace("&nbsp;", " ")
     return page(f"{p['title']} · {what} · Nathan Fritsch",
-                desc, body, path=p["slug"], og=f"assets/og/{p['slug']}.jpg", js=("gallery.js",))
+                desc, body, path=p["slug"], active="realisations", og=f"assets/og/{p['slug']}.jpg", js=("gallery.js",))
 
 
 # ───────────────────────────── Contact, légal, 404 ─────────────────────────────
@@ -817,7 +831,7 @@ if __name__ == "__main__":
     for p in PROJECTS:
         make_og(p["slug"], *p["og"])
 
-    pages = {"index.html": index(), "realisations.html": realisations(), "contact.html": contact(),
+    pages = {"index.html": index(), "realisations.html": realisations(), "contact.html": contact(), "a-propos.html": apropos(),
              "mentions-legales.html": legal("mentions-legales", "Mentions légales"),
              "confidentialite.html": legal("confidentialite", "Politique de confidentialité"),
              "404.html": notfound()}

@@ -36,6 +36,9 @@ NEW_PHOTO_SETS = [
     ("one fitness", "one-fitness", {"IMG_3305.jpg"}),   # doublon de IMG_3305-2
     ("frenchkiss", "french-kiss", set()),
 ]
+# Nouvelles photos immobilières (octobre 2026) : seulement celles-ci
+IMMO_NEW = ["IMG_2630", "IMG_2632", "IMG_2634-2", "IMG_2636", "IMG_2637", "IMG_2641", "IMG_2643",
+            "IMG_2644", "IMG_2647", "IMG_2648", "IMG_2650", "IMG_2655", "IMG_2673", "IMG_2674"]
 
 # Films verticaux : source, sortie, boucles d'aperçu [(suffixe, début, durée)], instant de l'affiche
 FILMS = [
@@ -43,6 +46,7 @@ FILMS = [
          loops=[("loop", 0.0, 10.64), ("loop-2", 38.26, 10.50)], poster_at=45.6),
     dict(src="frenchkiss/frenchkiss V2.mov", out="videos/french-kiss/brunch.mp4",
          loops=[("loop", 0.0, 9.96), ("loop-2", 14.14, 9.72)], poster_at=2.1),
+    dict(src="immo/Timeline 1.mov", out="videos/immo/villa-bar.mp4", size="1920:1080", loops=[], poster_at=4.6),
 ]
 
 # Instant de l'affiche pour les vidéos déjà en ligne (défaut : 25 % de la durée)
@@ -112,6 +116,10 @@ def import_new_photos() -> None:
             dst = ROOT / "photos" / dst_dir / src.name
             if not dst.exists() or src.stat().st_mtime > dst.stat().st_mtime:
                 jobs.append((src, dst))
+    for n in IMMO_NEW:
+        src, dst = SRC_PHOTOS / "immo" / f"{n}.jpg", ROOT / "photos" / "immo" / f"{n}.jpg"
+        if not dst.exists() or src.stat().st_mtime > dst.stat().st_mtime:
+            jobs.append((src, dst))
     print(f"• nouvelles photos à importer : {len(jobs)}")
     with ThreadPoolExecutor(8) as ex:
         list(ex.map(lambda j: sips(j[0], j[1], "-Z", str(LARGE), quality=Q_LARGE), jobs))
@@ -162,7 +170,7 @@ def encode_films() -> None:
         if not out.exists() or src.stat().st_mtime > out.stat().st_mtime:
             print(f"• film : {out.relative_to(ROOT)}")
             run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src),
-                 "-vf", "fps=25,scale=1080:1920:flags=lanczos", *X264, "-level", "4.1",
+                 "-vf", f"fps=25,scale={f.get('size', '1080:1920')}:flags=lanczos", *X264, "-level", "4.1",
                  "-crf", "23", "-maxrate", "5M", "-bufsize", "10M",
                  "-c:a", "aac", "-b:a", "128k", str(out)])
         for suffix, start, dur in f["loops"]:

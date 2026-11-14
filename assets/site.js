@@ -14,7 +14,6 @@
   function onScroll() {
     const y = scrollY;
     hd.classList.toggle('solid', y > 30);
-    if (!body.classList.contains('menu-open')) hd.classList.toggle('hide', y > lastY && y > 480);
     if (mcta) mcta.classList.toggle('show', y > innerHeight * .7 && !nearEnd);
     lastY = y;
   }
@@ -56,6 +55,15 @@
   }));
   matchMedia('(min-width:1081px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
   addEventListener('pageshow', e => { if (e.persisted) setMenu(false); });
+
+  /* ── Bouton « retour » : revient à la page précédente du site, au même endroit ── */
+  d.addEventListener('click', e => {
+    const a = e.target.closest('[data-back]');
+    if (!a) return;
+    let fromSite = false;
+    try { fromSite = !!d.referrer && new URL(d.referrer).origin === location.origin && history.length > 1; } catch (_) {}
+    if (fromSite) { e.preventDefault(); history.back(); }
+  });
 
   /* ── Liens vers une section de la page courante : simple défilement ── */
   function goTo(el) {

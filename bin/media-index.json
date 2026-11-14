@@ -148,23 +148,7 @@
 2048,
 1152
 ],
-"photos/immo/DJI_0168-2-copie.jpg": [
-2048,
-1152
-],
-"photos/immo/DJI_0169-2.jpg": [
-2048,
-1152
-],
 "photos/immo/DJI_0172.jpg": [
-2048,
-1152
-],
-"photos/immo/DJI_0173-2.jpg": [
-2048,
-1152
-],
-"photos/immo/DJI_0176.jpg": [
 2048,
 1152
 ],
@@ -172,11 +156,59 @@
 2048,
 1152
 ],
-"photos/immo/DJI_0182.jpg": [
+"photos/immo/IMG_2630.jpg": [
 2048,
-1152
+1365
 ],
-"photos/immo/IMG_4788-HDR.jpg": [
+"photos/immo/IMG_2632.jpg": [
+2048,
+1365
+],
+"photos/immo/IMG_2634-2.jpg": [
+2048,
+1365
+],
+"photos/immo/IMG_2636.jpg": [
+2048,
+1365
+],
+"photos/immo/IMG_2637.jpg": [
+2048,
+1365
+],
+"photos/immo/IMG_2641.jpg": [
+2048,
+1365
+],
+"photos/immo/IMG_2643.jpg": [
+2048,
+1365
+],
+"photos/immo/IMG_2644.jpg": [
+2048,
+1365
+],
+"photos/immo/IMG_2647.jpg": [
+2048,
+1365
+],
+"photos/immo/IMG_2648.jpg": [
+2048,
+1365
+],
+"photos/immo/IMG_2650.jpg": [
+2048,
+1365
+],
+"photos/immo/IMG_2655.jpg": [
+2048,
+1365
+],
+"photos/immo/IMG_2673.jpg": [
+2048,
+1365
+],
+"photos/immo/IMG_2674.jpg": [
 2048,
 1365
 ],
@@ -184,23 +216,7 @@
 2048,
 1365
 ],
-"photos/immo/IMG_5244-HDR.jpg": [
-2048,
-1365
-],
 "photos/immo/IMG_5250-HDR.jpg": [
-2048,
-1365
-],
-"photos/immo/IMG_5253-HDR.jpg": [
-2048,
-1365
-],
-"photos/immo/IMG_5357-HDR.jpg": [
-2048,
-1365
-],
-"photos/immo/IMG_5360-HDR.jpg": [
 2048,
 1365
 ],
@@ -1991,6 +2007,11 @@
 "w": 1920,
 "h": 1080,
 "d": 27.8
+},
+"videos/immo/villa-bar.mp4": {
+"w": 1920,
+"h": 1080,
+"d": 21.6
 },
 "videos/le-mahi-mahi-n1.mp4": {
 "w": 1280,
