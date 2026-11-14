@@ -162,13 +162,13 @@ PROJECTS = [
                     ("cam", "Un reportage photo", "L'action dans l'eau, les riders, le public et les remises de prix.")],
          films=[(LP_FILM, "Aftermovie")], mosaic=["IMG_2373", "IMG_4439"], og=("IMG_4439", .5)),
     dict(slug="st-martin", title="Saint-Martin", kind="Carnet de voyage", place="Antilles",
-         sectors=["voyage"], cover="dji_fly_20261021_185016_73_1793552194145_photo_optimized",
+         sectors=["voyage"], cover="IMG_3762",
          pitch="Plages, rues colorées, avions au ras de l'eau et vues du ciel&nbsp;: une île racontée en images.",
          mission="Un voyage à Saint-Martin, côté français et côté hollandais&nbsp;: les plages, les rues colorées de Philipsburg, les avions qui frôlent Maho Beach, la faune, les couchers de soleil et l'île vue du ciel.",
          delivered=[("vid", "Un film de {d0}", "Un coucher de soleil sur l'île, en mouvement."),
                     ("cam", "Un carnet photo", "Paysages, rues, faune et lumières de fin de journée.")],
          films=[("videos/st-martin/sunset.mp4", "Coucher de soleil")],
-         mosaic=["IMG_4570", "IMG_4091"], og=("dji_fly_20261021_185016_73_1793552194145_photo_optimized", .5)),
+         mosaic=["IMG_3972", "IMG_4093"], og=("IMG_3762", .45)),
     dict(slug="le-mahi-mahi", title="Le Mahi Mahi", kind="Base nautique", place="Lac de Lacanau",
          sectors=["entreprises"], cover="IMG_6451",
          pitch="Des images pour la communication d'une base nautique et de ses excursions sur le lac.",
@@ -540,15 +540,15 @@ def index() -> str:
   <div class="hero-bg">{img(HERO_PHOTO, "", "100vw", lazy=False)}</div>
   <div class="wrap hero-grid">
     <div class="hero-txt">
+      <a class="hero-me" href="a-propos.html" data-rv>
+        <img src="{AVATAR}" alt="Nathan Fritsch" width="96" height="96" decoding="async" fetchpriority="high">
+        <span><b>Nathan Fritsch</b>Devis gratuit · Réponse sous 24&nbsp;h</span>
+      </a>
       <h1 class="h-xl split">Photographe et vidéaste <em>à Bordeaux</em></h1>
       <p class="hero-sub" data-rv style="--d:.25s">Des photos et des vidéos qui donnent envie, livrées prêtes à publier. Partout en France.</p>
       <div class="hero-cta" data-rv style="--d:.35s">
         <a href="#contact" class="btn">Demander un devis <span class="ar">{I_ARROW}</span></a>
         <a href="realisations.html" class="btn ghost">Voir les réalisations</a>
-      </div>
-      <div class="me" data-rv style="--d:.45s">
-        <img src="{AVATAR}" alt="" width="48" height="48" decoding="async">
-        <span><b>Nathan Fritsch</b>Devis gratuit · Réponse sous 24&nbsp;h</span>
       </div>
     </div>
     <div class="reels" data-rv style="--d:.2s">
@@ -824,7 +824,7 @@ def make_avatar() -> None:
     w, _ = DIMS[ABOUT_PHOTO]
     k = w / 720  # repères pris sur la vignette de 720 px de large
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(ROOT / ABOUT_PHOTO), "-vf",
-                    f"crop={round(290 * k)}:{round(290 * k)}:{round(335 * k)}:{round(150 * k)},scale=192:192:flags=lanczos", "-q:v", "3", str(out)], check=True)
+                    f"crop={round(290 * k)}:{round(290 * k)}:{round(335 * k)}:{round(150 * k)},scale=320:320:flags=lanczos", "-q:v", "3", str(out)], check=True)
 
 
 def file_v(rel: str) -> str:
