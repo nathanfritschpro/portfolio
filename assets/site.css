@@ -283,11 +283,13 @@ body.c-light #cx .c-ring{border-color:rgba(52,77,89,.5);}
 .about-cta{display:flex;flex-wrap:wrap;align-items:center;gap:1.1rem 1.6rem;margin-top:.6rem;}
 
 /* ─── Contact ─── */
-.contact-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:clamp(2rem,6.5vw,6.5rem);align-items:start;}
+.contact-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);grid-template-areas:"txt form" "alts form";grid-template-rows:auto 1fr;gap:1.6rem clamp(2rem,6.5vw,6.5rem);align-items:start;}
+.contact-txt{grid-area:txt;}
+.form-wrap{grid-area:form;}
 .contact-txt{display:flex;flex-direction:column;align-items:flex-start;gap:1.3rem;}
 .contact-txt .me{margin-top:.3rem;}
 .contact-txt .me img{width:3.5rem;height:3.5rem;}
-.alts{width:100%;margin-top:.6rem;border-top:1px solid var(--line);}
+.alts{grid-area:alts;width:100%;border-top:1px solid var(--line);}
 .alts a{display:flex;align-items:center;gap:1rem;padding:1.05rem 0;border-bottom:1px solid var(--line);transition:padding .4s var(--ease);}
 .alts .ic{flex:none;display:grid;place-items:center;width:2.8rem;height:2.8rem;border-radius:50%;border:1px solid var(--line-2);}
 .alts .ic svg{width:1.15rem;height:1.15rem;}
@@ -464,6 +466,7 @@ body.c-light #cx .c-ring{border-color:rgba(52,77,89,.5);}
   .steps li{padding:1.1rem 0;}
   .steps li:last-child{border-bottom:1px solid var(--line-d);}
   .about,.contact-grid,.ph-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-areas:"txt" "form" "alts";grid-template-rows:auto;gap:1.8rem;}
   .ph-grid{align-items:start;gap:2.4rem;}
   .ph-grid .hero-cta .btn{flex:1 1 100%;}
   .about-media{aspect-ratio:1/1.1;}

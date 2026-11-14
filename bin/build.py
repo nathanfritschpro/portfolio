@@ -438,12 +438,12 @@ def contact_block(h: str = "h2") -> str:
       <img src="{AVATAR}" alt="Nathan Fritsch" width="56" height="56" loading="lazy" decoding="async">
       <span><b>Nathan Fritsch</b>C'est moi qui vous réponds.</span>
     </div>
-    <ul class="alts" data-rv>
-      <li><a href="{CAL}" target="_blank" rel="noopener"><span class="ic">{I_CAL}</span><span><b>Réserver un appel</b><small>30 minutes, gratuit</small></span><span class="go">{I_ARROW}</span></a></li>
-      <li><a href="{IG}" target="_blank" rel="noopener"><span class="ic">{I_IG}</span><span><b>Écrire sur Instagram</b><small>@{IG_HANDLE}</small></span><span class="go">{I_ARROW}</span></a></li>
-      <li><a href="mailto:{EMAIL}"><span class="ic">{I_MAIL}</span><span><b>Envoyer un email</b><small>{EMAIL}</small></span><span class="go">{I_ARROW}</span></a></li>
-    </ul>
   </div>
+  <ul class="alts" data-rv>
+    <li><a href="{CAL}" target="_blank" rel="noopener"><span class="ic">{I_CAL}</span><span><b>Réserver un appel</b><small>30 minutes, gratuit</small></span><span class="go">{I_ARROW}</span></a></li>
+    <li><a href="{IG}" target="_blank" rel="noopener"><span class="ic">{I_IG}</span><span><b>Écrire sur Instagram</b><small>@{IG_HANDLE}</small></span><span class="go">{I_ARROW}</span></a></li>
+    <li><a href="mailto:{EMAIL}"><span class="ic">{I_MAIL}</span><span><b>Envoyer un email</b><small>{EMAIL}</small></span><span class="go">{I_ARROW}</span></a></li>
+  </ul>
   <div class="form-wrap" data-rv style="--d:.1s">
     <form class="form" id="devis" action="{FORM}" method="POST" novalidate>
       <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
