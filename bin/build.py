@@ -669,8 +669,9 @@ def sector(s: dict) -> str:
 # ───────────────────────────── Page projet ─────────────────────────────
 def player(video: str, label: str, cls: str = "") -> str:
     r = ratio(video)
+    load = 'loading="lazy" decoding="async"' if cls else 'fetchpriority="high"'
     return (f'<div class="player {"v" if r == "9/16" else "h"} {cls}" data-src="{ver(video)}" data-cursor="Lire" role="button" tabindex="0" '
-            f'aria-label="Lire la vidéo : {e(label)}"><img src="{ver(poster_of(video))}" alt="" decoding="async">'
+            f'aria-label="Lire la vidéo : {e(label)}"><img src="{ver(poster_of(video))}" alt="" {load}>'
             f'<span class="play">{I_PLAY}</span><span class="film-tag">{label} · {dur(video)}</span></div>')
 
 
