@@ -5,255 +5,131 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Contact et devis · Nathan Fritsch, photographe et vidéaste à Bordeaux</title>
 <meta name="description" content="Demandez un devis gratuit pour votre projet photo ou vidéo à Bordeaux et partout en France. Réponse sous 24 h.">
-<link rel="canonical" href="https://nathanfritsch.fr/contact">
+<link rel="canonical" href="https://www.nathanfritsch.com/contact">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Nathan Fritsch">
 <meta property="og:title" content="Contact et devis · Nathan Fritsch, photographe et vidéaste à Bordeaux">
 <meta property="og:description" content="Demandez un devis gratuit pour votre projet photo ou vidéo à Bordeaux et partout en France. Réponse sous 24 h.">
-<meta property="og:image" content="https://nathanfritsch.fr/assets/img/hero.jpg">
-<meta name="theme-color" content="#0D0F10">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230D0F10'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-size='34' fill='%23F4F1EC'%3ENF%3C/text%3E%3C/svg%3E">
+<meta property="og:url" content="https://www.nathanfritsch.com/contact">
+<meta property="og:image" content="https://www.nathanfritsch.com/assets/og/accueil.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B0D0E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B0D0E'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-size='34' fill='%23F3F0EA'%3ENF%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css">
-<style>
-.hd{color:var(--text)!important;}.hd::before{opacity:1!important;}
-.ct{display:grid;grid-template-columns:.85fr 1.15fr;min-height:100vh;}
-.ct-l{position:sticky;top:0;height:100vh;height:100svh;color:#fff;overflow:hidden;display:flex;align-items:flex-end;}
-.ct-l-bg{position:absolute;inset:0;background:url('assets/img/lacanau-2.jpg') center/cover;transform:scale(1.08);transition:transform 2.4s var(--ease);}
-body.ready .ct-l-bg{transform:scale(1);}
-.ct-l::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,15,16,.5),rgba(13,15,16,.35) 40%,rgba(13,15,16,.92));}
-.ct-l-in{position:relative;z-index:2;padding:0 clamp(1.5rem,4vw,4rem) clamp(2rem,6vh,4rem);display:flex;flex-direction:column;gap:1.8rem;width:100%;}
-.ct-l h1{max-width:10ch;}
-.ct-info{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem 2rem;padding-top:1.8rem;border-top:1px solid rgba(255,255,255,.2);}
-.ct-info small{display:block;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--a-xl);margin-bottom:.35rem;}
-.ct-info a,.ct-info span{color:#fff;text-decoration:none;font-size:.95rem;word-break:break-word;}
-.ct-info a:hover{color:var(--a-l);}
-.ct-r{padding:clamp(7.5rem,14vh,9rem) clamp(1.5rem,5vw,5.5rem) 5rem;display:flex;flex-direction:column;gap:2.4rem;background:var(--paper);}
-.ct-top{display:flex;flex-direction:column;gap:1rem;}
-.ct-top h2{font-family:var(--serif);font-weight:450;font-size:clamp(1.9rem,3vw,2.8rem);letter-spacing:-.02em;line-height:1.08;}
-.ct-top h2 em{font-style:normal;color:var(--a);}
-.ct-top p{color:var(--mute);font-weight:300;}
-.prog{display:flex;align-items:center;gap:1rem;}
-.prog-bar{flex:1;height:2px;background:var(--line);border-radius:2px;overflow:hidden;}
-.prog-bar i{display:block;height:100%;background:var(--a);width:25%;transition:width .7s var(--ease);}
-.prog span{font-size:.72rem;letter-spacing:.14em;color:var(--mute);font-weight:500;min-width:3.6em;text-align:right;}
-.fs{border:0;display:none;flex-direction:column;gap:1.8rem;animation:stIn .7s var(--ease);}
-.fs.on{display:flex;}
-@keyframes stIn{from{opacity:0;transform:translateX(24px);}to{opacity:1;transform:none;}}
-.fs legend{font-family:var(--serif);font-weight:420;font-size:clamp(1.35rem,2vw,1.7rem);letter-spacing:-.01em;margin-bottom:.4rem;}
-.q{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--text);margin-bottom:.8rem;display:block;}
-.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.7rem;}
-.opt{position:relative;}
-.opt input{position:absolute;opacity:0;pointer-events:none;}
-.opt label{display:flex;flex-direction:column;gap:.35rem;height:100%;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:14px;cursor:pointer;background:#fff;transition:border-color .3s,background .3s,box-shadow .4s,transform .4s var(--ease);}
-.opt label:hover{border-color:rgba(52,77,89,.5);transform:translateY(-2px);}
-.opt label b{font-weight:550;font-size:.95rem;}
-.opt label span{font-size:.8rem;color:var(--mute);line-height:1.45;}
-.opt input:checked+label{border-color:var(--a);background:var(--a-xl);box-shadow:0 0 0 1px var(--a) inset;}
-.opt input:focus-visible+label{outline:2px solid var(--a);outline-offset:2px;}
-.opts.pill{display:flex;flex-wrap:wrap;}
-.opts.pill label{flex-direction:row;padding:.8rem 1.2rem;border-radius:100px;}
-.fld{display:flex;flex-direction:column;gap:.5rem;}
-.fld label{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;}
-.fld label i{font-style:normal;color:var(--mute);font-weight:400;text-transform:none;letter-spacing:0;}
-.fld input,.fld textarea{width:100%;font:inherit;font-size:1rem;padding:1rem 1.1rem;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--text);transition:border-color .3s,box-shadow .3s;}
-.fld textarea{min-height:150px;resize:vertical;line-height:1.6;}
-.fld input:focus,.fld textarea:focus{outline:0;border-color:var(--a);box-shadow:0 0 0 3px rgba(52,77,89,.12);}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.nav-f{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:.6rem;}
-.back{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--mute);display:inline-flex;align-items:center;gap:.5rem;}
-.back:hover{color:var(--text);}
-.back svg{width:12px;height:12px;transform:rotate(180deg);}
-.err{color:#A1412F;font-size:.85rem;min-height:1.2em;}
-.recap{background:var(--bone);border-radius:14px;padding:1.2rem 1.4rem;font-size:.88rem;color:var(--mute);line-height:1.7;}
-.recap b{color:var(--text);font-weight:550;}
-.done{display:none;flex-direction:column;gap:1.4rem;align-items:flex-start;animation:stIn .7s var(--ease);}
-.done.on{display:flex;}
-.done-ic{width:64px;height:64px;border-radius:50%;background:var(--a);color:#fff;display:grid;place-items:center;}
-.done-ic svg{width:26px;height:26px;}
-.alt{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;padding-top:2rem;border-top:1px solid var(--line);}
-.alt a{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.2rem 1.3rem;border:1px solid var(--line);border-radius:14px;text-decoration:none;transition:border-color .3s,background .3s;}
-.alt a:hover{border-color:var(--a);background:#fff;}
-.alt b{display:block;font-weight:550;font-size:.95rem;}
-.alt span{font-size:.8rem;color:var(--mute);}
-.alt svg{width:12px;height:12px;flex:none;}
-.hp{position:absolute;left:-9999px;}
-@media (max-width:1080px){
-  .ct{grid-template-columns:1fr;}
-  .ct-l{position:relative;height:auto;min-height:72svh;}
-  .ct-r{padding-top:3.5rem;}
-}
-@media (max-width:640px){.row2,.alt,.ct-info{grid-template-columns:1fr;}}
-
-@media (max-width:768px){
-  .ct-l{min-height:0;height:34svh;}
-  .ct-l-in{display:none;}
-  .ct-r{padding:2.2rem 1.25rem 7rem;gap:1.8rem;}
-  .ct-top h2{font-size:1.7rem;}
-  .opts{grid-template-columns:1fr;}
-  .opt label{padding:1.05rem 1.2rem;}
-  .opt label span{display:none;}
-  .opts.pill{display:grid;grid-template-columns:1fr 1fr;}
-  .opts.pill label{justify-content:center;border-radius:12px;}
-  .nav-f .btn{flex:1;justify-content:space-between;}
-  .mcta{display:none!important;}
-}
-</style>
-<script>try{if(location.hash||sessionStorage.getItem("nf-pt")||sessionStorage.getItem("nf-intro"))document.documentElement.classList.add("no-intro")}catch(e){}</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=eb52e77d">
+<script>document.documentElement.classList.add('js')</script>
 </head>
-<body class="dark-top">
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
 <header class="hd">
-  <a href="index.html" class="hd-logo" aria-label="Nathan Fritsch, accueil"><b>Nathan Fritsch</b><small>Photo · Vidéo · Bordeaux</small></a>
-  <div role="navigation" aria-label="Navigation principale">
-    <ul class="hd-nav">
-      <li><button type="button" aria-haspopup="true">Services <svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m2 3.5 3 3 3-3"/></svg></button>
-        <div class="hd-dd"><div class="hd-dd-in"><a href="evenementiel.html"><b>Événementiel</b><span>Soirées, séminaires, célébrations</span></a><a href="sport.html"><b>Sport</b><span>Compétitions, clubs, athlètes</span></a><a href="immobilier.html"><b>Immobilier et conciergeries</b><span>Valoriser et louer plus vite</span></a><a href="entreprises.html"><b>Entreprises et marques</b><span>Contenus pour votre communication</span></a></div></div></li>
-      <li><button type="button" aria-haspopup="true">Réalisations <svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m2 3.5 3 3 3-3"/></svg></button>
-        <div class="hd-dd"><div class="hd-dd-in">
-          <a href="portfolio.html?type=photo"><b>Photos</b><span>Reportages et séries</span></a>
-          <a href="portfolio.html?type=video"><b>Vidéos</b><span>Films, aftermovies, formats courts</span></a>
-        </div></div></li>
+  <a href="index.html" class="logo" aria-label="Nathan Fritsch, accueil"><b>Nathan Fritsch</b><small>Photo · Vidéo · Bordeaux</small></a>
+  <div class="hd-nav" role="navigation" aria-label="Navigation principale">
+    <ul class="nav">
+      <li><a href="realisations.html">Réalisations</a></li>
+      <li><button type="button" aria-haspopup="true">Services <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="chev"><path d="m2 3.5 3 3 3-3"/></svg></button>
+        <div class="dd"><div class="dd-in"><a href="evenementiel.html"><b>Événementiel</b><span>Soirées, séminaires, ouvertures</span></a><a href="sport.html"><b>Sport</b><span>Compétitions, clubs, athlètes</span></a><a href="immobilier.html"><b>Immobilier et conciergeries</b><span>Vendre et louer plus vite</span></a><a href="entreprises.html"><b>Entreprises et marques</b><span>Commerces, restaurants, marques</span></a></div></div></li>
       <li><a href="index.html#apropos">À propos</a></li>
-      <li><a href="contact.html" class="on">Contact</a></li>
+      <li><a href="contact.html" class="on" aria-current="page">Contact</a></li>
     </ul>
   </div>
   <div class="hd-right">
-    <a href="contact.html" class="btn">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
-    <button class="hd-burger" type="button" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    <a class="hd-ig" href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener" aria-label="Instagram @nathanfrt_visuals"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="contact.html" class="btn sm">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10 10 2M4 2h6v6"/></svg></span></a>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
   </div>
 </header>
-<div class="mm" role="dialog" aria-label="Menu">
+<div class="mm" id="menu" role="dialog" aria-label="Menu">
   <div class="mm-nav" role="navigation" aria-label="Menu mobile">
+    <div class="mm-g">
+      <button type="button" class="mm-t" aria-expanded="false">Réalisations<span class="mm-pl"></span></button>
+      <div class="mm-sub"><div><a href="realisations.html">Toutes les réalisations</a><a href="one-fitness.html">One Fitness Club</a><a href="french-kiss.html">French Kiss</a><a href="lacanau-pro.html">Lacanau Pro</a><a href="le-mahi-mahi.html">Le Mahi Mahi</a></div></div>
+    </div>
     <div class="mm-g">
       <button type="button" class="mm-t" aria-expanded="false">Services<span class="mm-pl"></span></button>
       <div class="mm-sub"><div><a href="evenementiel.html">Événementiel</a><a href="sport.html">Sport</a><a href="immobilier.html">Immobilier et conciergeries</a><a href="entreprises.html">Entreprises et marques</a></div></div>
-    </div>
-    <div class="mm-g">
-      <button type="button" class="mm-t" aria-expanded="false">Réalisations<span class="mm-pl"></span></button>
-      <div class="mm-sub"><div><a href="portfolio.html?type=photo">Photos</a><a href="portfolio.html?type=video">Vidéos</a></div></div>
     </div>
     <div class="mm-g"><a href="index.html#apropos" class="mm-t">À propos</a></div>
     <div class="mm-g"><a href="contact.html" class="mm-t">Contact</a></div>
   </div>
   <div class="mm-foot">
-    <a href="contact.html" class="btn light">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
-    <p><a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a> · <a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener">Instagram</a></p>
+    <a href="contact.html" class="btn">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10 10 2M4 2h6v6"/></svg></span></a>
+    <p><a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener">@nathanfrt_visuals</a> · <a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a></p>
   </div>
 </div>
-<div class="mcta">
-  <a href="contact.html" class="btn no-mag">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
-  <a href="mailto:nathan.fritsch.pro@gmail.com" class="btn tel no-mag" aria-label="Envoyer un email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
-</div>
-
-<main class="ct">
-  <aside class="ct-l">
-    <div class="ct-l-bg" role="img" aria-label="Surfeur au Lacanau Pro"></div>
-    <div class="ct-l-in">
-      <span class="eyebrow lt" data-rv>Devis gratuit</span>
-      <h1 class="d1 split" style="font-size:clamp(2.6rem,5.4vw,5.6rem)">Parlons de votre <em class="it-a">projet.</em></h1>
-      <div class="ct-info" data-rv style="--dl:.3s">
-        <div><small>Email</small><a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a></div>
-        <div><small>Réponse</small><span>Sous 24 h</span></div>
-        <div><small>Zone</small><span>Bordeaux · France entière</span></div>
-        <div><small>Instagram</small><a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener">@nathanfrt_visuals</a></div>
+<main id="main">
+<section class="ph contact contact-page">
+<div class="wrap contact-grid">
+  <div class="contact-txt">
+    <h1 class="h-l split">Parlons de votre projet.</h1>
+    <p class="lead" data-rv>Devis gratuit. Réponse sous 24&nbsp;h.</p>
+    <div class="me" data-rv>
+      <img src="assets/avatar.jpg" alt="Nathan Fritsch" width="56" height="56" loading="lazy" decoding="async">
+      <span><b>Nathan Fritsch</b>C'est moi qui vous réponds.</span>
+    </div>
+    <ul class="alts" data-rv>
+      <li><a href="https://calendly.com/nathan-fritsch-pro/30min" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><span><b>Réserver un appel</b><small>30 minutes, gratuit</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10 10 2M4 2h6v6"/></svg></span></a></li>
+      <li><a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></span><span><b>Écrire sur Instagram</b><small>@nathanfrt_visuals</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10 10 2M4 2h6v6"/></svg></span></a></li>
+      <li><a href="mailto:nathan.fritsch.pro@gmail.com"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.2"/><path d="m3.5 7.5 8.5 6 8.5-6"/></svg></span><span><b>Envoyer un email</b><small>nathan.fritsch.pro@gmail.com</small></span><span class="go"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10 10 2M4 2h6v6"/></svg></span></a></li>
+    </ul>
+  </div>
+  <div class="form-wrap" data-rv style="--d:.1s">
+    <form class="form" id="devis" action="https://formspree.io/f/xljdopkj" method="POST" novalidate>
+      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="_subject" value="Nouvelle demande de devis">
+      <fieldset class="fgrp"><legend class="flabel">Votre projet</legend><div class="opts"><span class="opt"><input type="radio" name="type_projet" id="t-evenement" value="Événement" data-k="evenement"><label for="t-evenement">Événement</label></span><span class="opt"><input type="radio" name="type_projet" id="t-sport" value="Sport" data-k="sport"><label for="t-sport">Sport</label></span><span class="opt"><input type="radio" name="type_projet" id="t-immobilier" value="Immobilier" data-k="immobilier"><label for="t-immobilier">Immobilier</label></span><span class="opt"><input type="radio" name="type_projet" id="t-entreprise" value="Entreprise" data-k="entreprise"><label for="t-entreprise">Entreprise</label></span><span class="opt"><input type="radio" name="type_projet" id="t-autre" value="Autre" data-k="autre"><label for="t-autre">Autre</label></span></div></fieldset>
+      <fieldset class="fgrp"><legend class="flabel">Vous avez besoin de</legend><div class="opts"><span class="opt"><input type="radio" name="besoin" id="n-0" value="Photo"><label for="n-0">Photo</label></span><span class="opt"><input type="radio" name="besoin" id="n-1" value="Vidéo"><label for="n-1">Vidéo</label></span><span class="opt"><input type="radio" name="besoin" id="n-2" value="Les deux"><label for="n-2">Les deux</label></span></div></fieldset>
+      <div class="row2">
+        <div class="fld"><label class="flabel" for="f-nom">Nom</label><input id="f-nom" name="nom" type="text" autocomplete="name" required></div>
+        <div class="fld"><label class="flabel" for="f-mail">Email</label><input id="f-mail" name="email" type="email" autocomplete="email" inputmode="email" required></div>
       </div>
-    </div>
-  </aside>
-
-  <section class="ct-r">
-    <div class="ct-top">
-      <h2>4 questions. <em>2 minutes.</em></h2>
-    </div>
-    <div class="prog" aria-hidden="true"><div class="prog-bar"><i id="pBar"></i></div><span id="pTxt">1 / 4</span></div>
-
-    <form id="qf" action="https://formspree.io/f/xljdopkj" method="POST" novalidate>
-      <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off">
-      <input type="hidden" name="_subject" id="subj" value="Nouvelle demande de devis · site">
-
-      <fieldset class="fs on" data-step="1">
-        <legend>Quel type de projet&nbsp;?</legend>
-        <div class="opts"><div class="opt"><input type="radio" name="type_projet" id="t-evenement" value="Événement" data-k="evenement"><label for="t-evenement"><b>Événement</b><span>Soirée, séminaire, célébration</span></label></div><div class="opt"><input type="radio" name="type_projet" id="t-sport" value="Sport" data-k="sport"><label for="t-sport"><b>Sport</b><span>Compétition, club, athlète</span></label></div><div class="opt"><input type="radio" name="type_projet" id="t-immobilier" value="Immobilier / conciergerie" data-k="immobilier"><label for="t-immobilier"><b>Immobilier / conciergerie</b><span>Annonces, visites, locations</span></label></div><div class="opt"><input type="radio" name="type_projet" id="t-entreprise" value="Entreprise / marque" data-k="entreprise"><label for="t-entreprise"><b>Entreprise / marque</b><span>Communication, réseaux, portraits</span></label></div><div class="opt"><input type="radio" name="type_projet" id="t-particulier" value="Projet personnel" data-k="particulier"><label for="t-particulier"><b>Projet personnel</b><span>Portrait, souvenir, autre idée</span></label></div></div>
-        <p class="err" aria-live="polite"></p>
-        <div class="nav-f"><span></span><button type="button" class="btn nx">Continuer <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></button></div>
-      </fieldset>
-
-      <fieldset class="fs" data-step="2">
-        <legend>De quoi avez-vous besoin&nbsp;?</legend>
-        <div><span class="q">Format</span><div class="opts pill"><div class="opt"><input type="radio" name="besoin" id="n0" value="Photo"><label for="n0"><b>Photo</b></label></div><div class="opt"><input type="radio" name="besoin" id="n1" value="Vidéo"><label for="n1"><b>Vidéo</b></label></div><div class="opt"><input type="radio" name="besoin" id="n2" value="Photo + vidéo"><label for="n2"><b>Photo + vidéo</b></label></div><div class="opt"><input type="radio" name="besoin" id="n3" value="Je ne sais pas encore"><label for="n3"><b>Je ne sais pas encore</b></label></div></div></div>
-        <div class="row2">
-          <div class="fld"><label for="f-date">Date ou période <i>(si connue)</i></label><input id="f-date" name="date" type="text" placeholder="Ex. 14 juin, ou septembre"></div>
-          <div class="fld"><label for="f-lieu">Lieu</label><input id="f-lieu" name="lieu" type="text" placeholder="Ex. Bordeaux, Lacanau…"></div>
-        </div>
-        <p class="err" aria-live="polite"></p>
-        <div class="nav-f"><button type="button" class="back"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg> Retour</button><button type="button" class="btn nx">Continuer <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></button></div>
-      </fieldset>
-
-      <fieldset class="fs" data-step="3">
-        <legend>Votre projet en quelques mots</legend>
-        <div class="fld"><label for="f-msg" class="sr">Message</label><textarea id="f-msg" name="message" placeholder="Ce que vous imaginez, pour quand, pour quel usage…" required></textarea></div>
-        <p class="err" aria-live="polite"></p>
-        <div class="nav-f"><button type="button" class="back"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg> Retour</button><button type="button" class="btn nx">Continuer <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg></span></button></div>
-      </fieldset>
-
-      <fieldset class="fs" data-step="4">
-        <legend>Où puis-je vous répondre&nbsp;?</legend>
-        <div class="row2">
-          <div class="fld"><label for="f-nom">Prénom et nom</label><input id="f-nom" name="nom" type="text" autocomplete="name" required></div>
-          <div class="fld"><label for="f-soc">Entreprise <i>(facultatif)</i></label><input id="f-soc" name="entreprise" type="text" autocomplete="organization"></div>
-        </div>
-        <div class="row2">
-          <div class="fld"><label for="f-mail">Email</label><input id="f-mail" name="email" type="email" autocomplete="email" required></div>
-          <div class="fld"><label for="f-tel">Téléphone <i>(facultatif)</i></label><input id="f-tel" name="telephone" type="tel" autocomplete="tel"></div>
-        </div>
-        <div class="recap" id="recap"></div>
-        <p class="err" aria-live="polite"></p>
-        <div class="nav-f"><button type="button" class="back"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 6h10M7 2l4 4-4 4"/></svg> Retour</button><button type="submit" class="btn" id="sendBtn">Envoyer ma demande <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></button></div>
-      </fieldset>
+      <div class="fld"><label class="flabel" for="f-tel">Téléphone <i>(facultatif)</i></label><input id="f-tel" name="telephone" type="tel" autocomplete="tel" inputmode="tel"></div>
+      <div class="fld"><label class="flabel" for="f-msg">Votre message</label><textarea id="f-msg" name="message" placeholder="Votre projet en quelques mots : quoi, où, quand…" required></textarea></div>
+      <p class="err" role="alert" aria-live="polite"></p>
+      <div class="form-foot">
+        <button type="submit" class="btn">Envoyer ma demande <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10 10 2M4 2h6v6"/></svg></span></button>
+        <p class="form-note">Vos informations ne servent qu'à vous répondre. <a href="confidentialite.html">Confidentialité</a></p>
+      </div>
     </form>
-
-    <div class="done" id="done" role="status">
-      <div class="done-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5 9-10"/></svg></div>
-      <h2 class="d3">Merci, c'est bien reçu.</h2>
-      <p class="lead">Réponse sous 24 h.</p>
-      <a href="portfolio.html?type=photo" class="btn">Voir le portfolio <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
+    <div class="done" role="status" hidden>
+      <span class="done-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+      <h3 class="h-m">Merci, c'est bien reçu.</h3>
+      <p>Je reviens vers vous sous 24&nbsp;h.</p>
+      <a href="realisations.html" class="btn ghost">Voir les réalisations <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10 10 2M4 2h6v6"/></svg></span></a>
     </div>
-
-    <div class="alt">
-      <a href="https://calendly.com/nathan-fritsch-pro/30min" target="_blank" rel="noopener"><div><b>Réserver un appel</b><span>30 minutes, gratuit</span></div><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></a>
-      <a href="mailto:nathan.fritsch.pro@gmail.com"><div><b>Écrire un email</b><span>nathan.fritsch.pro@gmail.com</span></div><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></a>
-    </div>
-  </section>
+  </div>
+</div>
+</section>
 </main>
-<footer class="fx">
+<footer class="ft">
   <div class="wrap">
-    <div class="fx-top">
-      <div class="fx-cta">
-        <h3>Un projet en tête&nbsp;?<br><em>Parlons-en.</em></h3>
-        <a href="contact.html" class="btn light">Demander un devis <span class="ar"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 11 11 1M4 1h7v7"/></svg></span></a>
+    <div class="ft-top">
+      <div class="ft-brand">
+        <a href="index.html" class="logo"><b>Nathan Fritsch</b><small>Photo · Vidéo · Bordeaux</small></a>
+        <p>Photographe et vidéaste à Bordeaux.<br>Partout en France.</p>
       </div>
-      <div><h4>Services</h4><ul><li><a href="evenementiel.html">Événementiel</a></li><li><a href="sport.html">Sport</a></li><li><a href="immobilier.html">Immobilier et conciergeries</a></li><li><a href="entreprises.html">Entreprises et marques</a></li></ul></div>
       <div><h4>Réalisations</h4><ul>
-        <li><a href="portfolio.html?type=photo">Photos</a></li>
-        <li><a href="portfolio.html?type=video">Vidéos</a></li>
-        <li><a href="index.html#apropos">À propos</a></li>
+        <li><a href="realisations.html">Tous les projets</a></li>
+        <li><a href="one-fitness.html">One Fitness Club</a></li>
+        <li><a href="french-kiss.html">French Kiss</a></li>
+        <li><a href="lacanau-pro.html">Lacanau Pro</a></li>
       </ul></div>
+      <div><h4>Services</h4><ul><li><a href="evenementiel.html">Événementiel</a></li><li><a href="sport.html">Sport</a></li><li><a href="immobilier.html">Immobilier et conciergeries</a></li><li><a href="entreprises.html">Entreprises et marques</a></li></ul></div>
       <div><h4>Contact</h4><ul>
-        <li><a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a></li>
+        <li><a href="contact.html">Demander un devis</a></li>
         <li><a href="https://calendly.com/nathan-fritsch-pro/30min" target="_blank" rel="noopener">Réserver un appel</a></li>
-        <li><a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="contact.html">Bordeaux · France entière</a></li>
+        <li><a href="https://www.instagram.com/nathanfrt_visuals" target="_blank" rel="noopener">@nathanfrt_visuals</a></li>
+        <li><a href="mailto:nathan.fritsch.pro@gmail.com">nathan.fritsch.pro@gmail.com</a></li>
       </ul></div>
     </div>
-    <div class="fx-big" aria-hidden="true">Nathan Fritsch</div>
-    <div class="fx-bot">
-      <span>© <span data-year>2026</span> Nathan Fritsch · Photographe et vidéaste à Bordeaux</span>
+    <div class="ft-bot">
+      <span>© <span data-year>2026</span> Nathan Fritsch</span>
       <span><a href="mentions-legales.html">Mentions légales</a> · <a href="confidentialite.html">Confidentialité</a></span>
     </div>
   </div>
 </footer>
-
-<script src="assets/site.js" defer></script>
-<script src="assets/contact.js" defer></script>
+<script src="assets/site.js?v=d4b89551" defer></script>
+<script src="assets/contact.js?v=d4b89551" defer></script>
 </body>
 </html>
