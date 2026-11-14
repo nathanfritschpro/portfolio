@@ -3,13 +3,25 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/portfolio", "destination": "/realisations", "permanent": true }
+    {
+      "source": "/portfolio",
+      "destination": "/realisations",
+      "permanent": true
+    },
+    {
+      "source": "/surf",
+      "destination": "/lacanau-pro",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/(.*)\\.(jpg|jpeg|JPG|png|webp|avif|svg|mp4|mov|webm)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ]
