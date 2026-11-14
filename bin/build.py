@@ -31,7 +31,7 @@ PHOTOS: dict[str, list[str]] = json.loads((ROOT / "bin/photos.json").read_text(e
 ABOUT_PHOTO = "photos/about-8148.jpg"
 AVATAR = "assets/avatar.jpg"
 BAND_PHOTO = "photos/triatlon-lacnau/dimanche-M/IMG_1419.jpg"
-HERO_PHOTO = "photos/lacanau-pro/IMG_2296.jpg"
+HERO_PHOTO = "photos/st-martin/dji_fly_20261021_184910_69_1793552204383_photo_optimized.jpg"
 # Vidéo de présentation : déposer le fichier ici, elle remplacera le portrait dans « À propos »
 ABOUT_VIDEO = "assets/video/presentation.mp4"
 
@@ -161,6 +161,14 @@ PROJECTS = [
          delivered=[("vid", "Un film de {d0}", "L'aftermovie de la compétition&nbsp;: surf, village, concerts et podiums."),
                     ("cam", "Un reportage photo", "L'action dans l'eau, les riders, le public et les remises de prix.")],
          films=[(LP_FILM, "Aftermovie")], mosaic=["IMG_2373", "IMG_4439"], og=("IMG_4439", .5)),
+    dict(slug="st-martin", title="Saint-Martin", kind="Carnet de voyage", place="Antilles",
+         sectors=["voyage"], cover="dji_fly_20261021_185016_73_1793552194145_photo_optimized",
+         pitch="Plages, rues colorées, avions au ras de l'eau et vues du ciel&nbsp;: une île racontée en images.",
+         mission="Un voyage à Saint-Martin, côté français et côté hollandais&nbsp;: les plages, les rues colorées de Philipsburg, les avions qui frôlent Maho Beach, la faune, les couchers de soleil et l'île vue du ciel.",
+         delivered=[("vid", "Un film de {d0}", "Un coucher de soleil sur l'île, en mouvement."),
+                    ("cam", "Un carnet photo", "Paysages, rues, faune et lumières de fin de journée.")],
+         films=[("videos/st-martin/sunset.mp4", "Coucher de soleil")],
+         mosaic=["IMG_4570", "IMG_4091"], og=("dji_fly_20261021_185016_73_1793552194145_photo_optimized", .5)),
     dict(slug="le-mahi-mahi", title="Le Mahi Mahi", kind="Base nautique", place="Lac de Lacanau",
          sectors=["entreprises"], cover="IMG_6451",
          pitch="Des images pour la communication d'une base nautique et de ses excursions sur le lac.",
@@ -181,7 +189,7 @@ PROJECTS = [
          delivered=[("cam", "Un reportage photo", "Les matchs, les supporters, les célébrations et la remise des coupes.")],
          films=[], mosaic=["IMG_9333", "IMG_8011"], og=("IMG_9040", .5)),
     dict(slug="villas", title="Villas et biens", kind="Villas à vendre et à louer", place="Gironde",
-         sectors=["immobilier"], cover="IMG_2630",
+         sectors=["immobilier"], cover="IMG_2632",
          pitch="Photos et vidéo de visite, pour vendre ou louer plus vite.",
          mission="Des photos et des vidéos de visite réalisées pour des propriétaires et des agents immobiliers&nbsp;: la piscine, le bar, les terrasses et les intérieurs, sous leur meilleur jour.",
          delivered=[("vid", "Une vidéo de visite de {d0}", "La villa et ses extérieurs filmés comme une balade, pour l'annonce et les réseaux."),
@@ -524,7 +532,7 @@ def index() -> str:
                 f'<video muted loop playsinline preload="none" poster="{ver(loop[:-4] + ".jpg")}" data-src="{ver(loop)}" aria-label="{e(p["title"])}"></video>'
                 f'<span class="reel-tag"><small>{I_VID}{label}</small>{p["title"]}</span></a>')
 
-    others = "".join(card(BY_SLUG[s]) for s in ["lacanau-pro", "le-mahi-mahi", "triathlon-lacanau", "school-cup", "villas", "surf"])
+    others = "".join(card(BY_SLUG[s]) for s in ["st-martin", "lacanau-pro", "villas", "le-mahi-mahi", "triathlon-lacanau", "school-cup"])
     ld = json.dumps({"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Nathan Fritsch, photographe et vidéaste",
                      "url": SITE, "image": f"{SITE}/assets/og/accueil.jpg", "email": EMAIL, "areaServed": "France",
                      "address": {"@type": "PostalAddress", "addressLocality": "Bordeaux", "addressCountry": "FR"}, "sameAs": [IG]}, ensure_ascii=False)
@@ -625,7 +633,8 @@ def apropos() -> str:
 # ───────────────────────────── Réalisations + secteurs ─────────────────────────────
 def realisations() -> str:
     chips = '<button type="button" class="chip on" data-cat="all" aria-pressed="true">Tout</button>' + "".join(
-        f'<button type="button" class="chip" data-cat="{s["slug"]}" aria-pressed="false">{s.get("nav", s["name"])}</button>' for s in SECTORS)
+        f'<button type="button" class="chip" data-cat="{s["slug"]}" aria-pressed="false">{s.get("nav", s["name"])}</button>' for s in SECTORS) + \
+        '<button type="button" class="chip" data-cat="voyage" aria-pressed="false">Voyage</button>'
     body = f"""<section class="ph">
   <div class="wrap">
     <h1 class="h-xl split">Réalisations</h1>
@@ -690,7 +699,7 @@ def player(video: str, label: str, cls: str = "") -> str:
 
 def project(p: dict, nxt: dict) -> str:
     photos = PHOTOS[p["slug"]]
-    form = SECTOR[p["sectors"][0]]["form"]
+    form = SECTOR.get(p["sectors"][0], {}).get("form", "autre")
     main_film = p["films"][0] if p["films"] else None
     vertical = bool(main_film) and ratio(main_film[0]) == "9/16"
     info = f"""<div class="proj-info">

@@ -524,3 +524,22 @@ body.c-view #cx .c-dot{opacity:0;}
   .home .more-cards .card:nth-child(n+5){display:none;}
   .ft-top{padding-bottom:2rem;}
 }
+
+/* ═══════════════ Matière et sections (V3.2) ═══════════════
+   Grain papier très fin sur tout le site + sections en panneaux arrondis,
+   chacun avec une lumière douce qui dérive lentement. */
+body::after{content:'';position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .09 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");}
+.light,.contact,.cta-band{position:relative;isolation:isolate;overflow:hidden;margin-inline:clamp(.5rem,1.4vw,1.25rem);border-radius:clamp(22px,3vw,40px);}
+.light::before,.contact::before,.cta-band::before{content:'';position:absolute;inset:-25%;z-index:-1;pointer-events:none;filter:blur(40px);animation:nfDrift 26s ease-in-out infinite alternate;}
+.light::before{background:radial-gradient(38% 46% at 18% 28%,rgba(156,195,210,.55),transparent 70%),radial-gradient(34% 42% at 82% 72%,rgba(222,178,128,.42),transparent 70%),radial-gradient(28% 34% at 60% 10%,rgba(255,255,255,.6),transparent 70%);}
+.contact,.cta-band{background:#0F1416;color:#F3F0EA;--ink:#0F1416;--ink-2:#171D20;--ink-3:#20272B;--bone:#F3F0EA;--mute:rgba(243,240,234,.68);--mute-2:rgba(243,240,234,.42);--line:rgba(243,240,234,.14);--line-2:rgba(243,240,234,.3);--a:#9CC3D2;}
+.contact::before,.cta-band::before{background:radial-gradient(40% 50% at 15% 20%,rgba(73,128,150,.55),transparent 70%),radial-gradient(36% 46% at 88% 80%,rgba(196,130,82,.32),transparent 70%),radial-gradient(30% 36% at 70% 15%,rgba(156,195,210,.22),transparent 70%);}
+.contact{margin-bottom:clamp(.5rem,1.4vw,1.25rem);}
+.contact-page{margin-top:5.6rem;padding-top:clamp(3rem,6vw,5rem);}
+.cta-band{border-top:0;margin-bottom:clamp(.5rem,1.4vw,1.25rem);}
+.band{background:transparent;}
+.ft{border-radius:clamp(22px,3vw,40px) clamp(22px,3vw,40px) 0 0;}
+@keyframes nfDrift{0%{transform:translate3d(-5%,-3%,0) rotate(0deg) scale(1);}100%{transform:translate3d(5%,4%,0) rotate(10deg) scale(1.08);}}
+@media (prefers-reduced-motion:reduce){.light::before,.contact::before,.cta-band::before{animation:none;}}
+@media (max-width:640px){body::after{opacity:.35;}}
