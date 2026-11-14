@@ -187,6 +187,7 @@ body.c-light #cx .c-ring{border-color:rgba(52,77,89,.5);}
 .me b{display:block;color:var(--bone);font-weight:550;font-size:.95rem;}
 .reels{container-type:inline-size;display:flex;justify-content:center;gap:clamp(.75rem,1.4vw,1.25rem);}
 .reel{position:relative;flex:none;display:block;width:calc((100% - 1.25rem)/2);width:min(calc((100cqw - 1.25rem)/2),calc(70vh*9/16));width:min(calc((100cqw - 1.25rem)/2),calc(70svh*9/16));aspect-ratio:9/16;border-radius:clamp(14px,1.7vw,24px);overflow:hidden;background:var(--ink-3);box-shadow:0 0 0 1px var(--line),0 50px 90px -40px rgba(0,0,0,.9);transform:translate3d(0,var(--py,0px),0);will-change:transform;}
+@media (hover:hover){.reel{transition:scale .7s var(--ease);}.reel:hover{scale:1.025;}}
 .reel:nth-child(1){margin-top:clamp(1.5rem,4vw,4rem);}
 .reel:nth-child(2){margin-bottom:clamp(1.5rem,4vw,4rem);}
 .reel video,.reel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}

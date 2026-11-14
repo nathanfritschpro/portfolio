@@ -145,7 +145,7 @@ PROJECTS = [
                     ("cam", "Un reportage photo", "La foule, les équipes, les espaces et les premiers entraînements.")],
          films=[(OF_FILM, "Film de l'ouverture")], loop="videos/one-fitness/ouverture-loop-2.mp4", hero_loop="videos/one-fitness/ouverture-loop.mp4",
          mosaic=["IMG_2824", "IMG_3393"], og=("IMG_3393", .43)),
-    dict(slug="french-kiss", title="French Kiss", kind="Brunch d'un restaurant", place="Bordeaux",
+    dict(slug="french-kiss", title="French Kiss", kind="Restaurant", place="Bordeaux",
          sectors=["entreprises"], cover="IMG_2543",
          pitch="Un brunch en famille, filmé et photographié pour donner envie de réserver.",
          mission="Mettre en images le brunch du French Kiss&nbsp;: le buffet, les cocktails, l'ambiance du lieu et les familles attablées. Des contenus pensés pour donner envie de réserver.",
